@@ -25,7 +25,8 @@
   #track { position: relative; }
   #stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
   .layer { position: absolute; inset: 0; will-change: transform, opacity; opacity: 0; overflow: hidden; }
-  .layer video, .layer img { position: absolute; left: 0; top: -1.5%; width: 100%; height: 103%; object-fit: cover; }
+  .layer img { position: absolute; left: 0; top: -1.5%; width: 100%; height: 103%; object-fit: cover; will-change: transform, opacity; }
+  .layer img.inside { opacity: 0; }
 
   .copy { position: absolute; left: 48px; bottom: 9vh; width: min(460px, 40vw); z-index: 10; background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(15,23,42,.06); border-radius: 18px; padding: 24px 26px; box-shadow: 0 20px 50px -20px rgba(15,23,42,.25); opacity: 0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
   .copy.on { opacity: 1; transform: none; pointer-events: auto; }
@@ -114,16 +115,9 @@ const SECTIONS = [
     cta: true }
 ];
 
-// Velocity-equalized camera dive lookup tables (17 steps from u=0..1) per clip,
-// trimming out the stationary tail at the end of each 8s render.
-const LUTS = [
-  [0.0, 0.731, 1.22, 1.597, 1.904, 2.167, 2.407, 2.635, 2.857, 3.078, 3.308, 3.554, 3.821, 4.111, 4.44, 4.83, 5.333],
-  [0.0, 0.756, 1.285, 1.714, 2.074, 2.398, 2.693, 2.974, 3.257, 3.546, 3.84, 4.144, 4.46, 4.798, 5.185, 5.639, 6.208],
-  [0.0, 0.698, 1.171, 1.573, 1.919, 2.215, 2.472, 2.702, 2.917, 3.133, 3.353, 3.576, 3.805, 4.048, 4.321, 4.653, 5.167],
-  [0.0, 0.771, 1.366, 1.843, 2.232, 2.552, 2.828, 3.075, 3.302, 3.509, 3.701, 3.877, 4.041, 4.217, 4.41, 4.645, 5.042],
-  [0.0, 1.056, 1.732, 2.236, 2.648, 3.01, 3.335, 3.626, 3.884, 4.131, 4.366, 4.59, 4.814, 5.071, 5.382, 5.804, 6.458],
-  [0.0, 0.769, 1.28, 1.689, 2.015, 2.289, 2.534, 2.762, 2.98, 3.193, 3.415, 3.636, 3.856, 4.111, 4.409, 4.676, 5.0]
-];
+// Each scene is two stills: the island from outside (p*.jpg) and its interior (i*.jpg).
+// The outside still zooms toward FOCUS (x%, y%) and crossfades into the interior.
+const FOCUS = [[49, 46], [47, 50], [50, 36], [40, 54], [47, 42], [52, 34]];
 
 // Per-section timeline fractions:
 const DIVE_IN = 0.36, HOLD = 0.56, DIVE_OUT = 0.80, SLIDE_START = 0.74;
@@ -134,16 +128,17 @@ const stage = document.getElementById("stage");
 const track = document.getElementById("track");
 track.style.height = (N * SECTION_VH + 100) + "vh";
 
-const layers = [], videos = [], copies = [];
+const layers = [], outs = [], ins = [], copies = [];
 SECTIONS.forEach((s, i) => {
   const layer = document.createElement("div");
   layer.className = "layer";
-  const v = document.createElement("video");
-  v.muted = true; v.playsInline = true; v.preload = "auto";
-  v.poster = `media/p${i + 1}.jpg`;
-  layer.appendChild(v);
+  const o = new Image(), n = new Image();
+  o.src = `media/p${i + 1}.jpg`; n.src = `media/i${i + 1}.jpg`;
+  o.alt = n.alt = ""; n.className = "inside";
+  o.style.transformOrigin = `${FOCUS[i][0]}% ${FOCUS[i][1]}%`;
+  layer.append(o, n);
   stage.appendChild(layer);
-  layers.push(layer); videos.push(v);
+  layers.push(layer); outs.push(o); ins.push(n);
 
   const c = document.createElement("div");
   c.className = "copy";
@@ -165,52 +160,26 @@ SECTIONS.forEach((s, i) => {
 });
 const dots = [...document.querySelectorAll("#dots button")];
 
-// Load the first clip before showing the page, then the rest in order in the background.
-// Each clip goes fully into memory, so scrubbing never waits on the network; until a clip
-// is loaded, seek() skips it and its poster shows.
+// Show the page once the first scene's two stills are in; the rest load on their own.
 const loaderBar = document.querySelector("#loader .bar i");
 const hideLoader = () => document.getElementById("loader").classList.add("done");
-function loadClip(i) {
-  const v = videos[i];
-  return fetch(`media/d${i + 1}.mp4`).then(r => r.blob()).then(b => {
-    v.src = URL.createObjectURL(b);
-    return new Promise(res => { v.addEventListener("loadedmetadata", res, { once: true }); setTimeout(res, 4000); v.load(); });
-  });
-}
-loaderBar.style.width = "35%";
-loadClip(0)
-  .then(() => { loaderBar.style.width = "100%"; hideLoader(); }, hideLoader)
-  .then(() => videos.slice(1).reduce((p, _, k) => p.then(() => loadClip(k + 1)).catch(() => {}), Promise.resolve()));
-setTimeout(hideLoader, 5000);
+let ready = 0;
+[outs[0], ins[0]].forEach(img => {
+  const done = () => { loaderBar.style.width = (++ready * 50) + "%"; if (ready === 2) hideLoader(); };
+  img.complete ? done() : (img.addEventListener("load", done, { once: true }), img.addEventListener("error", done, { once: true }));
+});
+setTimeout(hideLoader, 4000);
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = t => { t = clamp(t); return t * t * (3 - 2 * t); };
 const softEase = t => { t = clamp(t); return 0.72 * t + 0.28 * smooth(t); };
 
-function sampleLUT(idx, u) {
-  const lut = LUTS[idx];
-  const pos = clamp(u) * (lut.length - 1);
-  const k = Math.min(lut.length - 2, Math.floor(pos));
-  return lut[k] + (pos - k) * (lut[k + 1] - lut[k]);
+// u = 0: the island from outside; u = 1: inside the scene.
+function dive(i, u) {
+  outs[i].style.transform = `scale(${(1 + 1.4 * smooth(u)).toFixed(4)})`;
+  ins[i].style.opacity = smooth((u - 0.45) / 0.5).toFixed(3);
+  ins[i].style.transform = `scale(${(1.18 - 0.18 * smooth(u)).toFixed(4)})`;
 }
-
-const pendingSeek = new Map();
-function seek(v, t) {
-  if (!v || !v.duration) return;
-  t = clamp(t, 0, v.duration - 0.04);
-  pendingSeek.set(v, t);
-  if (!v.seeking && Math.abs(v.currentTime - t) > 1 / 60) {
-    try { v.currentTime = t; } catch (e) {}
-  }
-}
-videos.forEach(v => {
-  v.addEventListener("seeked", () => {
-    const t = pendingSeek.get(v);
-    if (t != null && !v.seeking && Math.abs(v.currentTime - t) > 1 / 50) {
-      try { v.currentTime = t; } catch (e) {}
-    }
-  });
-});
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 scrollTo(0, 0);
@@ -244,31 +213,20 @@ function frame(now) {
     }
   });
 
-  // Pre-seek neighboring clips so transitions & reverse scrolling never flash a stale frame.
-  if (i > 0 && p < 0.25) seek(videos[i - 1], 0);
-  if (!last && p > 0.45) seek(videos[i + 1], 0);
-
-  const L = layers[i], V = videos[i];
-  const diveEnd = LUTS[i][LUTS[i].length - 1];
-  const tailEnd = Math.min((V.duration || 8) - 0.08, diveEnd + 1.6);
-
+  const L = layers[i];
   let holdZoom = 1;
   if (p < DIVE_IN) {
-    const u = softEase(p / DIVE_IN);
-    seek(V, sampleLUT(i, u));
+    dive(i, softEase(p / DIVE_IN));
   } else if (last) {
-    const u = smooth((p - DIVE_IN) / (1 - DIVE_IN));
-    seek(V, diveEnd + u * (tailEnd - diveEnd));
-    holdZoom = 1 + 0.03 * u;
+    dive(i, 1);
+    holdZoom = 1 + 0.03 * smooth((p - DIVE_IN) / (1 - DIVE_IN));
   } else if (p < HOLD) {
-    const u = (p - DIVE_IN) / (HOLD - DIVE_IN);
-    seek(V, diveEnd + u * (tailEnd - diveEnd));
-    holdZoom = 1 + 0.035 * Math.sin(u * Math.PI);
+    dive(i, 1);
+    holdZoom = 1 + 0.035 * Math.sin((p - DIVE_IN) / (HOLD - DIVE_IN) * Math.PI);
   } else if (p < DIVE_OUT) {
-    const u = softEase((p - HOLD) / (DIVE_OUT - HOLD));
-    seek(V, sampleLUT(i, 1 - u));
+    dive(i, 1 - softEase((p - HOLD) / (DIVE_OUT - HOLD)));
   } else {
-    seek(V, 0);
+    dive(i, 0);
   }
 
   const slide = !last && p > SLIDE_START ? smooth((p - SLIDE_START) / (1 - SLIDE_START)) : 0;
@@ -284,7 +242,7 @@ function frame(now) {
   if (!last) {
     const Nx = layers[i + 1];
     if (slide > 0) {
-      seek(videos[i + 1], 0);
+      dive(i + 1, 0);
       const inOp = smooth(Math.min(1, slide / 0.85));
       Nx.style.opacity = inOp;
       Nx.style.transform = `translate3d(${(1 - slide) * 76}vw, 0, 0) scale(${dip.toFixed(4)})`;
