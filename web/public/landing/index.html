@@ -165,18 +165,23 @@ SECTIONS.forEach((s, i) => {
 });
 const dots = [...document.querySelectorAll("#dots button")];
 
-// Load every clip fully into memory first, so scrubbing never waits on the network.
+// Load the first clip before showing the page, then the rest in order in the background.
+// Each clip goes fully into memory, so scrubbing never waits on the network; until a clip
+// is loaded, seek() skips it and its poster shows.
 const loaderBar = document.querySelector("#loader .bar i");
-let loaded = 0;
-Promise.all(videos.map((v, i) =>
-  fetch(`media/d${i + 1}.mp4`).then(r => r.blob()).then(b => {
+const hideLoader = () => document.getElementById("loader").classList.add("done");
+function loadClip(i) {
+  const v = videos[i];
+  return fetch(`media/d${i + 1}.mp4`).then(r => r.blob()).then(b => {
     v.src = URL.createObjectURL(b);
-    loaderBar.style.width = (++loaded / N * 100) + "%";
     return new Promise(res => { v.addEventListener("loadedmetadata", res, { once: true }); setTimeout(res, 4000); v.load(); });
-  })
-)).then(() => document.getElementById("loader").classList.add("done"))
-  .catch(() => document.getElementById("loader").classList.add("done"));
-setTimeout(() => document.getElementById("loader").classList.add("done"), 10000);
+  });
+}
+loaderBar.style.width = "35%";
+loadClip(0)
+  .then(() => { loaderBar.style.width = "100%"; hideLoader(); }, hideLoader)
+  .then(() => videos.slice(1).reduce((p, _, k) => p.then(() => loadClip(k + 1)).catch(() => {}), Promise.resolve()));
+setTimeout(hideLoader, 5000);
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const smooth = t => { t = clamp(t); return t * t * (3 - 2 * t); };

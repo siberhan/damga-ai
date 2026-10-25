@@ -1,0 +1,61 @@
+{
+  "emissions_val": 143,
+  "scrap_val": 997,
+  "emissions_salt": "16731685818393394413049888552644868701242073587084459994005164083576283444767",
+  "scrap_salt": "17305442725789901568527042177582926163185503183011104584154509154948217337560",
+  "emissions_commitment": "10316116946366348307000632431022376513120428820605523698859131664197445315971",
+  "scrap_commitment": "5755115476744087329377615086240720037668091183732368059169691652692281767481",
+  "limit": 200,
+  "min_share": 900,
+  "vc": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2"
+    ],
+    "type": [
+      "VerifiableCredential",
+      "DamgaSteelPassport"
+    ],
+    "id": "urn:damga:passport:0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138:3",
+    "issuer": {
+      "id": "urn:damga:verifier:demo-verification-gmbh",
+      "name": "Demo Verification GmbH (fictional)"
+    },
+    "validFrom": "2026-10-25T11:15:49Z",
+    "credentialSubject": {
+      "product": {
+        "cn_code": "72142000",
+        "name": "Rebar",
+        "gtin": "00200000000014",
+        "lot": "2026-72142000",
+        "gs1_digital_link": "/01/00200000000014/10/2026-72142000"
+      },
+      "plant": {
+        "name": "Aliağa Demo Steel Works (fictional)",
+        "country": "TR"
+      },
+      "reporting_period": "2026",
+      "process_route": [
+        "EAF",
+        "continuous_casting",
+        "hot_rolling"
+      ],
+      "claims": {
+        "direct_emissions_max_kg_per_t": 200,
+        "scrap_share_min_permille": 900,
+        "proof": "groth16",
+        "emissions_commitment": "10316116946366348307000632431022376513120428820605523698859131664197445315971",
+        "scrap_commitment": "5755115476744087329377615086240720037668091183732368059169691652692281767481"
+      },
+      "chain": {
+        "network": "sepolia",
+        "registry": "0x5b6d1E0AEf85b8fddb3D7D637f9981442fe493eb",
+        "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+        "attempt_index": 3,
+        "docs_root": "0x0e5fcc26f583427a5220e37913ce6c3b85219caa5b036ed4f2af79b57b028c1e",
+        "result_hash": "0x5b1a5301346743f7350dcc6c3ef2849be0185a9bb89becde726f2fb901f62e54",
+        "model_hash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd",
+        "ruleset_hash": "0x464f7b6c1703042a0de7f960ad56dbd061ba99378c35d9c2e1a28c1569e3c80a"
+      }
+    }
+  }
+}

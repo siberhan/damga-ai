@@ -1,0 +1,22 @@
+{
+  "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+  "plant": {
+    "plant_id": "TR-ALIAGA-DEMO-001",
+    "name": "Aliağa Demo Steel Works (fictional)",
+    "country": "TR",
+    "city": "Aliağa, İzmir",
+    "installation_name": "Melt shop and rolling mill"
+  },
+  "year": 2026,
+  "product": {
+    "cn_code": "72142000",
+    "name": "Rebar",
+    "gtin": "00200000000014",
+    "lot": "2026-72142000"
+  },
+  "state": "verified",
+  "status": "green",
+  "attempt_count": 4,
+  "passport_id": 2,
+  "updated_at": "2026-10-25T11:16:01Z"
+}

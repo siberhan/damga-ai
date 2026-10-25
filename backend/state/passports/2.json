@@ -1,0 +1,62 @@
+{
+  "passport_id": 2,
+  "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+  "attempt_index": 3,
+  "status": "active",
+  "product": {
+    "cn_code": "72142000",
+    "name": "Rebar",
+    "gtin": "00200000000014",
+    "lot": "2026-72142000"
+  },
+  "plant": {
+    "plant_id": "TR-ALIAGA-DEMO-001",
+    "name": "Aliağa Demo Steel Works (fictional)",
+    "country": "TR",
+    "city": "Aliağa, İzmir",
+    "installation_name": "Melt shop and rolling mill"
+  },
+  "reporting_period": "2026",
+  "verified_by": {
+    "name": "Demo Verification GmbH (fictional)",
+    "address": "0xeb6a4b637cbbe5F1F8C8800688Ca95d5faB9D7d8"
+  },
+  "issued_at": "2026-10-25T11:16:01Z",
+  "process_route": [
+    "EAF",
+    "continuous_casting",
+    "hot_rolling"
+  ],
+  "claims": [
+    {
+      "label": "Direct emissions",
+      "statement": "≤ 0.200 tCO₂ per tonne",
+      "proof": "zk-groth16",
+      "verified_on_chain": true
+    },
+    {
+      "label": "Scrap share of metal input",
+      "statement": "≥ 90%",
+      "proof": "zk-groth16",
+      "verified_on_chain": true
+    }
+  ],
+  "eu_default_value_t_per_t": 2.31,
+  "markup_2026": 0.1,
+  "documents_unchanged": true,
+  "attempt_count": 4,
+  "model": {
+    "provider": "openrouter",
+    "name": "xiaomi/mimo-v2.6-flash",
+    "guard_model": "typesafe/jev-1.14",
+    "version": "2026-10",
+    "model_hash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd"
+  },
+  "ruleset_version": "1.0.0",
+  "chain": {
+    "registry": "0x5b6d1E0AEf85b8fddb3D7D637f9981442fe493eb",
+    "tx_hash": "0x5ee19a6ec371f6f91491699387c1193a8db57a2873a3a000b63004b2d6a41d23",
+    "etherscan": "https://sepolia.etherscan.io/tx/0x5ee19a6ec371f6f91491699387c1193a8db57a2873a3a000b63004b2d6a41d23"
+  },
+  "vc_url": "/api/passports/2/vc"
+}

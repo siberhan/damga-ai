@@ -6,6 +6,7 @@ Damga AI helps Turkish steel makers that melt scrap in electric arc furnaces (EA
 
 - **Track:** Sustainable Supply Chains (digital product passports, recycling traceability). It also covers Carbon Markets & Emissions Transparency.
 - **Live contract:** [`DamgaRegistry` on Sepolia](https://sepolia.etherscan.io/address/0x5b6d1E0AEf85b8fddb3D7D637f9981442fe493eb), source verified on Sourcify (exact match).
+- **Live demo:** https://damga-ai-690050774723.europe-west1.run.app (runs with no keys, see [Run the app](#run-the-app)).
 - **Demo passport:** passport #2. Check it yourself with one command (see [Verify it yourself](#verify-it-yourself)).
 
 > We do not replace the accredited verifier. We give the verifier a checked, sealed, and complete file.
@@ -113,6 +114,8 @@ cd backend && .venv/bin/uvicorn damga.api:app --port 8000
 ```
 
 Copy `.env.example` to `.env`. Without keys the app runs from the signed, precomputed AI results in `data/precomputed/`. To run the AI live, set `OPENROUTER_API_KEY` and `AI_MODE=live`. To write to Sepolia, set the signer keys and `SEPOLIA_RPC_URL`.
+
+The [live demo](https://damga-ai-690050774723.europe-west1.run.app) is this `Dockerfile` on Google Cloud Run with no keys: it replays the signed precomputed AI results and sends no transactions, so a passport issued there is not on Sepolia (its claims are stored with `verified_on_chain: false`), and the demo resets when the service restarts. The real on-chain passport is #2 on Sepolia.
 
 Tests: `cd backend && .venv/bin/python -m pytest` (36 tests), `cd contracts && forge test`, `cd web && npm test`.
 

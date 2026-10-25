@@ -1,0 +1,17 @@
+{
+  "legacy": true,
+  "note": "Attempt from the first deployment, before the evidence set was regenerated. Only its on-chain record is kept.",
+  "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+  "attempt_index": 0,
+  "case_id": null,
+  "docs_root": "0x608d09b36c629ebf2d025e4728f632e3c0a6f0933c7373dbed544507d9367f3f",
+  "result_hash": "0xd42d6b9be8c55b3a31644c2d4192ef2e635c5b39144c0b5d8d55a1effe6e7289",
+  "status": "green",
+  "counts": {
+    "red": 0,
+    "yellow": 0,
+    "missing": 0
+  },
+  "flags": [],
+  "extractions": []
+}

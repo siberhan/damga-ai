@@ -19,7 +19,7 @@ dist/
 contracts/out/
 contracts/cache/
 contracts/broadcast/*/31337/
-backend/state/
+
 
 # Coordinator notebook (private)
 .coord/
