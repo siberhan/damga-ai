@@ -1,0 +1,27 @@
+{
+  "file_key": "0x5f1c...",
+  "plant": { "plant_id": "TR-ALIAGA-DEMO-001", "name": "Aliağa Demo Steel Works (fictional)" },
+  "year": 2026,
+  "product": { "cn_code": "72142000", "name": "Rebar" },
+  "state": "sent_to_verifier",
+  "passport_id": null,
+  "attempts": [
+    {
+      "index": 0,
+      "status": "red",
+      "counts": { "red": 1, "yellow": 0, "missing": 0 },
+      "direct_kg_per_t": 92,
+      "submitted_at": "2026-10-25T10:00:00Z",
+      "tx_hash": "0xabc...",
+      "etherscan": "https://sepolia.etherscan.io/tx/0xabc...",
+      "result_hash": "0x...",
+      "docs_root": "0x...",
+      "flags": [ { "id": "F1", "level": "red", "rule": "form_vs_docs", "source": "code", "message": "The form says 0 t of pig iron, but invoice INV-PIG-012 shows 800 t.", "evidence": [ { "doc_id": "INV-PIG-012", "quote": "Pig iron (basic grade) .......... 800.000 t" } ], "ai_explanation": "...", "state": "open", "resolution": null } ],
+      "documents": [ { "doc_id": "INV-PIG-012", "type": "purchase_invoice", "period": "2026-03", "sha256": "0x9c2e...", "url": "/api/docs/0x5f1c.../0/INV-PIG-012" } ],
+      "model": { "name": "<AI_MODEL>", "version": "..." },
+      "ruleset_version": "1.0.0",
+      "confidence_bps": 9400
+    }
+  ],
+  "history_summary": "3 attempts, 2 failed (red). First attempt declared 0 t pig iron."
+}

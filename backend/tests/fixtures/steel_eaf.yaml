@@ -1,0 +1,46 @@
+id: steel_eaf
+version: 1.0.0
+name: Scrap EAF steel, long products
+cn_codes: ["72071114", "72131000", "72142000", "72171010"]
+eu_default_value_t_per_t: 2.310
+markup_2026: 0.10
+benchmark_t_per_t: { bf_bof: 1.364, scrap_eaf: 0.066 }
+doc_types:
+  gas_bill: { fields: [natural_gas_m3], periods: monthly, required: true }
+  electricity_bill: { fields: [electricity_mwh], periods: monthly, required: true }
+  purchase_invoice: { fields: [scrap_t, pig_iron_t, dri_t, electrodes_t, carbon_charge_t, lime_t, ferroalloys_t], periods: any, required: true }
+  weighbridge: { fields: [scrap_t, pig_iron_t, dri_t], periods: any, required: false }
+  lab_analysis: { fields: [c_content_scrap, c_content_product, c_content_slag], periods: yearly, required: true }
+  production_record: { fields: [crude_steel_t, billet_t, product_t, slag_t], periods: yearly, required: true }
+  process_flow: { fields: [], periods: yearly, required: true }
+factors:
+  natural_gas:
+    ncv: { value: 35.8, unit: "GJ/1000m3", source: "Turkish national GHG inventory" }
+    ef: { value: 56.1, unit: "tCO2/TJ", source: "2006 IPCC Guidelines Vol 2 Ch 1" }
+  carbon_content:
+    electrodes: { value: 0.99, unit: "tC/t", source: "EU CBAM default" }
+    carbon_charge: { value: 0.85, unit: "tC/t", source: "EU CBAM default" }
+    pig_iron: { value: 0.04, unit: "tC/t", source: "EU CBAM default" }
+    dri: { value: 0.02, unit: "tC/t", source: "EU CBAM default" }
+    scrap: { value: 0.005, unit: "tC/t", source: "EU CBAM default" }
+    product: { value: 0.002, unit: "tC/t", source: "Lab analysis default" }
+    slag: { value: 0.000, unit: "tC/t", source: "Lab analysis default" }
+    ferroalloys: { value: 0.07, unit: "tC/t", source: "EU CBAM default" }
+  precursor_default_t_per_t:
+    pig_iron: { value: 1.85, source: "EU CBAM standard default" }
+    dri: { value: 0.70, source: "EU CBAM standard default" }
+ranges:
+  yield_liquid_per_metal_input: { min: 0.88, max: 0.95, source: "BREF 2022" }
+  electricity_kwh_per_t: { min: 380, max: 600, source: "BREF 2022" }
+  natural_gas_m3_per_t: { min: 10, max: 55, source: "BREF 2022" }
+  electrodes_kg_per_t: { min: 1.0, max: 2.5, source: "BREF 2022" }
+  lime_kg_per_t: { min: 25, max: 65, source: "BREF 2022" }
+  direct_kg_co2_per_t: { min: 45, max: 250, source: "BREF 2022" }
+rules:
+  form_vs_docs: { level: red, tolerance_pct: 2.0 }
+  material_balance: { level: red }
+  missing_evidence: { level: missing }
+  quote_check: { level: missing }
+  sector_range: { level: yellow }
+  low_vs_sector: { level: yellow }
+  injection_screened: { level: yellow }

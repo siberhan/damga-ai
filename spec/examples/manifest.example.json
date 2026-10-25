@@ -1,0 +1,13 @@
+{
+  "schema": "damga.manifest.v1",
+  "case_id": "honest-01",
+  "documents": [
+    { "doc_id": "GAS-2026-01", "type": "gas_bill", "period": "2026-01", "file": "docs/GAS-2026-01.pdf", "sha256": "0x3b1f0c0a5a1e4f2b9d6c7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b" },
+    { "doc_id": "ELEC-2026-01", "type": "electricity_bill", "period": "2026-01", "file": "docs/ELEC-2026-01.pdf", "sha256": "0x..." },
+    { "doc_id": "INV-SCRAP-001", "type": "purchase_invoice", "period": "2026-01", "file": "docs/INV-SCRAP-001.pdf", "sha256": "0x..." },
+    { "doc_id": "WB-2026-Q1", "type": "weighbridge", "period": "2026-Q1", "file": "docs/WB-2026-Q1.pdf", "sha256": "0x..." },
+    { "doc_id": "LAB-2026", "type": "lab_analysis", "period": "2026", "file": "docs/LAB-2026.pdf", "sha256": "0x..." },
+    { "doc_id": "PROD-2026", "type": "production_record", "period": "2026", "file": "docs/PROD-2026.pdf", "sha256": "0x..." },
+    { "doc_id": "PFD-2026", "type": "process_flow", "period": "2026", "file": "docs/PFD-2026.pdf", "sha256": "0x..." }
+  ]
+}

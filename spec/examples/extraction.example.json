@@ -1,0 +1,21 @@
+{
+  "schema": "damga.extraction.v1",
+  "doc_id": "INV-PIG-012",
+  "doc_type": "purchase_invoice",
+  "doc_sha256": "0x9c2e...",
+  "fields": [
+    {
+      "key": "pig_iron_t",
+      "value": 800.0,
+      "unit": "t",
+      "quote": "Pig iron (basic grade) .......... 800.000 t",
+      "confidence": 0.97,
+      "quote_check": "pass"
+    }
+  ],
+  "injection_screen": {
+    "removed": [
+      { "text": "<exact removed paragraph>", "reason": "instruction_to_model", "source_set": null }
+    ]
+  }
+}

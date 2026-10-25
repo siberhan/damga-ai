@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/landing/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damga AI</title>
+<meta name="description" content="Verified carbon passports for Turkish scrap EAF steel sold to the EU under CBAM.">
+<style>
+  :root {
+    --bg: #F6F6F6; --ink: #0F172A; --muted: #475569; --line: #E2E8F0;
+    --blue: #0B6AA2; --green: #16A34A; --orange: #F59E0B; --red: #E5484D;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; }
+
+  header { position: fixed; inset: 0 0 auto 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; }
+  .brand { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+  .brand i { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--green); display: inline-block; position: relative; }
+  .brand i::after { content: ""; position: absolute; left: 5px; top: 2px; width: 5px; height: 9px; border: solid var(--green); border-width: 0 3px 3px 0; transform: rotate(45deg); }
+  nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; margin-left: 22px; }
+  nav a.btn { background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 999px; }
+
+  #track { position: relative; }
+  #stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  .layer { position: absolute; inset: 0; will-change: transform, opacity; opacity: 0; overflow: hidden; }
+  .layer video, .layer img { position: absolute; left: 0; top: -1.5%; width: 100%; height: 103%; object-fit: cover; }
+
+  .copy { position: absolute; left: 48px; bottom: 9vh; width: min(460px, 40vw); z-index: 10; background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(15,23,42,.06); border-radius: 18px; padding: 24px 26px; box-shadow: 0 20px 50px -20px rgba(15,23,42,.25); opacity: 0; transform: translateY(16px); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+  .copy.on { opacity: 1; transform: none; pointer-events: auto; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin: 0 0 8px; }
+  .copy h2 { font-size: 34px; line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 10px; }
+  .copy p { margin: 0; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .tags span { font-size: 13px; font-weight: 600; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+  .tags span.g { color: var(--green); border-color: #BBE5C8; background: #F0FAF3; }
+  .tags span.r { color: var(--red); border-color: #F6C8CA; background: #FDF2F2; }
+  .cta { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .cta a { text-decoration: none; font-weight: 700; font-size: 15px; padding: 11px 18px; border-radius: 999px; background: var(--ink); color: #fff; }
+  .cta a.alt { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+
+  .hero-title { position: absolute; top: 12vh; left: 0; right: 0; text-align: center; z-index: 9; transition: opacity .5s ease; pointer-events: none; }
+  .hero-title h1 { font-size: clamp(40px, 6vw, 84px); line-height: 1; letter-spacing: -0.04em; margin: 0; }
+  .hero-title p { color: var(--muted); font-size: 18px; margin: 14px 0 0; }
+  .hint { position: absolute; bottom: 4vh; left: 50%; transform: translateX(-50%); font-size: 13px; color: var(--muted); z-index: 9; transition: opacity .4s; }
+
+  .dots { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; flex-direction: column; gap: 14px; }
+  .dots button { all: unset; cursor: pointer; display: flex; align-items: center; justify-content: flex-end; gap: 10px; font-size: 12px; font-weight: 600; color: transparent; }
+  .dots button::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #CBD5E1; transition: all .3s; }
+  .dots button:hover { color: var(--muted); }
+  .dots button.on { color: var(--ink); }
+  .dots button.on::after { background: var(--blue); transform: scale(1.5); }
+
+  #loader { position: fixed; inset: 0; z-index: 30; background: var(--bg); display: grid; place-items: center; font-weight: 600; color: var(--muted); transition: opacity .5s; }
+  #loader.done { opacity: 0; pointer-events: none; }
+  #loader .bar { width: 220px; height: 4px; background: var(--line); border-radius: 4px; margin-top: 12px; overflow: hidden; }
+  #loader .bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .2s; }
+
+  footer { padding: 48px 32px; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="loader"><div>Loading the world…<div class="bar"><i></i></div></div></div>
+
+<header>
+  <div class="brand"><i></i>Damga AI</div>
+  <nav>
+    <a href="/passport/2">Passport #2</a>
+    <a href="/verifier">Verifier</a>
+    <a class="btn" href="/exporter">Open the demo</a>
+  </nav>
+</header>
+
+<div id="track">
+  <div id="stage">
+    <div class="hero-title" id="hero">
+      <h1>Prove your real steel.</h1>
+      <p>Verified carbon passports for Turkish scrap EAF steel sold to the EU.</p>
+    </div>
+    <div class="hint" id="hint">Scroll to fly through ↓</div>
+    <div class="dots" id="dots"></div>
+  </div>
+</div>
+
+<footer>Damga AI · IEEE ClimateChain Global Hackathon 2026 · The plant and the verifier in this demo are fictional; the invoices are synthetic; the CBAM default values are official.</footer>
+
+<script>
+const SECTIONS = [
+  { label: "Plant", eyebrow: "CBAM · Turkish scrap EAF steel",
+    title: "A low-carbon plant, priced like a blast furnace.",
+    body: "Without verified data, an EU importer pays for the default value for Turkish rebar: 2.541 tCO₂ per tonne in 2026. A scrap EAF plant emits far less, but only if it can prove it.",
+    tags: [["Default 2.541 t/t", "r"], ["Demo plant 0.143 t/t", "g"]] },
+  { label: "Upload", eyebrow: "Step 1 · The exporter",
+    title: "One yearly form. Every document behind it.",
+    body: "The export manager uploads the emissions form with its evidence: purchase invoices, monthly gas and electricity bills, weighbridge tickets.",
+    tags: [["36 documents per file"]] },
+  { label: "AI check", eyebrow: "Step 2 · AI reads, code decides",
+    title: "Every number is quoted. Then code decides.",
+    body: "The AI pulls each number with the exact text it came from. Code checks the quote, does the math, and runs the rules: form vs. documents, material balance, missing evidence.",
+    tags: [["42/42 test files correct", "g"], ["Hidden pig iron → red", "r"]] },
+  { label: "Seal", eyebrow: "Step 3 · Sealed on Sepolia",
+    title: "Every attempt stays on the record.",
+    body: "Document hashes and every attempt, red ones too, are written to Ethereum Sepolia. A plant cannot quietly retry until a fake file passes.",
+    tags: [["Proof of stake"], ["Red attempts kept", "r"]] },
+  { label: "Verifier", eyebrow: "Step 4 · The human verifier",
+    title: "We don't replace the verifier.",
+    body: "The accredited verifier gets a checked, sealed and complete file, reviews it, and signs with their own key. Only then is the passport issued.",
+    tags: [["EIP-712 signatures"], ["Site visit still required"]] },
+  { label: "Passport", eyebrow: "Step 5 · The EU importer",
+    title: "Scan the tag. Trust the number.",
+    body: "Anyone can check two zero-knowledge claims: emissions ≤ 0.200 tCO₂/t and scrap share ≥ 90%. The importer unlocks the exact value. Invoices and prices stay private.",
+    tags: [["Groth16 ZK proofs", "g"], ["GS1 Digital Link"], ["W3C VC 2.0"]],
+    cta: true }
+];
+
+// Velocity-equalized camera dive lookup tables (17 steps from u=0..1) per clip,
+// trimming out the stationary tail at the end of each 8s render.
+const LUTS = [
+  [0.0, 0.731, 1.22, 1.597, 1.904, 2.167, 2.407, 2.635, 2.857, 3.078, 3.308, 3.554, 3.821, 4.111, 4.44, 4.83, 5.333],
+  [0.0, 0.756, 1.285, 1.714, 2.074, 2.398, 2.693, 2.974, 3.257, 3.546, 3.84, 4.144, 4.46, 4.798, 5.185, 5.639, 6.208],
+  [0.0, 0.698, 1.171, 1.573, 1.919, 2.215, 2.472, 2.702, 2.917, 3.133, 3.353, 3.576, 3.805, 4.048, 4.321, 4.653, 5.167],
+  [0.0, 0.771, 1.366, 1.843, 2.232, 2.552, 2.828, 3.075, 3.302, 3.509, 3.701, 3.877, 4.041, 4.217, 4.41, 4.645, 5.042],
+  [0.0, 1.056, 1.732, 2.236, 2.648, 3.01, 3.335, 3.626, 3.884, 4.131, 4.366, 4.59, 4.814, 5.071, 5.382, 5.804, 6.458],
+  [0.0, 0.769, 1.28, 1.689, 2.015, 2.289, 2.534, 2.762, 2.98, 3.193, 3.415, 3.636, 3.856, 4.111, 4.409, 4.676, 5.0]
+];
+
+// Per-section timeline fractions:
+const DIVE_IN = 0.36, HOLD = 0.56, DIVE_OUT = 0.80, SLIDE_START = 0.74;
+const SECTION_VH = 250;
+const N = SECTIONS.length;
+
+const stage = document.getElementById("stage");
+const track = document.getElementById("track");
+track.style.height = (N * SECTION_VH + 100) + "vh";
+
+const layers = [], videos = [], copies = [];
+SECTIONS.forEach((s, i) => {
+  const layer = document.createElement("div");
+  layer.className = "layer";
+  const v = document.createElement("video");
+  v.muted = true; v.playsInline = true; v.preload = "auto";
+  v.poster = `media/p${i + 1}.jpg`;
+  layer.appendChild(v);
+  stage.appendChild(layer);
+  layers.push(layer); videos.push(v);
+
+  const c = document.createElement("div");
+  c.className = "copy";
+  c.innerHTML = `<p class="eyebrow">${s.eyebrow}</p><h2>${s.title}</h2><p>${s.body}</p>` +
+    (s.tags ? `<div class="tags">${s.tags.map(([t, k]) => `<span class="${k || ""}">${t}</span>`).join("")}</div>` : "") +
+    (s.cta ? `<div class="cta"><a href="/exporter">Open the demo</a><a class="alt" href="/passport/2">See passport #2</a></div>` : "");
+  stage.appendChild(c);
+  copies.push(c);
+
+  const d = document.createElement("button");
+  d.textContent = s.label;
+  d.addEventListener("click", () => {
+    const focusP = i === N - 1 ? 0.55 : (DIVE_IN + HOLD) * 0.5;
+    const total = track.offsetHeight - innerHeight;
+    const y = track.offsetTop + ((i + focusP) / N) * total;
+    scrollTo({ top: y, behavior: "smooth" });
+  });
+  document.getElementById("dots").appendChild(d);
+});
+const dots = [...document.querySelectorAll("#dots button")];
+
+// Load every clip fully into memory first, so scrubbing never waits on the network.
+const loaderBar = document.querySelector("#loader .bar i");
+let loaded = 0;
+Promise.all(videos.map((v, i) =>
+  fetch(`media/d${i + 1}.mp4`).then(r => r.blob()).then(b => {
+    v.src = URL.createObjectURL(b);
+    loaderBar.style.width = (++loaded / N * 100) + "%";
+    return new Promise(res => { v.addEventListener("loadedmetadata", res, { once: true }); setTimeout(res, 4000); v.load(); });
+  })
+)).then(() => document.getElementById("loader").classList.add("done"))
+  .catch(() => document.getElementById("loader").classList.add("done"));
+setTimeout(() => document.getElementById("loader").classList.add("done"), 10000);
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const smooth = t => { t = clamp(t); return t * t * (3 - 2 * t); };
+const softEase = t => { t = clamp(t); return 0.72 * t + 0.28 * smooth(t); };
+
+function sampleLUT(idx, u) {
+  const lut = LUTS[idx];
+  const pos = clamp(u) * (lut.length - 1);
+  const k = Math.min(lut.length - 2, Math.floor(pos));
+  return lut[k] + (pos - k) * (lut[k + 1] - lut[k]);
+}
+
+const pendingSeek = new Map();
+function seek(v, t) {
+  if (!v || !v.duration) return;
+  t = clamp(t, 0, v.duration - 0.04);
+  pendingSeek.set(v, t);
+  if (!v.seeking && Math.abs(v.currentTime - t) > 1 / 60) {
+    try { v.currentTime = t; } catch (e) {}
+  }
+}
+videos.forEach(v => {
+  v.addEventListener("seeked", () => {
+    const t = pendingSeek.get(v);
+    if (t != null && !v.seeking && Math.abs(v.currentTime - t) > 1 / 50) {
+      try { v.currentTime = t; } catch (e) {}
+    }
+  });
+});
+
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+scrollTo(0, 0);
+
+let target = 0, current = 0;
+function readScroll() {
+  const total = Math.max(1, track.offsetHeight - innerHeight);
+  target = clamp((scrollY - track.offsetTop) / total) * N;
+}
+addEventListener("scroll", readScroll, { passive: true });
+addEventListener("resize", readScroll);
+
+let lastT = 0;
+function frame(now) {
+  const dt = Math.min(0.05, lastT ? (now - lastT) / 1000 : 0.016);
+  lastT = now;
+
+  // Frame-rate independent exponential smoothing — responsive without speed caps or snap bugs.
+  const alpha = 1 - Math.exp(-dt * 11);
+  current += (target - current) * alpha;
+  if (Math.abs(target - current) < 5e-4) current = target;
+
+  const i = Math.min(N - 1, Math.max(0, Math.floor(current)));
+  const p = clamp(current - i, 0, 1);
+  const last = i === N - 1;
+
+  layers.forEach((l, k) => {
+    if (k !== i && k !== i + 1) {
+      l.style.opacity = 0;
+      l.style.transform = "none";
+    }
+  });
+
+  // Pre-seek neighboring clips so transitions & reverse scrolling never flash a stale frame.
+  if (i > 0 && p < 0.25) seek(videos[i - 1], 0);
+  if (!last && p > 0.45) seek(videos[i + 1], 0);
+
+  const L = layers[i], V = videos[i];
+  const diveEnd = LUTS[i][LUTS[i].length - 1];
+  const tailEnd = Math.min((V.duration || 8) - 0.08, diveEnd + 1.6);
+
+  let holdZoom = 1;
+  if (p < DIVE_IN) {
+    const u = softEase(p / DIVE_IN);
+    seek(V, sampleLUT(i, u));
+  } else if (last) {
+    const u = smooth((p - DIVE_IN) / (1 - DIVE_IN));
+    seek(V, diveEnd + u * (tailEnd - diveEnd));
+    holdZoom = 1 + 0.03 * u;
+  } else if (p < HOLD) {
+    const u = (p - DIVE_IN) / (HOLD - DIVE_IN);
+    seek(V, diveEnd + u * (tailEnd - diveEnd));
+    holdZoom = 1 + 0.035 * Math.sin(u * Math.PI);
+  } else if (p < DIVE_OUT) {
+    const u = softEase((p - HOLD) / (DIVE_OUT - HOLD));
+    seek(V, sampleLUT(i, 1 - u));
+  } else {
+    seek(V, 0);
+  }
+
+  const slide = !last && p > SLIDE_START ? smooth((p - SLIDE_START) / (1 - SLIDE_START)) : 0;
+  const dip = 1 - 0.12 * Math.sin(slide * Math.PI);
+  const heroK = i === 0 ? 1 - smooth(p / 0.16) : 0;
+
+  // Outgoing island glides left cleanly; incoming island glides in from right without colliding in center.
+  const outOp = slide > 0 ? smooth(1 - Math.max(0, (slide - 0.15) / 0.85)) : 1;
+  const scaleCur = holdZoom * dip * (1 - 0.20 * heroK);
+  L.style.opacity = outOp;
+  L.style.transform = `translate3d(${-slide * 76}vw, ${heroK * 8}vh, 0) scale(${scaleCur.toFixed(4)})`;
+
+  if (!last) {
+    const Nx = layers[i + 1];
+    if (slide > 0) {
+      seek(videos[i + 1], 0);
+      const inOp = smooth(Math.min(1, slide / 0.85));
+      Nx.style.opacity = inOp;
+      Nx.style.transform = `translate3d(${(1 - slide) * 76}vw, 0, 0) scale(${dip.toFixed(4)})`;
+    } else {
+      Nx.style.opacity = 0;
+    }
+  }
+
+  const onHero = i === 0 && p < 0.09;
+  document.getElementById("hero").style.opacity = onHero ? 1 : 0;
+  document.getElementById("hint").style.opacity = onHero ? 1 : 0;
+  copies.forEach((c, k) => {
+    const show = k === i && !onHero && (last ? p > 0.18 : p > 0.18 && p < DIVE_OUT - 0.08);
+    c.classList.toggle("on", show);
+  });
+  dots.forEach((d, k) => d.classList.toggle("on", k === i));
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

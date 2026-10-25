@@ -1,0 +1,1000 @@
+{
+  "schema": "damga.ai_result.v1",
+  "case_id": "gen-honest-08",
+  "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+  "attempt_index": 0,
+  "docs_root": "0x8a9e27a49370efa018948d75e9e12688ae9e6e7f4dc1a54bdb82600d75e4ae6b",
+  "declaration_hash": "0x699768a785b5646a31038842f76703104fd5dbd29cb771f946809c7712100065",
+  "input_hash": "0xd8c7c18efe84ab26c40e70e32ffd4251ed2e2e8f2c34770fba81074d94a162e5",
+  "model": {
+    "provider": "openrouter",
+    "name": "xiaomi/mimo-v2.6-flash",
+    "guard_model": "typesafe/jev-1.14",
+    "version": "2026-10",
+    "model_hash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd"
+  },
+  "ruleset": {
+    "id": "steel_eaf",
+    "version": "1.0.0",
+    "ruleset_hash": "0x464f7b6c1703042a0de7f960ad56dbd061ba99378c35d9c2e1a28c1569e3c80a"
+  },
+  "extractions": [
+    {
+      "doc_id": "GAS-2026-01",
+      "doc_type": "gas_bill",
+      "period": "2026-01",
+      "doc_sha256": "0xf3b35225535fdfc114c1fd6a467e99d8fe388157cc8cb787dd80af43e31c356c",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-02",
+      "doc_type": "gas_bill",
+      "period": "2026-02",
+      "doc_sha256": "0xec8de36079aa36a7e4c9fb36dc841773dbd606c8b864af9c304806ee7b5d9e94",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-03",
+      "doc_type": "gas_bill",
+      "period": "2026-03",
+      "doc_sha256": "0x096ac3a9af855c3d27c2a6b7fc94397d72ae2d021b63f595f3313a95ffbc59dd",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-04",
+      "doc_type": "gas_bill",
+      "period": "2026-04",
+      "doc_sha256": "0x506417f99ad073ad581e60bedc7bcddcec19a6f55f1ac2bb8bfa17a15364bf19",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-05",
+      "doc_type": "gas_bill",
+      "period": "2026-05",
+      "doc_sha256": "0x4ec9665fdf58ecfc28af55feb58cb47db6f2d00d6032bad4f74576ca1944d70a",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-06",
+      "doc_type": "gas_bill",
+      "period": "2026-06",
+      "doc_sha256": "0x641b9009517320bf357ba2505a16c14c154bac793a13d6139b7ed6866886c836",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.98,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-07",
+      "doc_type": "gas_bill",
+      "period": "2026-07",
+      "doc_sha256": "0x5f041a00c01957cd5c031074ef9d27a9e422c6f8e0e44bb98bf13aae482cdb43",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-08",
+      "doc_type": "gas_bill",
+      "period": "2026-08",
+      "doc_sha256": "0x6783dc7f0e0015cf09ae3f7ead9297aa7eb45a435a8475dbdb4bb273bf60b0e2",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-09",
+      "doc_type": "gas_bill",
+      "period": "2026-09",
+      "doc_sha256": "0x26ea7f0a39cf782d35f998b8cd1b353f68c8d0cae45116d41c63a4314cd56b58",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-10",
+      "doc_type": "gas_bill",
+      "period": "2026-10",
+      "doc_sha256": "0x67d19e4bc78206a262ef287d793e10d25dba5c713278c482c9feb4434152e628",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-11",
+      "doc_type": "gas_bill",
+      "period": "2026-11",
+      "doc_sha256": "0x9cc7152b82481a5bf45eb27ee139303db33f6d171be9f134751ce45a9070a63b",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.98,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-12",
+      "doc_type": "gas_bill",
+      "period": "2026-12",
+      "doc_sha256": "0x4091086e3278e62d78697bf9addf0c619f352437209057f42fb46996d65fd7a4",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 833333.3,
+          "unit": "m3",
+          "quote": "Aylık faturalanan net doğalgaz tüketimi: 833.333,3 m3 (Toplam / Total: 833.333,3 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-01",
+      "doc_type": "electricity_bill",
+      "period": "2026-01",
+      "doc_sha256": "0xc2a084e060e07407b70865f80b333b631240f0bdf9f1bb0f694347b61ab65e5b",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-02",
+      "doc_type": "electricity_bill",
+      "period": "2026-02",
+      "doc_sha256": "0xad9211fa8526e704f7e539f4940224c8861dc960e87397d93053186e012a5f19",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.07,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-03",
+      "doc_type": "electricity_bill",
+      "period": "2026-03",
+      "doc_sha256": "0x12c858d2fe99b73bdaa1ea30eee08b313af2ede7b5de33be00de633f35aeda82",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-04",
+      "doc_type": "electricity_bill",
+      "period": "2026-04",
+      "doc_sha256": "0x17d5e6ea4997e58565c0545e337347b3d1ba156ad22bc567ea4a54525533dc18",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-05",
+      "doc_type": "electricity_bill",
+      "period": "2026-05",
+      "doc_sha256": "0x60e897ec766fd18398b5931d07f11c58d98ff207415a990cb6b5ab491bd18591",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-06",
+      "doc_type": "electricity_bill",
+      "period": "2026-06",
+      "doc_sha256": "0x2d264a1a7c2c43e8daba9017c3bc4cb9cdb628499bff7188b2275cf6e61b8670",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-07",
+      "doc_type": "electricity_bill",
+      "period": "2026-07",
+      "doc_sha256": "0x8d0cdf5a7e6ab42a7a9198d1c1846148586b1d69f584120f3db8b9210cbbfb94",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-08",
+      "doc_type": "electricity_bill",
+      "period": "2026-08",
+      "doc_sha256": "0x8b56d738bc2b694ab222990184db0b61d09d8f2ef6157fcb5445c33fd9ff18f3",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-09",
+      "doc_type": "electricity_bill",
+      "period": "2026-09",
+      "doc_sha256": "0xfe9c7f912c98dd2459e1af31e941c14e35338da6e7ac560010ee6622013d55e8",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-10",
+      "doc_type": "electricity_bill",
+      "period": "2026-10",
+      "doc_sha256": "0x5ffdce961e6b7c178e54122a0fff5b55e62852978dc4c96fd1d08b66104a9e9c",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-11",
+      "doc_type": "electricity_bill",
+      "period": "2026-11",
+      "doc_sha256": "0xafc6d444f121206b9ed0b9be09525da2023ca6c8da86263961678c6b8091d558",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-12",
+      "doc_type": "electricity_bill",
+      "period": "2026-12",
+      "doc_sha256": "0xd9129cd92030b586dda0d3d13d76999dff8027639b165e28550417129ed64129",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 8750.0,
+          "unit": "MWh",
+          "quote": "Aylık toplam aktif elektrik enerjisi tüketimi: 8.750,0 MWh (Toplam / Total: 8.750,0 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q1",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q1",
+      "doc_sha256": "0x68689b0116872c2fedb677d9a875af2025aa25cabff47e9decd556e516cd3c79",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 68001.3,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q1 68.001,3 t 385,00 26.180.500,50",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q2",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q2",
+      "doc_sha256": "0x4e2aa07c2dc421d4a635971077003a29874395949cc1fe9555e090e04d601fd0",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 68001.3,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q2 68.001,3 t 385,00 26.180.500,50",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q3",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q3",
+      "doc_sha256": "0x2e2f8a9a6da1d115e2ab428fce53b16ad1b0462a61ee29687078fec80189b00e",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 68001.3,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q3 68.001,3 t 385,00 26.180.500,50",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q4",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q4",
+      "doc_sha256": "0x5fc1751d22f378259af147fa1c2ff944fbcc56b23da9189e1b3c03911bce8074",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 68001.3,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q4 68.001,3 t 385,00 26.180.500,50",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-ELECTRODES-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-02",
+      "doc_sha256": "0xc7ab11bbc0b2f4115860e4bdfca9e8714b3066d68ee61884c6fe6a656a9fa97f",
+      "fields": [
+        {
+          "key": "electrodes_t",
+          "value": 500.0,
+          "unit": "t",
+          "quote": "Ultra High Power (UHP) Graphite Electrodes dia 600mm 500,0 t 3.800,00 1.900.000,00",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-CARBON-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-03",
+      "doc_sha256": "0x951d981ec5348ba044fad9099831d45133c9767d0a389be7b07d077ec05d9df4",
+      "fields": [
+        {
+          "key": "carbon_charge_t",
+          "value": 3000.0,
+          "unit": "t",
+          "quote": "Anthracite Recarburiser Carbon Charge 3.000,0 t 290,00 870.000,00",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-LIME-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-03",
+      "doc_sha256": "0x96114225b4439829a939b3d4db7af0ab779284bd7e77c1f01d03f15e107465b7",
+      "fields": [
+        {
+          "key": "lime_t",
+          "value": 10000.0,
+          "unit": "t",
+          "quote": "High Calcium Quicklime for EAF Slag Formation 10.000,0 t 125,00 1.250.000,00",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-FERROALLOYS-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-04",
+      "doc_sha256": "0xd46a4b567dbb2106383f3a13e0201c53951ba3ecce4f42044bda76c9b46c9a01",
+      "fields": [
+        {
+          "key": "ferroalloys_t",
+          "value": 3500.0,
+          "unit": "t",
+          "quote": "Silico-Manganese / Ferro-Manganese Standard Grade 3.500,0 t 1.250,00 4.375.000,00",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "WB-2026-Q1",
+      "doc_type": "weighbridge",
+      "period": "2026-Q1",
+      "doc_sha256": "0xa9bb007bd0114650fb95a25f9f9ad18fe9ae8b3edeea87434f48e9966d552c95",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 68001.3,
+          "unit": "t",
+          "quote": "Üç aylık kantar özeti onaylı net hurda tartımı: 68.001,3 t (Net Ağırlık / Net Weight: 68.001,3 t)",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "LAB-2026",
+      "doc_type": "lab_analysis",
+      "period": "2026",
+      "doc_sha256": "0x6aa9ed040d2c0f8c48815196ce86691646ace3bc8044aa82c42c121fa31f77cb",
+      "fields": [
+        {
+          "key": "c_content_scrap",
+          "value": 0.005,
+          "unit": "tC/t",
+          "quote": "Doğrulanmış çelik hurdası karbon kütle oranı / Scrap carbon mass fraction: 0.0050 tC/t",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "c_content_product",
+          "value": 0.002,
+          "unit": "tC/t",
+          "quote": "Doğrulanmış mamul inşaat demiri karbon kütle oranı / Steel product carbon mass fraction: 0.0020 tC/t",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "c_content_slag",
+          "value": 0.001,
+          "unit": "tC/t",
+          "quote": "Doğrulanmış ark ocağı cürufu karbon kütle oranı / EAF slag carbon mass fraction: 0.0010 tC/t",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "PROD-2026",
+      "doc_type": "production_record",
+      "period": "2026",
+      "doc_sha256": "0xa1832013ae9725077e77ecc8ce345d9bacc3f08e7b15ba362474c65ad7e1cd6e",
+      "fields": [
+        {
+          "key": "crude_steel_t",
+          "value": 250000.0,
+          "unit": "t",
+          "quote": "Resmi yıllık sıvı ham çelik döküm üretimi: 250.000,0 t (Toplam / Total: 250.000,0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "billet_t",
+          "value": 245000.0,
+          "unit": "t",
+          "quote": "Resmi yıllık sürekli döküm kütük üretimi: 245.000,0 t (Toplam / Total: 245.000,0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "product_t",
+          "value": 240000.0,
+          "unit": "t",
+          "quote": "Resmi yıllık nihai haddelenmiş ürün üretimi: 240.000,0 t (Toplam / Total: 240.000,0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "slag_t",
+          "value": 30000.0,
+          "unit": "t",
+          "quote": "Resmi yıllık ark ocağı metalurjik cüruf miktarı: 30.000,0 t (Toplam / Total: 30.000,0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "PFD-2026",
+      "doc_type": "process_flow",
+      "period": "2026",
+      "doc_sha256": "0xec5558e354e62895e0c83376ee2b5d400ba3e8ced27adc7be54371f0a157511c",
+      "fields": [],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    }
+  ],
+  "totals": {
+    "from_docs": {
+      "natural_gas_m3": 9999999.6,
+      "electricity_mwh": 105000.0,
+      "scrap_t": 272005.2,
+      "electrodes_t": 500.0,
+      "carbon_charge_t": 3000.0,
+      "lime_t": 10000.0,
+      "ferroalloys_t": 3500.0,
+      "c_content_scrap": 0.005,
+      "c_content_product": 0.002,
+      "c_content_slag": 0.001,
+      "crude_steel_t": 250000.0,
+      "billet_t": 245000.0,
+      "product_t": 240000.0,
+      "slag_t": 30000.0
+    },
+    "from_form": {
+      "scrap_t": 272005.2,
+      "pig_iron_t": 0.0,
+      "dri_t": 0.0,
+      "electrodes_t": 500.0,
+      "carbon_charge_t": 3000.0,
+      "lime_t": 10000.0,
+      "ferroalloys_t": 3500.0,
+      "crude_steel_t": 250000.0,
+      "billet_t": 245000.0,
+      "product_t": 240000.0,
+      "slag_t": 30000.0,
+      "natural_gas_m3": 10000000.0,
+      "electricity_mwh": 105000.0
+    }
+  },
+  "emissions": {
+    "direct_kg_per_t": 142,
+    "breakdown": [
+      {
+        "source": "natural_gas",
+        "t_co2": 19522.8
+      },
+      {
+        "source": "carbon_inputs_minus_outputs",
+        "t_co2": 14648.4
+      },
+      {
+        "source": "precursors",
+        "t_co2": 0.0
+      }
+    ],
+    "scrap_share_permille": 1000,
+    "input_mix_permille": {
+      "scrap": 1000,
+      "pig_iron": 0,
+      "dri": 0
+    }
+  },
+  "flags": [],
+  "counts": {
+    "red": 0,
+    "yellow": 0,
+    "missing": 0
+  },
+  "status": "green",
+  "confidence_bps": 9870,
+  "created_at": "2026-10-25T11:36:13Z",
+  "result_hash": "0x62cefc2008255a24bb9668776d1d76e605a021f05911dfcdd375939f1ea8e8d1",
+  "attestation": {
+    "fileKey": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+    "inputHash": "0xd8c7c18efe84ab26c40e70e32ffd4251ed2e2e8f2c34770fba81074d94a162e5",
+    "modelHash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd",
+    "rulesetHash": "0x464f7b6c1703042a0de7f960ad56dbd061ba99378c35d9c2e1a28c1569e3c80a",
+    "resultHash": "0x62cefc2008255a24bb9668776d1d76e605a021f05911dfcdd375939f1ea8e8d1",
+    "status": 0,
+    "redCount": 0,
+    "yellowCount": 0,
+    "missingCount": 0,
+    "confidenceBps": 9870
+  },
+  "signature": {
+    "signer": "0xe83db275dC9d6F956065B6747aD174E0780EcB8C",
+    "sig": "0xd41bd9ed2716beac4731f40db9ce055575bd64cfdbb35e4d994fe52120ffe7672647ff0bda789b5997db0cf7b62971163a72651c181954f99f102579ac9bb66d1c"
+  }
+}

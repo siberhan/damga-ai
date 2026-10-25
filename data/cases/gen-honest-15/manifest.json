@@ -1,0 +1,258 @@
+{
+  "schema": "damga.manifest.v1",
+  "case_id": "gen-honest-15",
+  "documents": [
+    {
+      "doc_id": "GAS-2026-01",
+      "type": "gas_bill",
+      "period": "2026-01",
+      "file": "docs/GAS-2026-01.pdf",
+      "sha256": "0xe91016ac2e5e80c3853e4461c97930a913077cc2304152b34e0dc33a7df0e5cf"
+    },
+    {
+      "doc_id": "GAS-2026-02",
+      "type": "gas_bill",
+      "period": "2026-02",
+      "file": "docs/GAS-2026-02.pdf",
+      "sha256": "0x456adf99bd5e696db69c532559b2b4978ea604c3a2f193c4ab50a3bb0c9fbed2"
+    },
+    {
+      "doc_id": "GAS-2026-03",
+      "type": "gas_bill",
+      "period": "2026-03",
+      "file": "docs/GAS-2026-03.pdf",
+      "sha256": "0x288b3aedfb8835a6cf5cb10a5bddc010b4e4d71c89949d02ab7177661071d7ee"
+    },
+    {
+      "doc_id": "GAS-2026-04",
+      "type": "gas_bill",
+      "period": "2026-04",
+      "file": "docs/GAS-2026-04.pdf",
+      "sha256": "0x68c26fe221f44817e954e21dbf73837aaba75058f78d2aea9517a6d0864dd9dc"
+    },
+    {
+      "doc_id": "GAS-2026-05",
+      "type": "gas_bill",
+      "period": "2026-05",
+      "file": "docs/GAS-2026-05.pdf",
+      "sha256": "0x783741b31ca0de9a4062abe9eec186d7cc62305719d228bf0986ad53e9e2dfcc"
+    },
+    {
+      "doc_id": "GAS-2026-06",
+      "type": "gas_bill",
+      "period": "2026-06",
+      "file": "docs/GAS-2026-06.pdf",
+      "sha256": "0xa70c100d34a0c60d4860bee38ac2fedd4ab5747b7e08a4c0a1da2d6f0a886b59"
+    },
+    {
+      "doc_id": "GAS-2026-07",
+      "type": "gas_bill",
+      "period": "2026-07",
+      "file": "docs/GAS-2026-07.pdf",
+      "sha256": "0x2fcb3f3d993d0893e1f97e34fbc5f14ac10b622d35280a3d98e49c28668170b3"
+    },
+    {
+      "doc_id": "GAS-2026-08",
+      "type": "gas_bill",
+      "period": "2026-08",
+      "file": "docs/GAS-2026-08.pdf",
+      "sha256": "0xb428bfcbb59ed1725598b1457820ee54f0da8ff9e3bbe8fb7ad8360b2b39bae6"
+    },
+    {
+      "doc_id": "GAS-2026-09",
+      "type": "gas_bill",
+      "period": "2026-09",
+      "file": "docs/GAS-2026-09.pdf",
+      "sha256": "0x3a40800152393cb171b7a61214703cacd1f4a86a52523956813a5ed83439b199"
+    },
+    {
+      "doc_id": "GAS-2026-10",
+      "type": "gas_bill",
+      "period": "2026-10",
+      "file": "docs/GAS-2026-10.pdf",
+      "sha256": "0x7c796997ee8ef87225a789558e9a1bdc986cda159bbb7698a681e946c82be6f4"
+    },
+    {
+      "doc_id": "GAS-2026-11",
+      "type": "gas_bill",
+      "period": "2026-11",
+      "file": "docs/GAS-2026-11.pdf",
+      "sha256": "0x7b2539ff847f9cc2d0f0b7d5dabe812628ea63277bce186d6e90389af176f392"
+    },
+    {
+      "doc_id": "GAS-2026-12",
+      "type": "gas_bill",
+      "period": "2026-12",
+      "file": "docs/GAS-2026-12.pdf",
+      "sha256": "0x22a730907f1b12b5c108aaefe7a35eca3fff842c36a4a2aeedf8535cac4390e1"
+    },
+    {
+      "doc_id": "ELEC-2026-01",
+      "type": "electricity_bill",
+      "period": "2026-01",
+      "file": "docs/ELEC-2026-01.pdf",
+      "sha256": "0x2a785d3dc0ac607907e83c3b2f1c96c5d116191f254da4f09e6cc21afbd67484"
+    },
+    {
+      "doc_id": "ELEC-2026-02",
+      "type": "electricity_bill",
+      "period": "2026-02",
+      "file": "docs/ELEC-2026-02.pdf",
+      "sha256": "0x3feb83df0905bf67aed3d1b88aaad5da3a506bfa1d97cc17b005a2232ffa3e0d"
+    },
+    {
+      "doc_id": "ELEC-2026-03",
+      "type": "electricity_bill",
+      "period": "2026-03",
+      "file": "docs/ELEC-2026-03.pdf",
+      "sha256": "0x888251e8b28d2ffac6cd93efdc75c966a6e5326ac2908a12012d22733e5b72f8"
+    },
+    {
+      "doc_id": "ELEC-2026-04",
+      "type": "electricity_bill",
+      "period": "2026-04",
+      "file": "docs/ELEC-2026-04.pdf",
+      "sha256": "0xeca6e7bc2062f345e5d5d8ac7deb82c976f4074c861265a60279aa344f66a85d"
+    },
+    {
+      "doc_id": "ELEC-2026-05",
+      "type": "electricity_bill",
+      "period": "2026-05",
+      "file": "docs/ELEC-2026-05.pdf",
+      "sha256": "0xdb504588425b115a5cfbf62d7ddf63f70328fa44d8083dae43a867cb7be20233"
+    },
+    {
+      "doc_id": "ELEC-2026-06",
+      "type": "electricity_bill",
+      "period": "2026-06",
+      "file": "docs/ELEC-2026-06.pdf",
+      "sha256": "0x8b644c47427537979695b387f92836d34573e3a0c8beeb04410fdc8384a98529"
+    },
+    {
+      "doc_id": "ELEC-2026-07",
+      "type": "electricity_bill",
+      "period": "2026-07",
+      "file": "docs/ELEC-2026-07.pdf",
+      "sha256": "0xde5d3fd343707341da4fa772eb817a5d1b7a8ffaa1543188bc5d2af1e6e8668d"
+    },
+    {
+      "doc_id": "ELEC-2026-08",
+      "type": "electricity_bill",
+      "period": "2026-08",
+      "file": "docs/ELEC-2026-08.pdf",
+      "sha256": "0x50d9ee226e9767b980b03761f42811013496f679205054c1ced9875308a2288a"
+    },
+    {
+      "doc_id": "ELEC-2026-09",
+      "type": "electricity_bill",
+      "period": "2026-09",
+      "file": "docs/ELEC-2026-09.pdf",
+      "sha256": "0xdda306e34c24796ab12e084acb0d872731b2690b5c8cb18cd890ddf14bcbc36b"
+    },
+    {
+      "doc_id": "ELEC-2026-10",
+      "type": "electricity_bill",
+      "period": "2026-10",
+      "file": "docs/ELEC-2026-10.pdf",
+      "sha256": "0xaecbdc6ba84dbc539284fd57113448967f65c0c647e8438ecd51e2c61f6e92e9"
+    },
+    {
+      "doc_id": "ELEC-2026-11",
+      "type": "electricity_bill",
+      "period": "2026-11",
+      "file": "docs/ELEC-2026-11.pdf",
+      "sha256": "0xd8f8617c413c3d60d8992a3c63a9ec2bdfd3f33c606341776e923587567a9b1a"
+    },
+    {
+      "doc_id": "ELEC-2026-12",
+      "type": "electricity_bill",
+      "period": "2026-12",
+      "file": "docs/ELEC-2026-12.pdf",
+      "sha256": "0x0382b0309aefd9b6aa22126bdf8945ce47e652e71f1d3e41764bee934edbaaa6"
+    },
+    {
+      "doc_id": "INV-SCRAP-Q1",
+      "type": "purchase_invoice",
+      "period": "2026-Q1",
+      "file": "docs/INV-SCRAP-Q1.pdf",
+      "sha256": "0xe8dd412060d66b6ddc58ec670e4f05336e22ebb60c2718d9d70f942853e40719"
+    },
+    {
+      "doc_id": "INV-SCRAP-Q2",
+      "type": "purchase_invoice",
+      "period": "2026-Q2",
+      "file": "docs/INV-SCRAP-Q2.pdf",
+      "sha256": "0xe91228bcbc0588f717f0355ec4de808829e5dd68d3759ecfe2385e2aaa8dce5c"
+    },
+    {
+      "doc_id": "INV-SCRAP-Q3",
+      "type": "purchase_invoice",
+      "period": "2026-Q3",
+      "file": "docs/INV-SCRAP-Q3.pdf",
+      "sha256": "0x55f1c56966c1d50a93e8b568ba45c0e07f17dcfde4ee1489435f9f15fefea0ce"
+    },
+    {
+      "doc_id": "INV-SCRAP-Q4",
+      "type": "purchase_invoice",
+      "period": "2026-Q4",
+      "file": "docs/INV-SCRAP-Q4.pdf",
+      "sha256": "0x24b6b5a65f3d8612000217ebb760934251fb2e1c3649b0cecfc45df1ef5cdb6b"
+    },
+    {
+      "doc_id": "INV-ELECTRODES-01",
+      "type": "purchase_invoice",
+      "period": "2026-02",
+      "file": "docs/INV-ELECTRODES-01.pdf",
+      "sha256": "0x3da7ea34289312e214d0d2a4cea2d8818e6c50ac11f0d08db920653a453a156a"
+    },
+    {
+      "doc_id": "INV-CARBON-01",
+      "type": "purchase_invoice",
+      "period": "2026-03",
+      "file": "docs/INV-CARBON-01.pdf",
+      "sha256": "0xa87bcedb75ada9d317f58c8fa75826e9c1acd7925a3fde94e5b64cf9c0d563b7"
+    },
+    {
+      "doc_id": "INV-LIME-01",
+      "type": "purchase_invoice",
+      "period": "2026-03",
+      "file": "docs/INV-LIME-01.pdf",
+      "sha256": "0x5bccd59c7cd0ccf0a57cc28f96047d72c3b93e93ab23ba6a1b62f44ff26c85eb"
+    },
+    {
+      "doc_id": "INV-FERROALLOYS-01",
+      "type": "purchase_invoice",
+      "period": "2026-04",
+      "file": "docs/INV-FERROALLOYS-01.pdf",
+      "sha256": "0x53387baa140b43e158bded164bce79dbbd8ecc569418127801f5458f6cfef97d"
+    },
+    {
+      "doc_id": "WB-2026-Q1",
+      "type": "weighbridge",
+      "period": "2026-Q1",
+      "file": "docs/WB-2026-Q1.pdf",
+      "sha256": "0xe5f5877a52a0b257d8f085818dc341543255784c13272f6c5c11d9fa8098256b"
+    },
+    {
+      "doc_id": "LAB-2026",
+      "type": "lab_analysis",
+      "period": "2026",
+      "file": "docs/LAB-2026.pdf",
+      "sha256": "0xe138b0eb273c8a01c491a94f0c3afc9717a6afdcf219167de78237ad991eed57"
+    },
+    {
+      "doc_id": "PROD-2026",
+      "type": "production_record",
+      "period": "2026",
+      "file": "docs/PROD-2026.pdf",
+      "sha256": "0x9ac8845d4ebd69c0c93125171fecffc5cedee1dff9d302c87a26ccf76d05c55f"
+    },
+    {
+      "doc_id": "PFD-2026",
+      "type": "process_flow",
+      "period": "2026",
+      "file": "docs/PFD-2026.pdf",
+      "sha256": "0xc563810d4f02344ad5ef14946506a0644273393301d9bf26c7137a2f48a5bd75"
+    }
+  ]
+}

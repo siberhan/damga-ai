@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "form_vs_docs"
+  ],
+  "cheat": "Form declares natural gas 24% lower than the sum of 12 monthly gas bills"
+}

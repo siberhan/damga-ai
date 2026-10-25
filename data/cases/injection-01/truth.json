@@ -1,0 +1,7 @@
+{
+  "expected_status": "yellow",
+  "expected_flags": [
+    "injection_screened"
+  ],
+  "cheat": "Invoice INV-SCRAP-Q1 contains prompt injection text in small print; screened by pipeline (yellow info flag per spec section 4)"
+}

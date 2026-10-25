@@ -1,0 +1,269 @@
+[
+  {
+    "type": "function",
+    "name": "registerFile",
+    "inputs": [
+      { "name": "plantId", "type": "bytes32" },
+      { "name": "year", "type": "uint16" },
+      { "name": "cnCode", "type": "uint32" }
+    ],
+    "outputs": [
+      { "name": "fileKey", "type": "bytes32" }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "submitAttempt",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" },
+      { "name": "docHashes", "type": "bytes32[]" },
+      { "name": "declarationHash", "type": "bytes32" },
+      {
+        "name": "att",
+        "type": "tuple",
+        "components": [
+          { "name": "fileKey", "type": "bytes32" },
+          { "name": "inputHash", "type": "bytes32" },
+          { "name": "modelHash", "type": "bytes32" },
+          { "name": "rulesetHash", "type": "bytes32" },
+          { "name": "resultHash", "type": "bytes32" },
+          { "name": "status", "type": "uint8" },
+          { "name": "redCount", "type": "uint16" },
+          { "name": "yellowCount", "type": "uint16" },
+          { "name": "missingCount", "type": "uint16" },
+          { "name": "confidenceBps", "type": "uint16" }
+        ]
+      },
+      { "name": "plantSig", "type": "bytes" },
+      { "name": "aiSig", "type": "bytes" }
+    ],
+    "outputs": [
+      { "name": "attemptIndex", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "issuePassport",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" },
+      { "name": "attemptIndex", "type": "uint256" },
+      { "name": "docHashes", "type": "bytes32[]" },
+      {
+        "name": "v",
+        "type": "tuple",
+        "components": [
+          { "name": "fileKey", "type": "bytes32" },
+          { "name": "attemptIndex", "type": "uint256" },
+          { "name": "docsRoot", "type": "bytes32" },
+          { "name": "resultHash", "type": "bytes32" },
+          { "name": "resolutionsHash", "type": "bytes32" },
+          { "name": "redResolved", "type": "uint16" },
+          { "name": "yellowChecked", "type": "uint16" },
+          { "name": "emissionsCommitment", "type": "uint256" },
+          { "name": "scrapCommitment", "type": "uint256" },
+          { "name": "emissionsLimit", "type": "uint32" },
+          { "name": "minScrapShare", "type": "uint16" },
+          { "name": "vcHash", "type": "bytes32" }
+        ]
+      },
+      { "name": "verifierSig", "type": "bytes" },
+      { "name": "emissionsProof", "type": "uint256[8]" },
+      { "name": "scrapProof", "type": "uint256[8]" }
+    ],
+    "outputs": [
+      { "name": "passportId", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "revokePassport",
+    "inputs": [
+      { "name": "passportId", "type": "uint256" },
+      { "name": "reasonHash", "type": "bytes32" },
+      { "name": "supersede", "type": "bool" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "disputePassport",
+    "inputs": [
+      { "name": "passportId", "type": "uint256" },
+      { "name": "reasonHash", "type": "bytes32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getFile",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" }
+    ],
+    "outputs": [
+      { "name": "plantId", "type": "bytes32" },
+      { "name": "year", "type": "uint16" },
+      { "name": "cnCode", "type": "uint32" },
+      { "name": "state", "type": "uint8" },
+      { "name": "passportId", "type": "uint256" },
+      { "name": "attemptCount", "type": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAttempts",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          { "name": "docsRoot", "type": "bytes32" },
+          { "name": "declarationHash", "type": "bytes32" },
+          { "name": "resultHash", "type": "bytes32" },
+          { "name": "status", "type": "uint8" },
+          { "name": "redCount", "type": "uint16" },
+          { "name": "yellowCount", "type": "uint16" },
+          { "name": "missingCount", "type": "uint16" },
+          { "name": "submittedAt", "type": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAttempt",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" },
+      { "name": "index", "type": "uint256" }
+    ],
+    "outputs": [
+      { "name": "docsRoot", "type": "bytes32" },
+      { "name": "declarationHash", "type": "bytes32" },
+      { "name": "resultHash", "type": "bytes32" },
+      { "name": "status", "type": "uint8" },
+      { "name": "redCount", "type": "uint16" },
+      { "name": "yellowCount", "type": "uint16" },
+      { "name": "missingCount", "type": "uint16" },
+      { "name": "submittedAt", "type": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPassport",
+    "inputs": [
+      { "name": "id", "type": "uint256" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          { "name": "fileKey", "type": "bytes32" },
+          { "name": "attemptIndex", "type": "uint256" },
+          { "name": "version", "type": "uint256" },
+          { "name": "prevPassportId", "type": "uint256" },
+          { "name": "verifier", "type": "address" },
+          { "name": "docsRoot", "type": "bytes32" },
+          { "name": "resultHash", "type": "bytes32" },
+          { "name": "emissionsCommitment", "type": "uint256" },
+          { "name": "scrapCommitment", "type": "uint256" },
+          { "name": "emissionsLimit", "type": "uint32" },
+          { "name": "minScrapShare", "type": "uint16" },
+          { "name": "modelHash", "type": "bytes32" },
+          { "name": "rulesetHash", "type": "bytes32" },
+          { "name": "vcHash", "type": "bytes32" },
+          { "name": "status", "type": "uint8" },
+          { "name": "issuedAt", "type": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "passportOfFile",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32" }
+    ],
+    "outputs": [
+      { "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "isDocUsed",
+    "inputs": [
+      { "name": "docHash", "type": "bytes32" }
+    ],
+    "outputs": [
+      { "name": "", "type": "bool" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "FileRegistered",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32", "indexed": true },
+      { "name": "plantId", "type": "bytes32", "indexed": true },
+      { "name": "year", "type": "uint16", "indexed": false },
+      { "name": "cnCode", "type": "uint32", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "AttemptSubmitted",
+    "inputs": [
+      { "name": "fileKey", "type": "bytes32", "indexed": true },
+      { "name": "index", "type": "uint256", "indexed": false },
+      { "name": "status", "type": "uint8", "indexed": false },
+      { "name": "redCount", "type": "uint16", "indexed": false },
+      { "name": "yellowCount", "type": "uint16", "indexed": false },
+      { "name": "missingCount", "type": "uint16", "indexed": false },
+      { "name": "resultHash", "type": "bytes32", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PassportIssued",
+    "inputs": [
+      { "name": "passportId", "type": "uint256", "indexed": true },
+      { "name": "fileKey", "type": "bytes32", "indexed": true },
+      { "name": "attemptIndex", "type": "uint256", "indexed": false },
+      { "name": "verifier", "type": "address", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PassportRevoked",
+    "inputs": [
+      { "name": "passportId", "type": "uint256", "indexed": true },
+      { "name": "reasonHash", "type": "bytes32", "indexed": false },
+      { "name": "supersede", "type": "bool", "indexed": false }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PassportDisputed",
+    "inputs": [
+      { "name": "passportId", "type": "uint256", "indexed": true },
+      { "name": "reasonHash", "type": "bytes32", "indexed": false }
+    ],
+    "anonymous": false
+  }
+]

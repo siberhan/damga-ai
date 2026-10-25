@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Powers of Tau trusted setup files
+ptau/
+
+# Circom compiler binary
+bin/circom
+
+# Intermediate circuit compilation files
+build/*.r1cs
+build/*.sym
+build/*_0000.zkey
+
+# Output proofs and temporary test artifacts
+out/
+build/temp_test/
+*.log
+.DS_Store
+
+# Explicitly keep final zkey files (< 5 MB), verification keys, and wasm artifacts
+!build/*_final.zkey
+!build/*_vkey.json
+!build/*_js/
+!verifiers/*.sol

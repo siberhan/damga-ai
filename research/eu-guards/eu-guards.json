@@ -1,0 +1,697 @@
+[
+  {
+    "id": "mistral-moderation-2603",
+    "name": "Mistral Moderation API (Mistral Moderation 2)",
+    "group": "guard",
+    "developer": "Mistral AI",
+    "country": "France",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2026-03",
+    "status": "Active",
+    "open_weights": false,
+    "license": "Proprietary Commercial (Mistral La Plateforme Terms)",
+    "parameters": "~3B - 8B classifier backbone (Ministral-based)",
+    "context_length": "128,000 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Officially trained and evaluated on 11 languages (Arabic, Chinese, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Spanish). Turkish text is processed via native Mistral multilingual tokenizer, but Turkish safety thresholds are not independently calibrated."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Mistral AI (La Plateforme)",
+        "eu_hosting": true,
+        "pricing": "Free ($0.00 / 1M tokens) on La Plateforme"
+      },
+      "local": {
+        "available": false,
+        "huggingface_id": "n/a",
+        "hardware_requirements": "n/a (Hosted API only)"
+      }
+    },
+    "output_type": "Multi-label classification (11 categories including explicit 'jailbreaking', 'dangerous', 'criminal', returning category confidence scores [0.0 - 1.0] and boolean flags)",
+    "published_benchmarks": {
+      "bipia": "n/a (Not officially evaluated on BIPIA benchmark by Mistral AI)",
+      "deepset_injections": "n/a (Not evaluated on deepset set by Mistral AI)",
+      "lakera_gandalf": "n/a (Not evaluated on Gandalf set by Mistral AI)",
+      "other_benchmarks": "Evaluated against 11 proprietary safety categories; powers inline guardrails in Mistral Chat Completions API with sub-second response times in Mistral Workflows.",
+      "notes": "Replaced legacy mistral-moderation-2411 which was officially deprecated on March 31, 2026."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Zero cost ($0.00) and 128k context makes it trivial to screen full invoices without chunking. EU hosted in Paris. Drawback: API-only (closed weights), and Turkish is not one of the 11 primary calibrated safety languages.",
+    "source_urls": [
+      "https://docs.mistral.ai/capabilities/guardrailing/",
+      "https://mistral.ai/news/mistral-moderation/",
+      "https://mistral.ai/fr/use-cases/ai-guardrails-for-chatbots/"
+    ]
+  },
+  {
+    "id": "mistralai-shieldstral-1.0-3b",
+    "name": "Mistral Shieldstral 1.0 3B",
+    "group": "guard",
+    "developer": "Mistral AI",
+    "country": "France",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2026-08",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "3B (3.0 billion parameters)",
+    "context_length": "32,768 tokens (architecturally supports up to 256k)",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Multilingual support across 12 core evaluated languages (EN, FR, ES, DE, IT, PT, NL, ZH, JA, KO, AR, RU). Uses Mistral 32k vocabulary; Turkish text can be evaluated by providing custom English policy instructions."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Self-hosted via vLLM / TGI on EU cloud (AWS/Scaleway Paris/Frankfurt)",
+        "eu_hosting": true,
+        "pricing": "Compute cost only (~$0.15-$0.30/hour on cloud GPU, or $0.00 locally)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "mistralai/Shieldstral-1.0-3B",
+        "hardware_requirements": "~6-8 GB VRAM (fp16) or ~2.5 GB RAM (4-bit quant GGUF); runs locally on Apple Silicon Mac"
+      }
+    },
+    "output_type": "Single-token forward pass continuous score [0.0 - 1.0] evaluated against dynamic natural-language safety policy",
+    "published_benchmarks": {
+      "bipia": "n/a (Not evaluated on BIPIA in paper)",
+      "deepset_injections": "n/a (Not evaluated on deepset in paper)",
+      "lakera_gandalf": "n/a (Not evaluated on Gandalf in paper)",
+      "other_benchmarks": "Self-reported (arXiv:2607.25857): HarmBench F1: 99.4%, WildGuardTest Prompt F1: 88.1%, ToxicChat F1: 84.1%, Aegis v2 F1: 86.2%, OpenAI Moderation F1: 81.4%, PolyGuard Multilingual Prompt F1: 84.6%, RTP-LX Completion F1: 93.5%.",
+      "notes": "Policy-adaptive: the safety criteria can be updated at inference time via natural language instructions without retraining."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Open weights (Apache-2.0) from a top EU AI lab. Single forward pass provides fast continuous score. Dynamic natural language policies allow custom injection detection rules for CBAM invoice documents. Drawback: 3B size requires ~3-6GB RAM (larger than sub-1B BERT classifiers).",
+    "source_urls": [
+      "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
+      "https://arxiv.org/abs/2607.25857",
+      "https://mistral.ai/news/shieldstral/"
+    ]
+  },
+  {
+    "id": "deepset-deberta-v3-base-injection",
+    "name": "deepset DeBERTa-v3 Injection",
+    "group": "guard",
+    "developer": "deepset GmbH",
+    "country": "Germany",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2023-05",
+    "status": "Active (Legacy)",
+    "open_weights": true,
+    "license": "MIT",
+    "parameters": "86M backbone (~184M total with embeddings)",
+    "context_length": "512 tokens",
+    "languages": {
+      "handles_turkish": "No",
+      "details": "Model card explicitly lists language: en, de. Not trained on Turkish; out-of-vocabulary subword fragmentation occurs on Turkish texts."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Hugging Face Serverless Inference API",
+        "eu_hosting": false,
+        "pricing": "HF Inference tiers (pay-per-request or free rate-limited)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "deepset/deberta-v3-base-injection",
+        "hardware_requirements": "<1 GB RAM, runs on any Mac CPU/Metal in <50ms"
+      }
+    },
+    "output_type": "Binary classification label ('LEGIT' or 'INJECTION') + confidence score",
+    "published_benchmarks": {
+      "bipia": "F1: 0.971 (WARNING: Published with 1.00 False Positive Rate / 100% false alarms on benign context documents; Horizon-Labs eval 2026)",
+      "deepset_injections": "Accuracy: 0.9914 (Loss: 0.0673, validation set, self-reported); F1: 0.992 (Horizon-Labs eval 2026)",
+      "lakera_gandalf": "Contamination-free jailbreaks recall: 0.996 (Horizon-Labs eval 2026; high recall driven by aggressive over-defense)",
+      "other_benchmarks": "Severe false positive rate on benign business text: NotInject accuracy: 28.6% (71.4% false alarms); PIArena F1: 0.672 (FPR 0.98); Agentic boundary pairs F1: 0.667 (FPR 1.00).",
+      "notes": "Model card notes: 'If you are using this model to secure your system and it is overly trigger-happy to classify requests as injections, consider collecting legitimate examples and retraining.'"
+    },
+    "best_candidate": false,
+    "tradeoffs": "Extremely lightweight (<1 GB RAM) and MIT licensed. However, it is unviable for Damga AI: 512-token context cannot read complete documents, lacks Turkish support, and exhibits severe over-defense (flags normal tables, bills, and prompts as attacks).",
+    "source_urls": [
+      "https://huggingface.co/deepset/deberta-v3-base-injection",
+      "https://huggingface.co/datasets/deepset/prompt-injections"
+    ]
+  },
+  {
+    "id": "lakera-guard",
+    "name": "Lakera Guard (Check Point AI Security)",
+    "group": "guard",
+    "developer": "Lakera AI AG (Acquired in Sept 2025 by Check Point Software Technologies)",
+    "country": "Switzerland",
+    "region": "European (Non-EU)",
+    "is_european": true,
+    "release_date": "2023-03",
+    "status": "Active",
+    "open_weights": false,
+    "license": "Proprietary Commercial SaaS / Check Point Infinity",
+    "parameters": "n/a (Closed ensemble model)",
+    "context_length": "Dynamic (Automated chunking & streaming for long documents)",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Multilingual heuristic and embedding classifiers handle major European languages; Turkish text is accepted but English is the primary defense benchmark."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Lakera AI / Check Point Software",
+        "eu_hosting": true,
+        "pricing": "Free developer tier (limited requests); Enterprise usage tiered custom quotes / AWS Marketplace"
+      },
+      "local": {
+        "available": false,
+        "huggingface_id": "n/a",
+        "hardware_requirements": "n/a (Self-hosted Kubernetes container available for enterprise customers only; no open weights)"
+      }
+    },
+    "output_type": "Structured JSON verdict ({ flagged: boolean, payload: string, categories: { prompt_injection: boolean, jailbreak: boolean, pii: boolean }, scores: { ... } })",
+    "published_benchmarks": {
+      "bipia": "Evaluated in academic comparisons; scores in top tier among commercial guards",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "In-distribution (Lakera is the original creator and host of the Gandalf benchmark and adversarial game: https://gandalf.lakera.ai)",
+      "other_benchmarks": "Prompt Injection Test (PINT) Benchmark: ~95.2% accuracy across direct and indirect injection test sets.",
+      "notes": "Acquired by Check Point Software Technologies in September 2025 for ~$300M; Lakera's Zurich office was established as Check Point's Global Center of Excellence for AI Security."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Market-leading prompt injection and Gandalf jailbreak detection. Automated chunking for documents. Hosted API in Europe. Drawbacks: Proprietary commercial pricing, closed weights, and parent company Check Point is Israeli/multinational.",
+    "source_urls": [
+      "https://www.lakera.ai/",
+      "https://gandalf.lakera.ai/",
+      "https://www.checkpoint.com/press-releases/check-point-software-technologies-to-acquire-lakera/"
+    ]
+  },
+  {
+    "id": "aleph-alpha-pharia-aligned",
+    "name": "Aleph Alpha Pharia-1-LLM-7B-control-aligned",
+    "group": "guard",
+    "developer": "Aleph Alpha GmbH",
+    "country": "Germany",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2024-06",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Open Pharia Community License",
+    "parameters": "7B (7.0 billion parameters)",
+    "context_length": "8,192 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Optimized for core European administrative languages (German, English, French, Spanish). Turkish text can be processed but is not an aligned primary language."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Aleph Alpha Cloud (EU Sovereign)",
+        "eu_hosting": true,
+        "pricing": "Commercial token-based pricing via Aleph Alpha platform"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "aleph-alpha/Pharia-1-LLM-7B-control-aligned",
+        "hardware_requirements": "~14-16 GB VRAM (fp16) or ~5 GB RAM (4-bit quant); runs on Mac with 16GB+ RAM"
+      }
+    },
+    "output_type": "Generative text with safety alignment (DPO-aligned refusals)",
+    "published_benchmarks": {
+      "bipia": "n/a (No dedicated prompt-injection classifier benchmark published)",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "MT-Bench and internal German sovereign regulatory compliance benchmarks.",
+      "notes": "Aleph Alpha does NOT provide a dedicated standalone prompt-guard classifier. Pharia-1 is a general generative LLM incorporating safety alignment. Included here to satisfy scope requirement."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Strict EU data privacy and sovereign compliance from Germany. However, it is a 7B generative LLM rather than a specialized fast guard classifier; high latency and token cost if used purely as an input scanner.",
+    "source_urls": [
+      "https://aleph-alpha.com/",
+      "https://huggingface.co/aleph-alpha/Pharia-1-LLM-7B-control-aligned"
+    ]
+  },
+  {
+    "id": "horizon-labs-prompt-injection-guard-base",
+    "name": "Horizon Labs Prompt Injection Guard Base",
+    "group": "guard",
+    "developer": "Horizon AI Labs",
+    "country": "United Kingdom",
+    "region": "European (Non-EU)",
+    "is_european": true,
+    "release_date": "2026-09",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "308M (base) / 141M (small variant)",
+    "context_length": "8,192 tokens",
+    "languages": {
+      "handles_turkish": "Yes",
+      "details": "Explicitly trained on 30 languages including Turkish ('tr'), German, English, French, Spanish, Italian. Backbone uses multilingual ModernBERT (mmBERT-base)."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Deployable on Hugging Face Dedicated Endpoints or any European cloud",
+        "eu_hosting": true,
+        "pricing": "Compute cost only (~$0.06/hr on CPU endpoint)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "Horizon-Labs/prompt-injection-guard-base",
+        "hardware_requirements": "<500 MB RAM; includes quantized ONNX (onnx/model_quantized.onnx); runs on Mac M-series in <30ms"
+      }
+    },
+    "output_type": "Binary classification label ('SAFE' or 'INJECTION') + confidence score (drop-in replacement for ProtectAI pipelines)",
+    "published_benchmarks": {
+      "bipia": "F1: 0.628 (False positive rate on benign text: 0.02 / 2%, unlike deepset's 100% false alarms)",
+      "deepset_injections": "F1: 0.763 (FPR: 0.00)",
+      "lakera_gandalf": "Contamination-free jailbreaks recall: 0.822",
+      "other_benchmarks": "NotInject (benign prompts with triggers) accuracy: 0.944 (vs deepset 0.286); PIArena (RAG context injection) F1: 0.969; LLMail-Inject phase 2 recall: 0.998; Held-out 30-language synthetic set F1: 0.993.",
+      "notes": "Agent-oriented training with 45 document types; ModernBERT 8k context handles full invoices, tickets, and tables without sliding window chunking."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Best local sub-1B candidate for Damga AI: 308M parameter size runs in <500MB RAM on Mac, 8k context easily covers invoices, Apache 2.0 license, and explicitly includes Turkish. Drawback: newer community release (Sept 2026).",
+    "source_urls": [
+      "https://huggingface.co/Horizon-Labs/prompt-injection-guard-base",
+      "https://github.com/horizon-ai-labs/agent-io-guards"
+    ]
+  },
+  {
+    "id": "meta-prompt-guard-86m",
+    "name": "Meta Prompt Guard 86M [Non-European Reference]",
+    "group": "guard",
+    "developer": "Meta Platforms",
+    "country": "United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2024-07",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Llama 3.1 Community License (Gated)",
+    "parameters": "86M (based on mDeBERTa-v3-base)",
+    "context_length": "512 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Backbone is multilingual mDeBERTa-v3, but safety fine-tuning focused primarily on English direct jailbreaks."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "AWS Bedrock Guardrails, Groq, Together AI",
+        "eu_hosting": false,
+        "pricing": "Varies by cloud provider (~$0.001 per 1k requests)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "meta-llama/Prompt-Guard-86M",
+        "hardware_requirements": "<500 MB RAM, fast on any CPU/GPU"
+      }
+    },
+    "output_type": "3-class classification label ('BENIGN', 'INJECTION', 'JAILBREAK') + probabilities",
+    "published_benchmarks": {
+      "bipia": "F1: 0.020 (FPR 0.00; severely under-detects indirect document injections; Horizon-Labs eval 2026)",
+      "deepset_injections": "F1: 0.235 (FPR 0.00)",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "CyberSecEval Indirect Injections Set: TPR (Recall) 71.4% at FPR 1.0%, AUC 0.966; NotInject benign accuracy 95.3%.",
+      "notes": "Non-European reference model. Trained primarily for direct prompt injection and jailbreaks; lacks sensitivity to indirect document injections."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Non-European. Gated license. 512-token limit fails on invoices. Extremely poor detection on indirect document injections (BIPIA F1 0.020).",
+    "source_urls": [
+      "https://huggingface.co/meta-llama/Prompt-Guard-86M",
+      "https://arxiv.org/abs/2407.21783"
+    ]
+  },
+  {
+    "id": "google-shieldgemma-2b",
+    "name": "Google ShieldGemma 2B / 9B [Non-European Reference]",
+    "group": "guard",
+    "developer": "Google",
+    "country": "United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2024-08",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Gemma Terms of Use",
+    "parameters": "2B and 9B variants",
+    "context_length": "8,192 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Trained predominantly on English safety datasets; Gemma tokenizer supports multilingual text."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Google Cloud Vertex AI",
+        "eu_hosting": true,
+        "pricing": "Vertex AI model-as-a-service pricing"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "google/shieldgemma-2b",
+        "hardware_requirements": "~4-5 GB RAM for 2B, ~18 GB for 9B"
+      }
+    },
+    "output_type": "Binary probability (Logit evaluation of 'Yes' [violates policy] vs 'No' [safe])",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "OpenAI Moderation benchmark Optimal F1: 0.812 (AU-PRC 0.887); ToxicChat Optimal F1: 0.624; HarmBench Prompt F1: 50.2%; WildGuardTest Prompt F1: 46.0%.",
+      "notes": "Non-European reference model. Optimized for content harm categories (hate speech, harassment, sexually explicit, dangerous content) rather than prompt injection."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Non-European. High false negative rate on prompt injections (HarmBench F1 50.2%). Tailored for content policy rather than document attack screening.",
+    "source_urls": [
+      "https://huggingface.co/google/shieldgemma-2b",
+      "https://ai.google.dev/gemma/docs/shieldgemma"
+    ]
+  },
+  {
+    "id": "protectai-deberta-v3-base-prompt-injection-v2",
+    "name": "Protect AI DeBERTa-v3 Injection v2 [Non-European Reference]",
+    "group": "guard",
+    "developer": "Protect AI (Acquired Berlin startup Laiyer AI in Jan 2024)",
+    "country": "United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2024-04",
+    "status": "Archived / Deprecated",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "86M backbone (~184M total)",
+    "context_length": "512 tokens",
+    "languages": {
+      "handles_turkish": "No",
+      "details": "Model card explicitly states: 'It does not detect jailbreak attacks or handle non-English prompts, which may limit its applicability in diverse linguistic environments.'"
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Hugging Face Inference Endpoints",
+        "eu_hosting": false,
+        "pricing": "HF endpoint hosting"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "protectai/deberta-v3-base-prompt-injection-v2",
+        "hardware_requirements": "<1 GB RAM, fast on CPU/Metal"
+      }
+    },
+    "output_type": "Binary classification label ('SAFE' or 'INJECTION') + confidence score",
+    "published_benchmarks": {
+      "bipia": "F1: 0.312 (FPR 0.20; Horizon-Labs eval 2026)",
+      "deepset_injections": "F1: 0.537 (FPR 0.00)",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "Self-reported on 20,000 post-training evaluation prompts: Accuracy 95.25%, Precision 91.59%, Recall 99.74%, F1 95.49%; NotInject accuracy: 56.3% (43.7% false positive rate on benign prompts with trigger words).",
+      "notes": "Non-European reference model. NOTE: The project and repository on GitHub (protectai/llm-guard) has been officially ARCHIVED and is no longer maintained."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Non-European (Seattle US), officially ARCHIVED, English only, 512-token context limit, low performance on document indirect injections (BIPIA F1 0.312).",
+    "source_urls": [
+      "https://huggingface.co/protectai/deberta-v3-base-prompt-injection-v2",
+      "https://github.com/protectai/llm-guard"
+    ]
+  },
+  {
+    "id": "typesafe-ai-jev",
+    "name": "TypeSafe AI Jev (System One) [Non-European, Baseline]",
+    "group": "decision",
+    "developer": "TypeSafe AI (Diogo Almeida, former OpenAI)",
+    "country": "United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2026-09-15",
+    "status": "Active",
+    "open_weights": false,
+    "license": "Proprietary Commercial API",
+    "parameters": "n/a (Closed proprietary non-autoregressive decision model)",
+    "context_length": "64,000 tokens (32,000 limit for state + longest question)",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "English is the primary calibrated language. Can process Turkish input state if question criteria keys are written in English; non-English calibration has higher variance."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "TypeSafe AI Gateway (api.typesafe.ai / jevtypesafeai.com), OpenRouter, Vercel",
+        "eu_hosting": false,
+        "pricing": "$0.042 / 1M input tokens; Output tokens FREE ($0.00)"
+      },
+      "local": {
+        "available": false,
+        "huggingface_id": "n/a",
+        "hardware_requirements": "n/a (Hosted API only; open-source MCP client available)"
+      }
+    },
+    "output_type": "Typed structured decision primitives: 'Choice' (up to 255 options + confidence), 'Score' (2-10 ordered levels + confidence), 'Noul' (binary yes/no probability 0.0-1.0)",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "arXiv:2609.30216v1 ('Jev in the Wild'): 2,170 public GitHub repositories evaluated across routing, classification, triage, and review gates; schema type-safety guarantees 0% syntactic hallucination.",
+      "notes": "Non-European reference model. Evaluates independent questions against the same state in a single parallel pass without autoregressive token generation."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Lowest cost ($0.042/M tokens, free output), bounded schema guarantees no formatting hallucination, 64k context. Tradeoffs: Non-European (San Francisco, CA), closed proprietary model, Turkish requires English question keys.",
+    "source_urls": [
+      "https://u11d.com/blog/typesafe-ai-jev-explained/",
+      "https://arxiv.org/html/2609.30216v1",
+      "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+    ]
+  },
+  {
+    "id": "mistral-ministral-3b",
+    "name": "Mistral Ministral 3B (Constrained JSON Decision)",
+    "group": "decision",
+    "developer": "Mistral AI",
+    "country": "France",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2024-10",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0 (Ministral-3-3B-Base-2512) / Commercial API",
+    "parameters": "3.0B parameters",
+    "context_length": "128,000 tokens",
+    "languages": {
+      "handles_turkish": "Yes",
+      "details": "Native multilingual tokenizer with strong benchmarked comprehension of Turkish grammar, technical vocabulary, and invoice formats."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Mistral AI (La Plateforme Paris/EU)",
+        "eu_hosting": true,
+        "pricing": "$0.04 / 1M input tokens, $0.04 / 1M output tokens"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "mistralai/Ministral-3-3B-Base-2512",
+        "hardware_requirements": "~2.5 GB RAM (4-bit quant GGUF); runs locally on any Apple Silicon Mac"
+      }
+    },
+    "output_type": "Constrained JSON Schema / Structured Outputs (Boolean yes/no, Enum choice, numeric score, confidence)",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "MMLU: 60.9% (outperforms Llama 3.2 3B); Winogrande: 72.8%; GSM8K: 64.8%; Structured outputs JSON schema validity >99.8%.",
+      "notes": "Direct European substitute for Jev. When used with Mistral Structured Outputs (response_format json_schema), it strictly emits typed booleans, enums, or scores."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Top European decision model for Damga AI: costs match Jev ($0.04/M), hosted in EU (Paris), 128k context, strong native Turkish language support, open-weight base checkpoint. Drawback: slight latency overhead compared to Jev due to autoregressive generation.",
+    "source_urls": [
+      "https://mistral.ai/news/ministral/",
+      "https://docs.mistral.ai/capabilities/structured-output/",
+      "https://huggingface.co/mistralai/Ministral-3-3B-Base-2512"
+    ]
+  },
+  {
+    "id": "atla-selene-1-mini",
+    "name": "Atla Selene-1-Mini 8B (SLMJ Judge)",
+    "group": "decision",
+    "developer": "Atla AI",
+    "country": "United Kingdom",
+    "region": "European (Non-EU)",
+    "is_european": true,
+    "release_date": "2025-01",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "8.0B parameters (post-trained from Llama-3.1-8B)",
+    "context_length": "128,000 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Llama 3.1 base handles Turkish tokenization; Selene post-training focused on English, German, French, Italian, Spanish, Portuguese, Hindi, Thai."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Atla Cloud API (docs.atla-ai.com, pip install atla)",
+        "eu_hosting": false,
+        "pricing": "Platform usage tiers (~$0.15 / 1M tokens)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "AtlaAI/Selene-1-Mini-Llama-3.1-8B",
+        "hardware_requirements": "~6-8 GB RAM (4-bit quant) or 16 GB VRAM; runs on Mac with 16GB+ RAM"
+      }
+    },
+    "output_type": "Structured evaluation: Absolute score (1-5 scale), binary verification (Yes/No with reasoning critique), pairwise preferences",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "RewardBench: 89.13% (#1 8B generative model on RewardBench, outperforming GPT-4o); EvalBiasBench: beats GPT-4o; AutoJ: beats GPT-4o across 11 evaluation benchmarks.",
+      "notes": "State-of-the-art small language model-as-a-judge (SLMJ). Post-trained specifically for evaluating adherence, hallucination, and rubric criteria."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Highest accuracy for nuanced judgment and verification (outperforms GPT-4o on RewardBench). 128k context and Apache 2.0 license. Drawback: 8B size requires ~6-8GB RAM locally, developer is UK (non-EU post-Brexit).",
+    "source_urls": [
+      "https://huggingface.co/AtlaAI/Selene-1-Mini-Llama-3.1-8B",
+      "https://arxiv.org/abs/2501.17195",
+      "https://github.com/atla-ai/selene-mini"
+    ]
+  },
+  {
+    "id": "flow-ai-flow-judge-v0.1",
+    "name": "Flow AI Flow-Judge-v0.1",
+    "group": "decision",
+    "developer": "Flow AI (Acquired by Aiven, Helsinki)",
+    "country": "Finland",
+    "region": "EU",
+    "is_european": true,
+    "release_date": "2024-09",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "3.8B parameters (based on Phi-3.5-mini-instruct)",
+    "context_length": "128,000 tokens",
+    "languages": {
+      "handles_turkish": "Partial",
+      "details": "Evaluation rubrics and training data in English; Phi-3.5-mini base tokenizes Turkish, but evaluation prompts are recommended in English."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Self-hosted via vLLM or HF Inference Endpoints in EU",
+        "eu_hosting": true,
+        "pricing": "Compute cost only (~$0.10-$0.20/hour)"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "flowaicom/Flow-Judge-v0.1",
+        "hardware_requirements": "~3.0 GB RAM (4-bit quant) or 8 GB VRAM; runs on Mac in <100ms"
+      }
+    },
+    "output_type": "Structured tags with qualitative critique (<feedback>...</feedback>) and quantitative score (<score>...</score>; supports binary pass/fail, 3-Likert, 5-Likert)",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "Held-out evaluation sets (binary, 3-Likert, 5-Likert): achieves parity with larger models (GPT-4o-mini) on rubric adherence and Spearman rank correlation with human raters.",
+      "notes": "Customizable evaluation framework designed specifically for LLM-as-a-judge pipelines with dedicated python SDK ('pip install flow-judge')."
+    },
+    "best_candidate": true,
+    "tradeoffs": "Compact 3.8B size runs effortlessly on a Mac (~3GB RAM). 128k context length. EU origin (Helsinki, Finland). Apache 2.0 license. Structured feedback + score output. Drawback: rubric prompts must be English.",
+    "source_urls": [
+      "https://huggingface.co/flowaicom/Flow-Judge-v0.1",
+      "https://github.com/flowaicom/flow-judge"
+    ]
+  },
+  {
+    "id": "patronus-lynx-8b",
+    "name": "Patronus AI Lynx 8B [Non-European Reference]",
+    "group": "decision",
+    "developer": "Patronus AI",
+    "country": "United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2024-07",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Llama 3 Community License",
+    "parameters": "8.0B parameters (based on Llama-3-8B-Instruct)",
+    "context_length": "8,192 tokens",
+    "languages": {
+      "handles_turkish": "No",
+      "details": "English only hallucination evaluation; Turkish text is out-of-domain."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Patronus AI Enterprise API",
+        "eu_hosting": false,
+        "pricing": "Enterprise SaaS pricing"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "PatronusAI/Llama-3-Patronus-Lynx-8B-Instruct",
+        "hardware_requirements": "~6-8 GB RAM (4-bit quant)"
+      }
+    },
+    "output_type": "Binary verdict ('PASS' or 'FAIL') + reasoning explanation for factual consistency",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "Patronus HaluEval: 87.4% accuracy (vs GPT-4o 84.1%); FaithDial: 85.2% accuracy (vs GPT-4o 82.6%).",
+      "notes": "Non-European reference model. Specialized narrowly in hallucination detection and RAG factual consistency."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Non-European (US). 8k context window is much shorter than European alternatives (128k). Narrowly specialized for hallucination rather than arbitrary decision rubrics.",
+    "source_urls": [
+      "https://huggingface.co/PatronusAI/Llama-3-Patronus-Lynx-8B-Instruct"
+    ]
+  },
+  {
+    "id": "prometheus-2-7b",
+    "name": "Prometheus 2 7B [Non-European Reference]",
+    "group": "decision",
+    "developer": "KAIST & LG AI Research & CMU",
+    "country": "South Korea / United States",
+    "region": "Non-European (Reference)",
+    "is_european": false,
+    "release_date": "2024-05",
+    "status": "Active",
+    "open_weights": true,
+    "license": "Apache-2.0",
+    "parameters": "7.0B parameters (based on Mistral-7B-Instruct-v0.2)",
+    "context_length": "8,192 tokens",
+    "languages": {
+      "handles_turkish": "No",
+      "details": "Evaluation rubrics and feedback datasets in English."
+    },
+    "how_to_use": {
+      "api": {
+        "available": true,
+        "provider": "Hosted endpoints via vLLM",
+        "eu_hosting": false,
+        "pricing": "Compute cost only"
+      },
+      "local": {
+        "available": true,
+        "huggingface_id": "prometheus-eval/prometheus-7b-v2.0",
+        "hardware_requirements": "~5-6 GB RAM (4-bit quant)"
+      }
+    },
+    "output_type": "Direct assessment (Score 1-5 with rubric feedback) and Pairwise ranking (Choice A vs B)",
+    "published_benchmarks": {
+      "bipia": "n/a",
+      "deepset_injections": "n/a",
+      "lakera_gandalf": "n/a",
+      "other_benchmarks": "Feedback Collection: Pearson correlation 0.897 with human judges; MT-Bench agreement: 85.6%.",
+      "notes": "Non-European reference model. Widely cited academic evaluator model."
+    },
+    "best_candidate": false,
+    "tradeoffs": "Non-European. Shorter context (8k) than European alternatives (128k). English-only rubric evaluation.",
+    "source_urls": [
+      "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0",
+      "https://arxiv.org/abs/2405.01535"
+    ]
+  }
+]

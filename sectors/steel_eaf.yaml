@@ -1,0 +1,46 @@
+id: steel_eaf
+version: 1.0.0
+name: Scrap EAF steel, long products
+cn_codes: ["72071114", "72131000", "72142000", "72171010"]
+eu_default_value_t_per_t: 2.310            # Türkiye CN 7214 20 00 (rebar), Implementing Regulation (EU) 2025/2621 Annex I; 2.541 with the 2026 mark-up
+markup_2026: 0.10
+benchmark_t_per_t: { bf_bof: 1.364, scrap_eaf: 0.066 }   # (EU) 2025/2620
+doc_types:                                  # field keys the AI may extract per document type
+  gas_bill:          { fields: [natural_gas_m3], periods: monthly, required: true }
+  electricity_bill:  { fields: [electricity_mwh], periods: monthly, required: true }
+  purchase_invoice:  { fields: [scrap_t, pig_iron_t, dri_t, electrodes_t, carbon_charge_t, lime_t, ferroalloys_t], periods: any, required: true }
+  weighbridge:       { fields: [scrap_t, pig_iron_t, dri_t], periods: any, required: false }
+  lab_analysis:      { fields: [c_content_scrap, c_content_product, c_content_slag], periods: yearly, required: true }
+  production_record: { fields: [crude_steel_t, billet_t, product_t, slag_t], periods: yearly, required: true }
+  process_flow:      { fields: [], periods: yearly, required: true }
+factors:                                    # every factor has value, unit, source
+  natural_gas:
+    ncv: { value: 34.8, unit: "GJ/1000m3", source: "Implementing Regulation (EU) 2018/2066 Annex VI / EN 437 G20 standard natural gas Net Calorific Value (34.8 MJ/m3 = 34.8 GJ/1000m3) https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066" }
+    ef: { value: 56.1, unit: "tCO2/TJ", source: "2006 IPCC Guidelines Vol 2 Energy Ch 1 Table 1.4 / Implementing Regulation (EU) 2018/2066 Annex VI Table 1 / (EU) 2025/2547 https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066" }
+  carbon_content:
+    electrodes: { value: 0.82, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 (EAF Carbon Electrodes) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    carbon_charge: { value: 0.83, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 (EAF Charge Carbon / Anthracite / Coke) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    pig_iron: { value: 0.04, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 (Pig Iron) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    dri: { value: 0.02, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 (Direct Reduced Iron) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    scrap: { value: 0.005, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 / Typical low-alloy carbon steel scrap (0.002-0.01 tC/t) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    product: { value: 0.002, unit: "tC/t", source: "2006 IPCC Guidelines Vol 3 IPPU Ch 4 Table 4.3 / Rebar carbon content (approx 0.20% C = 0.002 tC/t) https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/3_Volume3/V3_4_Ch4_Metal_Industry.pdf" }
+    slag: { value: 0.001, unit: "tC/t", source: "Iron and steel EAF slag typical carbon content (~0.1% C = 0.001 tC/t) https://link.springer.com/article/10.1007/s40831-016-0046-8" }
+    ferroalloys: { value: 0.07, unit: "tC/t", source: "Standard carbon content for bulk ferroalloys (FeMn / SiMn) per EU ETS MRR https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066" }
+  precursor_default_t_per_t:
+    pig_iron: { value: 1.85, unit: "tCO2e/t", source: "Implementing Regulation (EU) 2025/2621 Annex I, Türkiye, CN 7201 (2.035 with the 2026 mark-up) https://eur-lex.europa.eu/eli/reg_impl/2025/2621/oj" }
+    dri: { value: null, unit: "tCO2e/t", source: "Implementing Regulation (EU) 2025/2621 Annex I (not listed for Türkiye, fallback applies) https://eur-lex.europa.eu/eli/reg_impl/2025/2621/oj" }
+ranges:                                     # from research/bref-eaf-ranges.json, per tonne of liquid steel unless stated
+  yield_liquid_per_metal_input: { min: 0.812, max: 0.963, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+  electricity_kwh_per_t: { min: 404.0, max: 748.0, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+  natural_gas_m3_per_t: { min: 1.39, max: 50.0, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 & FMP BREF Table 2.6 (EAF burners 1.39-41.67 Nm3/t LS plus reheating furnace) https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+  electrodes_kg_per_t: { min: 2.0, max: 6.0, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+  lime_kg_per_t: { min: 25.0, max: 140.0, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+  direct_kg_co2_per_t: { min: 72.0, max: 180.0, source: "EU Iron & Steel BREF (2013, Remus et al., EUR 25521 EN) Table 8.1 p. 429 https://eippcb.jrc.ec.europa.eu/sites/default/files/2019-11/IS_Adopted_03_2012.pdf" }
+rules:
+  form_vs_docs: { level: red, tolerance_pct: 2.0 }
+  material_balance: { level: red }
+  missing_evidence: { level: missing }
+  quote_check: { level: missing }
+  sector_range: { level: yellow }
+  low_vs_sector: { level: yellow }
+  injection_screened: { level: yellow }

@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "form_vs_docs"
+  ],
+  "cheat": "Form declares scrap 8% higher than purchase invoice evidence"
+}

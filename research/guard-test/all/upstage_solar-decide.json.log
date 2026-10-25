@@ -1,0 +1,8 @@
+Held-out set: 45 attacks, 45 benign (30 from our PDFs)
+
+screen                                            recall  FP rate  errors    sec
+regex (current)                                    35.6%     0.0%       0    0.0
+upstage/solar-decide                               82.2%     0.0%       0   67.9
+regex + upstage/solar-decide                       82.2%     0.0%       0   67.9
+
+Details: ../research/guard-test/all/upstage_solar-decide.json

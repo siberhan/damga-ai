@@ -1,0 +1,7 @@
+{
+  "expected_status": "yellow",
+  "expected_flags": [
+    "sector_range_electricity"
+  ],
+  "cheat": "Electricity consumption (390.0 kWh/t) is just below sector BREF lower bound (404.0 kWh/t)"
+}

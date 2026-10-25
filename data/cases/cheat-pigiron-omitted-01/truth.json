@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "material_balance"
+  ],
+  "cheat": "Pig iron used but invoice omitted; scrap invoices provide only 220,000 t for 250,000 t crude steel (yield 1.136 exceeds BREF max 0.963)"
+}

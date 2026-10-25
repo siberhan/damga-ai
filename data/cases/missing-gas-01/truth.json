@@ -1,0 +1,8 @@
+{
+  "expected_status": "missing",
+  "expected_flags": [
+    "form_vs_docs",
+    "missing_evidence"
+  ],
+  "cheat": "Only 10 of 12 monthly gas bills provided (months 11 and 12 missing)"
+}

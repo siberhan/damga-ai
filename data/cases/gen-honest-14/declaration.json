@@ -1,0 +1,45 @@
+{
+  "schema": "damga.declaration.v1",
+  "plant": {
+    "plant_id": "TR-ALIAGA-DEMO-001",
+    "name": "Aliağa Demo Steel Works (fictional)",
+    "country": "TR",
+    "city": "Aliağa, İzmir",
+    "installation_name": "Melt shop and rolling mill"
+  },
+  "year": 2026,
+  "product": {
+    "cn_code": "72142000",
+    "name": "Concrete reinforcing bar (rebar)"
+  },
+  "route": [
+    "EAF",
+    "continuous_casting",
+    "hot_rolling"
+  ],
+  "production": {
+    "crude_steel_t": 325000.0,
+    "billet_t": 318500.0,
+    "product_t": 312000.0,
+    "slag_t": 39000.0
+  },
+  "inputs": {
+    "scrap_t": 353606.8,
+    "pig_iron_t": 0.0,
+    "dri_t": 0.0,
+    "electrodes_t": 650.0,
+    "carbon_charge_t": 3900.0,
+    "lime_t": 13000.0,
+    "ferroalloys_t": 4550.0
+  },
+  "fuels": {
+    "natural_gas_m3": 13000000.0
+  },
+  "electricity_mwh": 136500.0,
+  "precursors": [],
+  "zk_claims": {
+    "emissions_limit_kg_per_t": 200,
+    "min_scrap_share_permille": 900
+  },
+  "explanations": {}
+}

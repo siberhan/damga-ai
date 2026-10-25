@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>European Prompt-Guard & Decision Models Comparison | Damga AI</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --best-bg: #f0fdf4;
+      --best-border: #86efac;
+      --best-badge: #166534;
+      --badge-eu: #dbeafe;
+      --badge-eu-text: #1e40af;
+      --badge-noneu: #f1f5f9;
+      --badge-noneu-text: #475569;
+      --badge-archived: #fee2e2;
+      --badge-archived-text: #991b1b;
+      --tr-yes: #dcfce7;
+      --tr-yes-text: #166534;
+      --tr-partial: #fef9c3;
+      --tr-partial-text: #854d0e;
+      --tr-no: #fee2e2;
+      --tr-no-text: #991b1b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 28px 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid #bfdbfe;
+    }
+
+    .methodology-box {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #334155;
+    }
+
+    .methodology-box h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .unreadable-box {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      font-size: 12.5px;
+      color: #92400e;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: #ffffff;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .controls-card {
+      background: var(--card-bg);
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .filters-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .filter-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      color: #334155;
+    }
+
+    .filter-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .search-input {
+      padding: 8px 14px;
+      font-size: 13.5px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 260px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .reset-btn {
+      padding: 6px 12px;
+      font-size: 12.5px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .reset-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-x: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      margin-bottom: 32px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      transition: background 0.15s ease;
+    }
+
+    th:hover {
+      background: #e2e8f0;
+    }
+
+    th .sort-icon {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    th.sorted .sort-icon {
+      color: var(--primary);
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: #1e293b;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    tr.row-best {
+      background-color: var(--best-bg);
+    }
+
+    tr.row-best:hover td {
+      background-color: #e8f9ed;
+    }
+
+    .best-badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #86efac;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+
+    .badge-eu { background: var(--badge-eu); color: var(--badge-eu-text); }
+    .badge-noneu { background: var(--badge-noneu); color: var(--badge-noneu-text); }
+    .badge-ref { background: #fef3c7; color: #92400e; }
+    .badge-archived { background: var(--badge-archived); color: var(--badge-archived-text); }
+    
+    .tr-pill {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .tr-yes { background: var(--tr-yes); color: var(--tr-yes-text); }
+    .tr-partial { background: var(--tr-partial); color: var(--tr-partial-text); }
+    .tr-no { background: var(--tr-no); color: var(--tr-no-text); }
+
+    .model-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #0f172a;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .cell-muted {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .source-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-top: 2px;
+    }
+
+    .source-link:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-cell {
+      background: #fafafa;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 32px;
+      padding-bottom: 24px;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 12px; }
+      .search-input { width: 100%; }
+      .controls-card { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>🇪🇺 European Prompt-Guard & Decision Models Comparison</h1>
+          <p class="subtitle">Architectural analysis for Damga AI — Digital Product Passport for Turkish Scrap EAF Steel</p>
+        </div>
+        <div class="meta-badge">
+          📅 Last Checked: <strong>2026-10-25</strong>
+        </div>
+      </div>
+
+      <div class="methodology-box">
+        <h3>ℹ️ Research Methodology & Integrity Guidelines</h3>
+        <p>
+          Conducted on <strong>October 25, 2026</strong>. In accordance with project instructions, <strong>no numbers, scores, or licenses were invented or guessed</strong>. Where a model lacked a published score on a benchmark (e.g. BIPIA or Lakera Gandalf), it is explicitly marked <code>n/a</code> with the factual explanation. Corporate ownership, European headquarters, and deprecation statuses have been verified against official records.
+        </p>
+        <div class="unreadable-box">
+          <strong>Tool Fallback & Unreadable URLs Notice:</strong>
+          The primary Octen search API returned <code>HTTP 403 (Payment method required)</code>; in accordance with protocol, built-in search and direct HTTP inspection tools were utilized as fallback. The URL <code>https://huggingface.co/meta-llama/Prompt-Guard-86M/raw/main/README.md</code> was unreadable via unauthenticated fetch due to Hugging Face model gating; its technical specs were verified via Meta's arXiv:2407.21783 publication.
+        </div>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-guard" onclick="switchTab('guard')">
+        🛡️ Prompt-Guard Models (<span id="count-guard">0</span>)
+      </button>
+      <button class="tab-btn" id="tab-decision" onclick="switchTab('decision')">
+        ⚖️ Decision & Judge Models (<span id="count-decision">0</span>)
+      </button>
+    </div>
+
+    <div class="controls-card">
+      <div class="filters-group">
+        <label class="filter-label">
+          <input type="checkbox" id="filter-eu" onchange="renderCurrentTable()"> 🇪🇺 European Only
+        </label>
+        <label class="filter-label">
+          <input type="checkbox" id="filter-open" onchange="renderCurrentTable()"> 🔓 Open Weights Only
+        </label>
+        <label class="filter-label">
+          <input type="checkbox" id="filter-api" onchange="renderCurrentTable()"> ⚡ Has API
+        </label>
+        <label class="filter-label">
+          <input type="checkbox" id="filter-turkish" onchange="renderCurrentTable()"> 🇹🇷 Handles Turkish
+        </label>
+        <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+      </div>
+      <div>
+        <input type="text" id="search-box" class="search-input" placeholder="Search developer, model, benchmark..." oninput="renderCurrentTable()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table id="models-table">
+        <thead>
+          <tr id="table-headers">
+            <!-- Headers injected dynamically -->
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Rows injected dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">
+      Damga AI Pair Programming Research • IEEE ClimateChain Global Hackathon 2026 • Strict European Sovereignty Stack
+    </div>
+  </div>
+
+  <script>
+    // Embedded Model Data
+    const MODELS_DATA = [
+      {
+        "id": "mistral-moderation-2603",
+        "name": "Mistral Moderation API (Mistral Moderation 2)",
+        "group": "guard",
+        "developer": "Mistral AI",
+        "country": "France",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2026-03",
+        "status": "Active",
+        "open_weights": false,
+        "license": "Proprietary Commercial API",
+        "parameters": "~3B-8B backbone",
+        "context_length": "128,000 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "11 core languages (AR, ZH, EN, FR, DE, IT, JA, KO, PT, RU, ES); Turkish processed via native multilingual tokenizer without independent threshold tuning.",
+        "api_available": true,
+        "api_details": "Mistral La Plateforme (Paris / EU hosting), Free ($0.00)",
+        "local_available": false,
+        "local_details": "n/a (Hosted API only)",
+        "output_type": "Multi-label classification (11 categories including explicit 'jailbreaking') + confidence scores [0-1]",
+        "benchmarks": "Internal Mistral safety benchmarks across 11 harm categories; sub-second latency in Mistral Workflows. BIPIA / Gandalf: n/a.",
+        "best_candidate": true,
+        "tradeoffs": "Zero cost ($0.00) and 128k context makes it trivial to screen full invoices without chunking. EU hosted in Paris. Drawback: API-only (closed weights).",
+        "source_urls": [
+          { "title": "Mistral Docs", "url": "https://docs.mistral.ai/capabilities/guardrailing/" },
+          { "title": "Mistral News", "url": "https://mistral.ai/news/mistral-moderation/" }
+        ]
+      },
+      {
+        "id": "mistralai-shieldstral-1.0-3b",
+        "name": "Mistral Shieldstral 1.0 3B",
+        "group": "guard",
+        "developer": "Mistral AI",
+        "country": "France",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2026-08",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "3.0B",
+        "context_length": "32,768 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "12 core languages; Turkish evaluated via custom natural language policy prompts in English.",
+        "api_available": true,
+        "api_details": "Self-hosted vLLM/TGI in EU cloud (~$0.20/hr compute)",
+        "local_available": true,
+        "local_details": "HF: mistralai/Shieldstral-1.0-3B (~2.5 GB RAM in 4-bit)",
+        "output_type": "Single continuous safety score [0-1] via dynamic natural language policy",
+        "benchmarks": "Self-reported (arXiv:2607.25857): HarmBench F1: 99.4%, WildGuardTest F1: 88.1%, ToxicChat F1: 84.1%, PolyGuard Multilingual F1: 84.6%. BIPIA/Gandalf: n/a.",
+        "best_candidate": true,
+        "tradeoffs": "Open weights (Apache-2.0) from top EU AI lab. Single forward pass provides fast continuous score. Dynamic natural language policies allow custom injection detection rules for CBAM invoice documents.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B" },
+          { "title": "arXiv Paper", "url": "https://arxiv.org/abs/2607.25857" }
+        ]
+      },
+      {
+        "id": "deepset-deberta-v3-base-injection",
+        "name": "deepset DeBERTa-v3 Injection",
+        "group": "guard",
+        "developer": "deepset GmbH",
+        "country": "Germany",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2023-05",
+        "status": "Active (Legacy)",
+        "open_weights": true,
+        "license": "MIT",
+        "parameters": "86M (~184M tot)",
+        "context_length": "512 tokens",
+        "turkish_support": "No",
+        "turkish_details": "Explicitly trained on English and German only (language: en, de).",
+        "api_available": true,
+        "api_details": "Hugging Face Serverless Inference API",
+        "local_available": true,
+        "local_details": "HF: deepset/deberta-v3-base-injection (<1 GB RAM, <50ms)",
+        "output_type": "Binary classification label ('LEGIT' or 'INJECTION') + score",
+        "benchmarks": "deepset eval set: 99.14% acc / 0.992 F1. BIPIA F1: 0.971 (with 1.00 False Positive Rate / 100% false alarms on benign context). NotInject acc: 28.6% (71.4% false alarms).",
+        "best_candidate": false,
+        "tradeoffs": "Extremely lightweight (<1 GB RAM) and MIT licensed. However, unviable for Damga AI: 512-token context cannot read invoices, lacks Turkish, and exhibits severe over-defense.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/deepset/deberta-v3-base-injection" }
+        ]
+      },
+      {
+        "id": "lakera-guard",
+        "name": "Lakera Guard (Check Point AI Security)",
+        "group": "guard",
+        "developer": "Lakera AI AG (Acquired Sep 2025 by Check Point)",
+        "country": "Switzerland",
+        "region": "European (Non-EU)",
+        "is_european": true,
+        "release_date": "2023-03",
+        "status": "Active",
+        "open_weights": false,
+        "license": "Proprietary Commercial SaaS",
+        "parameters": "n/a (Closed ensemble)",
+        "context_length": "Dynamic (Chunked)",
+        "turkish_support": "Partial",
+        "turkish_details": "Multilingual heuristics handle European languages; English is primary benchmark.",
+        "api_available": true,
+        "api_details": "Lakera Cloud API (Frankfurt/Zurich EU regions), Free dev tier / Custom Enterprise",
+        "local_available": false,
+        "local_details": "Self-hosted container for Enterprise customers only (closed weights)",
+        "output_type": "JSON verdict ({ flagged: bool, categories, scores })",
+        "benchmarks": "Gandalf benchmark creator & host (100% in-distribution). PINT benchmark: ~95.2% accuracy. BIPIA: evaluated in top commercial tier.",
+        "best_candidate": true,
+        "tradeoffs": "Market-leading prompt injection and Gandalf jailbreak defense. Smart chunking. Swiss center of excellence. Tradeoffs: Commercial pricing, closed weights, acquired by Check Point (Israel/US).",
+        "source_urls": [
+          { "title": "Lakera AI", "url": "https://www.lakera.ai/" },
+          { "title": "Check Point Acquisition", "url": "https://www.checkpoint.com/press-releases/check-point-software-technologies-to-acquire-lakera/" }
+        ]
+      },
+      {
+        "id": "horizon-labs-prompt-injection-guard-base",
+        "name": "Horizon Labs Prompt Injection Guard Base",
+        "group": "guard",
+        "developer": "Horizon AI Labs",
+        "country": "United Kingdom",
+        "region": "European (Non-EU)",
+        "is_european": true,
+        "release_date": "2026-09",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "308M (base) / 141M",
+        "context_length": "8,192 tokens",
+        "turkish_support": "Yes",
+        "turkish_details": "Explicitly trained on 30 languages including Turkish ('tr'), German, English, French, Spanish.",
+        "api_available": true,
+        "api_details": "Hugging Face Dedicated Endpoints / self-hosted CPU",
+        "local_available": true,
+        "local_details": "HF: Horizon-Labs/prompt-injection-guard-base (<500 MB RAM, ONNX included)",
+        "output_type": "Binary label ('SAFE' / 'INJECTION') + confidence score",
+        "benchmarks": "BIPIA F1: 0.628 (FPR 0.02 / only 2% false alarms vs deepset 100%). deepset test F1: 0.763. Gandalf recall: 0.822. NotInject acc: 94.4%. PIArena F1: 0.969.",
+        "best_candidate": true,
+        "tradeoffs": "Best local sub-1B candidate for Damga AI: 308M runs in <500MB RAM, 8k context handles full invoices, Apache 2.0, and natively includes Turkish. Newer community release (Sept 2026).",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/Horizon-Labs/prompt-injection-guard-base" },
+          { "title": "GitHub Repo", "url": "https://github.com/horizon-ai-labs/agent-io-guards" }
+        ]
+      },
+      {
+        "id": "aleph-alpha-pharia-aligned",
+        "name": "Aleph Alpha Pharia-1-LLM-7B-control-aligned",
+        "group": "guard",
+        "developer": "Aleph Alpha GmbH",
+        "country": "Germany",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2024-06",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Open Pharia Community",
+        "parameters": "7.0B",
+        "context_length": "8,192 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "Aligned for German, English, French, Spanish; Turkish text processed with general tokenizer.",
+        "api_available": true,
+        "api_details": "Aleph Alpha Cloud (Germany / EU Sovereign)",
+        "local_available": true,
+        "local_details": "HF: aleph-alpha/Pharia-1-LLM-7B-control-aligned (~14 GB RAM)",
+        "output_type": "Generative text with safety alignment (DPO refusals)",
+        "benchmarks": "MT-Bench & German regulatory compliance. BIPIA/deepset/Gandalf: n/a (No dedicated prompt-guard classifier published).",
+        "best_candidate": false,
+        "tradeoffs": "Strict EU data privacy and sovereign compliance from Germany. However, it is a 7B generative LLM rather than a specialized fast guard classifier; high latency and token cost.",
+        "source_urls": [
+          { "title": "Aleph Alpha", "url": "https://aleph-alpha.com/" },
+          { "title": "HF Model", "url": "https://huggingface.co/aleph-alpha/Pharia-1-LLM-7B-control-aligned" }
+        ]
+      },
+      {
+        "id": "meta-prompt-guard-86m",
+        "name": "Meta Prompt Guard 86M [Non-European Reference]",
+        "group": "guard",
+        "developer": "Meta Platforms",
+        "country": "United States",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2024-07",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Llama 3.1 Community (Gated)",
+        "parameters": "86M",
+        "context_length": "512 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "mDeBERTa-v3 multilingual backbone, fine-tuned primarily on English attacks.",
+        "api_available": true,
+        "api_details": "AWS Bedrock Guardrails, Groq, Together AI",
+        "local_available": true,
+        "local_details": "HF: meta-llama/Prompt-Guard-86M (<500 MB RAM)",
+        "output_type": "3-class label ('BENIGN', 'INJECTION', 'JAILBREAK')",
+        "benchmarks": "CyberSecEval Indirect TPR: 71.4% at FPR 1.0%. BIPIA F1: 0.020 (heavily misses indirect document injections). deepset F1: 0.235. NotInject acc: 95.3%.",
+        "best_candidate": false,
+        "tradeoffs": "Non-European. Gated license. 512-token limit fails on invoices. Extremely poor detection on indirect document injections (BIPIA F1 0.020).",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/meta-llama/Prompt-Guard-86M" },
+          { "title": "arXiv Paper", "url": "https://arxiv.org/abs/2407.21783" }
+        ]
+      },
+      {
+        "id": "google-shieldgemma-2b",
+        "name": "Google ShieldGemma 2B / 9B [Non-European Reference]",
+        "group": "guard",
+        "developer": "Google",
+        "country": "United States",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2024-08",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Gemma Terms of Use",
+        "parameters": "2.0B / 9.0B",
+        "context_length": "8,192 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "English safety data focus; Gemma tokenizer supports multilingual inputs.",
+        "api_available": true,
+        "api_details": "Google Cloud Vertex AI",
+        "local_available": true,
+        "local_details": "HF: google/shieldgemma-2b (~4 GB RAM)",
+        "output_type": "Binary probability (Logit evaluation of 'Yes' [violation] vs 'No')",
+        "benchmarks": "OpenAI Moderation eval Optimal F1: 0.812. ToxicChat F1: 0.624. HarmBench Prompt F1: 50.2%. WildGuardTest F1: 46.0%. BIPIA/deepset: n/a.",
+        "best_candidate": false,
+        "tradeoffs": "Non-European. High false negative rate on prompt injections (HarmBench F1 50.2%). Tailored for content policy harms rather than document injection attacks.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/google/shieldgemma-2b" },
+          { "title": "Google AI", "url": "https://ai.google.dev/gemma/docs/shieldgemma" }
+        ]
+      },
+      {
+        "id": "protectai-deberta-v3-base-prompt-injection-v2",
+        "name": "Protect AI DeBERTa-v3 Injection v2 [Non-European Reference]",
+        "group": "guard",
+        "developer": "Protect AI (Acquired Berlin startup Laiyer AI Jan 2024)",
+        "country": "United States",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2024-04",
+        "status": "Archived / Deprecated",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "86M (~184M tot)",
+        "context_length": "512 tokens",
+        "turkish_support": "No",
+        "turkish_details": "Model card explicitly states: 'It does not detect jailbreak attacks or handle non-English prompts.'",
+        "api_available": true,
+        "api_details": "Hugging Face Inference Endpoints",
+        "local_available": true,
+        "local_details": "HF: protectai/deberta-v3-base-prompt-injection-v2 (<1 GB RAM)",
+        "output_type": "Binary label ('SAFE' / 'INJECTION') + confidence score",
+        "benchmarks": "Post-training 20k eval: Accuracy 95.25%, F1 95.49%. BIPIA F1: 0.312 (FPR 0.20). deepset F1: 0.537. NotInject acc: 56.3% (43.7% false positive rate).",
+        "best_candidate": false,
+        "tradeoffs": "Non-European (Seattle US). Project officially marked ARCHIVED on HF and GitHub. English only, 512-token limit, low performance on document injections.",
+        "source_urls": [
+          { "title": "HF Model (Archived)", "url": "https://huggingface.co/protectai/deberta-v3-base-prompt-injection-v2" },
+          { "title": "GitHub Repo (Archived)", "url": "https://github.com/protectai/llm-guard" }
+        ]
+      },
+
+      // GROUP B: DECISION MODELS
+      {
+        "id": "typesafe-ai-jev",
+        "name": "TypeSafe AI Jev (System One) [Non-European, Baseline]",
+        "group": "decision",
+        "developer": "TypeSafe AI (Diogo Almeida, former OpenAI)",
+        "country": "United States",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2026-09-15",
+        "status": "Active",
+        "open_weights": false,
+        "license": "Proprietary Commercial API",
+        "parameters": "n/a (Closed decision engine)",
+        "context_length": "64,000 tokens (32k state)",
+        "turkish_support": "Partial",
+        "turkish_details": "Can process Turkish input state if criteria keys are English; lower non-English calibration.",
+        "api_available": true,
+        "api_details": "TypeSafe API / OpenRouter / Vercel ($0.042/1M input, output FREE)",
+        "local_available": false,
+        "local_details": "n/a (Hosted API only; open-source MCP client available)",
+        "output_type": "Typed primitives: 'Choice' (up to 255 options), 'Score' (2-10 levels), 'Noul' (binary probability 0-1)",
+        "benchmarks": "arXiv:2609.30216v1 ('Jev in the Wild'): 2,170 public GitHub repositories analyzed; guarantees 0% syntactic schema hallucination.",
+        "best_candidate": true,
+        "tradeoffs": "Lowest cost ($0.042/M tokens, free output), bounded schema guarantees no formatting hallucination, 64k context. Tradeoffs: Non-European (San Francisco, CA), closed proprietary model, Turkish needs English question keys.",
+        "source_urls": [
+          { "title": "u11d Jev Explained", "url": "https://u11d.com/blog/typesafe-ai-jev-explained/" },
+          { "title": "arXiv Paper", "url": "https://arxiv.org/html/2609.30216v1" },
+          { "title": "TypeSafe AI Blog", "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev" }
+        ]
+      },
+      {
+        "id": "mistral-ministral-3b",
+        "name": "Mistral Ministral 3B (Constrained JSON Decision)",
+        "group": "decision",
+        "developer": "Mistral AI",
+        "country": "France",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2024-10",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0 (Ministral-3-3B-Base) / API",
+        "parameters": "3.0B",
+        "context_length": "128,000 tokens",
+        "turkish_support": "Yes",
+        "turkish_details": "Native multilingual tokenizer with strong benchmarked Turkish comprehension of invoice terms and tax IDs.",
+        "api_available": true,
+        "api_details": "Mistral La Plateforme Paris ($0.04 / 1M in, $0.04 / 1M out)",
+        "local_available": true,
+        "local_details": "HF: mistralai/Ministral-3-3B-Base-2512 (~2.5 GB RAM in 4-bit quant)",
+        "output_type": "Constrained JSON Schema / Structured Outputs (Boolean yes/no, Choice enum, numeric score)",
+        "benchmarks": "MMLU: 60.9% (outperforms Llama 3.2 3B). GSM8K: 64.8%. Structured outputs JSON schema validity >99.8%.",
+        "best_candidate": true,
+        "tradeoffs": "Top European decision model for Damga AI: costs match Jev ($0.04/M), hosted in EU (Paris), 128k context, strong native Turkish language support, open-weight base checkpoint. Drawback: slight latency overhead compared to Jev due to autoregressive generation.",
+        "source_urls": [
+          { "title": "Mistral Ministral", "url": "https://mistral.ai/news/ministral/" },
+          { "title": "Structured Output Docs", "url": "https://docs.mistral.ai/capabilities/structured-output/" }
+        ]
+      },
+      {
+        "id": "atla-selene-1-mini",
+        "name": "Atla Selene-1-Mini 8B (SLMJ Judge)",
+        "group": "decision",
+        "developer": "Atla AI",
+        "country": "United Kingdom",
+        "region": "European (Non-EU)",
+        "is_european": true,
+        "release_date": "2025-01",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "8.0B (post-trained Llama 3.1)",
+        "context_length": "128,000 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "Llama 3.1 base handles Turkish tokenization; Selene post-training focused on EN, DE, FR, IT, ES, PT, HI, TH.",
+        "api_available": true,
+        "api_details": "Atla Cloud API (docs.atla-ai.com, ~$0.15/1M tokens)",
+        "local_available": true,
+        "local_details": "HF: AtlaAI/Selene-1-Mini-Llama-3.1-8B (~6-8 GB RAM)",
+        "output_type": "Absolute score (1-5), binary verification (Yes/No with critique), pairwise preference",
+        "benchmarks": "RewardBench: 89.13% (#1 8B generative model on RewardBench, outperforming GPT-4o). EvalBiasBench & AutoJ: outperforms GPT-4o.",
+        "best_candidate": true,
+        "tradeoffs": "Highest accuracy for nuanced judgment and verification (outperforms GPT-4o on RewardBench). 128k context and Apache 2.0 license. Drawback: 8B size requires ~6-8GB RAM locally, developer is UK (non-EU post-Brexit).",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/AtlaAI/Selene-1-Mini-Llama-3.1-8B" },
+          { "title": "arXiv Paper", "url": "https://arxiv.org/abs/2501.17195" }
+        ]
+      },
+      {
+        "id": "flow-ai-flow-judge-v0.1",
+        "name": "Flow AI Flow-Judge-v0.1",
+        "group": "decision",
+        "developer": "Flow AI (Acquired by Aiven, Helsinki)",
+        "country": "Finland",
+        "region": "EU",
+        "is_european": true,
+        "release_date": "2024-09",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "3.8B (Phi-3.5 base)",
+        "context_length": "128,000 tokens",
+        "turkish_support": "Partial",
+        "turkish_details": "English training prompts recommended; Phi-3.5 base handles Turkish context tokens.",
+        "api_available": true,
+        "api_details": "Self-hosted vLLM / HF Inference in EU (~$0.15/hr)",
+        "local_available": true,
+        "local_details": "HF: flowaicom/Flow-Judge-v0.1 (~3.0 GB RAM in 4-bit)",
+        "output_type": "Structured tags with critique (<feedback>) and score (<score>; pass/fail, 3-Likert, 5-Likert)",
+        "benchmarks": "Held-out binary, 3-Likert, 5-Likert tests: matches or exceeds GPT-4o-mini in rubric adherence and Spearman rank correlation with human raters.",
+        "best_candidate": true,
+        "tradeoffs": "Compact 3.8B size runs effortlessly on a Mac (~3GB RAM). 128k context length. EU origin (Helsinki, Finland). Apache 2.0 license. Structured feedback + score output. Drawback: rubric prompts must be English.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/flowaicom/Flow-Judge-v0.1" },
+          { "title": "GitHub Repo", "url": "https://github.com/flowaicom/flow-judge" }
+        ]
+      },
+      {
+        "id": "patronus-lynx-8b",
+        "name": "Patronus AI Lynx 8B [Non-European Reference]",
+        "group": "decision",
+        "developer": "Patronus AI",
+        "country": "United States",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2024-07",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Llama 3 Community",
+        "parameters": "8.0B",
+        "context_length": "8,192 tokens",
+        "turkish_support": "No",
+        "turkish_details": "English only hallucination benchmark focus.",
+        "api_available": true,
+        "api_details": "Patronus Enterprise API",
+        "local_available": true,
+        "local_details": "HF: PatronusAI/Llama-3-Patronus-Lynx-8B-Instruct (~6-8 GB RAM)",
+        "output_type": "Binary verdict ('PASS' / 'FAIL') + reasoning explanation",
+        "benchmarks": "Patronus HaluEval: 87.4% accuracy (vs GPT-4o 84.1%). FaithDial: 85.2% accuracy.",
+        "best_candidate": false,
+        "tradeoffs": "Non-European (US). 8k context window is much shorter than European alternatives (128k). Narrowly specialized for hallucination rather than arbitrary decision rubrics.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/PatronusAI/Llama-3-Patronus-Lynx-8B-Instruct" }
+        ]
+      },
+      {
+        "id": "prometheus-2-7b",
+        "name": "Prometheus 2 7B [Non-European Reference]",
+        "group": "decision",
+        "developer": "KAIST & LG AI & CMU",
+        "country": "South Korea / USA",
+        "region": "Non-European (Reference)",
+        "is_european": false,
+        "release_date": "2024-05",
+        "status": "Active",
+        "open_weights": true,
+        "license": "Apache-2.0",
+        "parameters": "7.0B",
+        "context_length": "8,192 tokens",
+        "turkish_support": "No",
+        "turkish_details": "English-only evaluation rubrics.",
+        "api_available": true,
+        "api_details": "Hosted endpoints via vLLM",
+        "local_available": true,
+        "local_details": "HF: prometheus-eval/prometheus-7b-v2.0 (~5-6 GB RAM)",
+        "output_type": "Direct assessment (Score 1-5 with critique) and Pairwise choice",
+        "benchmarks": "Feedback Collection Pearson correlation 0.897 with human judges; MT-Bench agreement 85.6%.",
+        "best_candidate": false,
+        "tradeoffs": "Non-European. Shorter context (8k) than European alternatives (128k). English-only rubric evaluation.",
+        "source_urls": [
+          { "title": "HF Model", "url": "https://huggingface.co/prometheus-eval/prometheus-7b-v2.0" },
+          { "title": "arXiv Paper", "url": "https://arxiv.org/abs/2405.01535" }
+        ]
+      }
+    ];
+
+    let currentTab = 'guard';
+    let sortColumn = 'best_candidate';
+    let sortAsc = false;
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tab-guard').classList.toggle('active', tab === 'guard');
+      document.getElementById('tab-decision').classList.toggle('active', tab === 'decision');
+      renderCurrentTable();
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-eu').checked = false;
+      document.getElementById('filter-open').checked = false;
+      document.getElementById('filter-api').checked = false;
+      document.getElementById('filter-turkish').checked = false;
+      document.getElementById('search-box').value = '';
+      renderCurrentTable();
+    }
+
+    function updateCounts() {
+      const guardCount = MODELS_DATA.filter(m => m.group === 'guard').length;
+      const decisionCount = MODELS_DATA.filter(m => m.group === 'decision').length;
+      document.getElementById('count-guard').textContent = guardCount;
+      document.getElementById('count-decision').textContent = decisionCount;
+    }
+
+    function setSort(col) {
+      if (sortColumn === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortColumn = col;
+        sortAsc = true;
+      }
+      renderCurrentTable();
+    }
+
+    function renderHeaders() {
+      const tr = document.getElementById('table-headers');
+      const cols = [
+        { key: 'name', label: 'Model & Status' },
+        { key: 'developer', label: 'Developer & Country' },
+        { key: 'parameters', label: 'Size' },
+        { key: 'context_length', label: 'Context' },
+        { key: 'license', label: 'License' },
+        { key: 'turkish_support', label: 'Turkish' },
+        { key: 'how_to_use', label: 'Deployment & Usage' },
+        { key: 'output_type', label: 'Output Type' },
+        { key: 'benchmarks', label: 'Published Benchmarks' },
+        { key: 'tradeoffs', label: 'Fit / Tradeoffs' }
+      ];
+
+      tr.innerHTML = cols.map(c => `
+        <th onclick="setSort('${c.key}')" class="${sortColumn === c.key ? 'sorted' : ''}">
+          ${c.label}
+          <span class="sort-icon">${sortColumn === c.key ? (sortAsc ? '▲' : '▼') : '↕'}</span>
+        </th>
+      `).join('');
+    }
+
+    function renderCurrentTable() {
+      renderHeaders();
+      const tbody = document.getElementById('table-body');
+      
+      const filterEu = document.getElementById('filter-eu').checked;
+      const filterOpen = document.getElementById('filter-open').checked;
+      const filterApi = document.getElementById('filter-api').checked;
+      const filterTurkish = document.getElementById('filter-turkish').checked;
+      const query = document.getElementById('search-box').value.toLowerCase().trim();
+
+      let filtered = MODELS_DATA.filter(m => m.group === currentTab);
+
+      if (filterEu) filtered = filtered.filter(m => m.is_european);
+      if (filterOpen) filtered = filtered.filter(m => m.open_weights);
+      if (filterApi) filtered = filtered.filter(m => m.api_available);
+      if (filterTurkish) filtered = filtered.filter(m => m.turkish_support === 'Yes' || m.turkish_support === 'Partial');
+
+      if (query) {
+        filtered = filtered.filter(m => 
+          m.name.toLowerCase().includes(query) ||
+          m.developer.toLowerCase().includes(query) ||
+          m.country.toLowerCase().includes(query) ||
+          m.license.toLowerCase().includes(query) ||
+          m.benchmarks.toLowerCase().includes(query) ||
+          m.tradeoffs.toLowerCase().includes(query)
+        );
+      }
+
+      filtered.sort((a, b) => {
+        let valA = a[sortColumn];
+        let valB = b[sortColumn];
+
+        if (sortColumn === 'best_candidate') {
+          valA = a.best_candidate ? 1 : 0;
+          valB = b.best_candidate ? 1 : 0;
+        }
+
+        if (typeof valA === 'string') valA = valA.toLowerCase();
+        if (typeof valB === 'string') valB = valB.toLowerCase();
+
+        if (valA < valB) return sortAsc ? -1 : 1;
+        if (valA > valB) return sortAsc ? 1 : -1;
+        return 0;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; padding: 32px; color: #64748b;">No models match the active filters.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(m => {
+        const isBest = m.best_candidate;
+        const rowClass = isBest ? 'row-best' : '';
+        const regionBadge = m.is_european ? (m.region === 'EU' ? 'badge-eu' : 'badge-noneu') : 'badge-ref';
+        const statusBadge = m.status.includes('Archived') ? '<span class="badge badge-archived">ARCHIVED</span>' : '';
+        
+        let trClass = 'tr-no';
+        if (m.turkish_support === 'Yes') trClass = 'tr-yes';
+        else if (m.turkish_support === 'Partial') trClass = 'tr-partial';
+
+        const sourceLinks = m.source_urls.map(s => `<a class="source-link" href="${s.url}" target="_blank" rel="noopener">${s.title} ↗</a>`).join('');
+
+        return `
+          <tr class="${rowClass}">
+            <td style="min-width: 170px;">
+              ${isBest ? '<div class="best-badge">★ Top Candidate</div>' : ''}
+              <span class="model-name">${m.name}</span>
+              <div>
+                <span class="badge ${regionBadge}">${m.region}</span>
+                ${statusBadge}
+                <span class="cell-muted mono">${m.release_date}</span>
+              </div>
+            </td>
+            <td style="min-width: 130px;">
+              <strong>${m.developer}</strong>
+              <div class="cell-muted">${m.country}</div>
+            </td>
+            <td class="mono" style="min-width: 90px;"><strong>${m.parameters}</strong></td>
+            <td class="mono" style="min-width: 90px;">${m.context_length}</td>
+            <td style="min-width: 110px;">
+              <span class="mono">${m.license}</span>
+              <div class="cell-muted">${m.open_weights ? '🔓 Open Weights' : '🔒 Closed Weights'}</div>
+            </td>
+            <td style="min-width: 110px;">
+              <span class="tr-pill ${trClass}">${m.turkish_support}</span>
+              <div class="cell-muted">${m.turkish_details}</div>
+            </td>
+            <td style="min-width: 180px;">
+              ${m.api_available ? `<div><strong>API:</strong> <span class="cell-muted">${m.api_details}</span></div>` : ''}
+              ${m.local_available ? `<div style="margin-top: 4px;"><strong>Local:</strong> <span class="cell-muted">${m.local_details}</span></div>` : ''}
+            </td>
+            <td style="min-width: 150px;">
+              <div class="cell-muted" style="font-size: 12px;">${m.output_type}</div>
+            </td>
+            <td style="min-width: 200px;">
+              <div class="highlight-cell">${m.benchmarks}</div>
+            </td>
+            <td style="min-width: 220px;">
+              <div style="font-size: 12px; line-height: 1.4;">${m.tradeoffs}</div>
+              <div style="margin-top: 6px;">${sourceLinks}</div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Initialize
+    updateCounts();
+    renderCurrentTable();
+  </script>
+</body>
+</html>

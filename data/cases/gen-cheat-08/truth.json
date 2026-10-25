@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "material_balance"
+  ],
+  "cheat": "Scrap invoices contain insufficient metal (yield 1.176 exceeds BREF max 0.963); unrecorded pig iron used"
+}

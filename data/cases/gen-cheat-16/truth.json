@@ -1,0 +1,9 @@
+{
+  "expected_status": "missing",
+  "expected_flags": [
+    "form_vs_docs",
+    "missing_evidence",
+    "sector_range_electricity"
+  ],
+  "cheat": "November and December electricity bills are missing (10/12 months present)"
+}

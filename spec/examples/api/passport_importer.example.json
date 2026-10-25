@@ -1,0 +1,6 @@
+{
+  "passport_id": 1,
+  "direct_kg_per_t": 92,
+  "commitment_match": true,
+  "cost_gap_note": "Using the verified value instead of the EU default (2.310 tCO2/t + 10% mark-up in 2026)."
+}

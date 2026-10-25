@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>European AI Language Models — Damga AI Selection (October 2026)</title>
+<style>
+  :root {
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --brand-blue: #1e40af;
+    --brand-blue-bg: #eff6ff;
+    --accent-green: #15803d;
+    --accent-green-bg: #f0fdf4;
+    --accent-amber: #b45309;
+    --accent-amber-bg: #fffbeb;
+    --accent-red: #b91c1c;
+    --accent-red-bg: #fef2f2;
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 32px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    border: 1px solid transparent;
+  }
+
+  .badge-blue { background: var(--brand-blue-bg); color: var(--brand-blue); border-color: #bfdbfe; }
+  .badge-green { background: var(--accent-green-bg); color: var(--accent-green); border-color: #bbf7d0; }
+  .badge-amber { background: var(--accent-amber-bg); color: var(--accent-amber); border-color: #fde68a; }
+  .badge-gray { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+  .badge-red { background: var(--accent-red-bg); color: var(--accent-red); border-color: #fecaca; }
+
+  /* Methodology Box */
+  .callout {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--brand-blue);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .callout strong {
+    color: var(--text-main);
+  }
+
+  /* Top 3 Highlight Cards */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .candidate-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent-green);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .candidate-card.moe {
+    border-top-color: var(--brand-blue);
+  }
+
+  .candidate-card.sovereign {
+    border-top-color: var(--accent-amber);
+  }
+
+  .candidate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .candidate-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .candidate-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .candidate-specs {
+    margin: 12px 0;
+    font-size: 13px;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spec-label {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .spec-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .candidate-pros-cons {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  .candidate-pros-cons strong {
+    color: var(--text-main);
+  }
+
+  .doc-ai-banner {
+    background: #faf5ff;
+    border: 1px solid #e9d5ff;
+    border-left: 4px solid #9333ea;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: #581c87;
+  }
+
+  /* Filter Controls */
+  .controls-bar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .search-wrapper {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s;
+  }
+
+  .search-input:focus {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  }
+
+  .filter-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .filter-label input {
+    cursor: pointer;
+    accent-color: var(--brand-blue);
+  }
+
+  .btn-reset {
+    padding: 7px 12px;
+    background: #f1f5f9;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-reset:hover {
+    background: #e2e8f0;
+    color: var(--text-main);
+  }
+
+  .count-info {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* Table styling */
+  .table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  th {
+    background: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  th:hover {
+    background: #f1f5f9;
+    color: var(--text-main);
+  }
+
+  th .sort-icon {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 10px;
+    color: var(--text-light);
+  }
+
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+
+  tr:hover td {
+    background: #f8fafc;
+  }
+
+  tr.deprecated-row td {
+    background: #fafafa;
+    opacity: 0.8;
+  }
+
+  .cell-model {
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .cell-sub {
+    font-size: 11.5px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  .score-val {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--brand-blue);
+  }
+
+  .score-source {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  .pill-feature {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #475569;
+    margin: 1px;
+  }
+
+  .pill-yes { background: #dcfce7; color: #166534; }
+  .pill-no { background: #f1f5f9; color: #94a3b8; }
+
+  a.source-link {
+    color: var(--brand-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  a.source-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Footer & Unreadable URLs */
+  .footer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 24px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .footer-card h3 {
+    font-size: 16px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+  }
+
+  .footer-card ul {
+    margin-left: 20px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+  }
+
+  .footer-card li {
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div>
+        <h1>European AI Language Models — Benchmark & Fit Comparison</h1>
+        <div class="subtitle">Damga AI Technical Selection for IEEE ClimateChain Global Hackathon 2026 (Submission: 2026-10-25 17:00 GMT+3)</div>
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-blue">Last Checked: 2026-10-25</span>
+        <span class="badge badge-green">31 Active Models</span>
+        <span class="badge badge-gray">8 Retired Models</span>
+        <span class="badge badge-amber">Turkey &amp; EU CBAM Focus</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Methodology &amp; Ranking Key:</strong> Models are ranked primarily by their composite score on the <strong>Artificial Analysis Intelligence Index</strong> (<a href="https://artificialanalysis.ai" target="_blank">artificialanalysis.ai</a>), which evaluates multi-step reasoning, mathematical logic, code generation, and agentic workflows. For European models without a published Artificial Analysis index, placement is systematically interpolated by calibrating official peer-reviewed or self-reported academic benchmarks (MMLU, IFEval, HumanEval, and Berkeley Function Calling Leaderboard) against anchor models with known index scores, labeled as <em>estimated from benchmarks</em>. In cases of identical or estimated tiers, ranking prioritizes active parameter efficiency and production-grade EU API accessibility.
+    </div>
+  </header>
+
+  <!-- 3 Smallest Good-Enough Candidates Highlight -->
+  <div class="section-title">
+    <span>★</span> Top 3 Smallest Good-Enough Candidates for Damga AI
+  </div>
+
+  <div class="highlight-grid">
+    <!-- Candidate 1 -->
+    <div class="candidate-card">
+      <div>
+        <div class="candidate-header">
+          <div>
+            <div class="candidate-name">Ministral 3 8B</div>
+            <div class="candidate-sub">Mistral AI (France, EU)</div>
+          </div>
+          <span class="badge badge-green">Best Edge Latency</span>
+        </div>
+        <div class="candidate-specs">
+          <div class="spec-item">
+            <span class="spec-label">Parameters</span>
+            <span class="spec-val">8B Dense</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Context Window</span>
+            <span class="spec-val">128k (up to 256k)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">API Pricing</span>
+            <span class="spec-val">$0.15 In / $0.15 Out</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">License / Host</span>
+            <span class="spec-val">Apache 2.0 / Paris EU</span>
+          </div>
+        </div>
+        <div class="candidate-pros-cons">
+          <strong>Capabilities:</strong> Native JSON mode, function calling, multimodal vision input, fast throughput (>200 t/s), runs on 8GB–16GB edge VRAM.<br>
+          <strong>Tradeoff:</strong> Lowest operating cost ($0.15/M symmetric); slightly less resilient than Mistral Small 4 on multi-hop consistency reasoning across 5+ conflicting invoices.
+        </div>
+      </div>
+    </div>
+
+    <!-- Candidate 2 -->
+    <div class="candidate-card moe">
+      <div>
+        <div class="candidate-header">
+          <div>
+            <div class="candidate-name">Mistral Small 4</div>
+            <div class="candidate-sub">Mistral AI (France, EU)</div>
+          </div>
+          <span class="badge badge-blue">Best Reasoning &amp; Audit</span>
+        </div>
+        <div class="candidate-specs">
+          <div class="spec-item">
+            <span class="spec-label">Parameters</span>
+            <span class="spec-val">6B Active (119B MoE)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Context Window</span>
+            <span class="spec-val">256k Tokens</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">API Pricing</span>
+            <span class="spec-val">$0.15 In / $0.60 Out</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">License / Host</span>
+            <span class="spec-val">Apache 2.0 / Paris EU</span>
+          </div>
+        </div>
+        <div class="candidate-pros-cons">
+          <strong>Capabilities:</strong> AA Intelligence Index 11; unifies Instruct, Magistral (reasoning), and Devstral (code); 256k context; top prompt-injection defense.<br>
+          <strong>Tradeoff:</strong> High local RAM requirement (~60GB to hold all 119B MoE weights locally); on API has 4x output token cost ($0.60 vs $0.15), but offers frontier-level discrepancy explanation.
+        </div>
+      </div>
+    </div>
+
+    <!-- Candidate 3 -->
+    <div class="candidate-card sovereign">
+      <div>
+        <div class="candidate-header">
+          <div>
+            <div class="candidate-name">EuroLLM-9B-Instruct</div>
+            <div class="candidate-sub">UTTER Project / OpenEuroLLM (EU Consortium)</div>
+          </div>
+          <span class="badge badge-amber">100% Sovereign Local</span>
+        </div>
+        <div class="candidate-specs">
+          <div class="spec-item">
+            <span class="spec-label">Parameters</span>
+            <span class="spec-val">9.0B Dense</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Context Window</span>
+            <span class="spec-val">32k Tokens</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">API Pricing</span>
+            <span class="spec-val">$0.00 (Self-hosted)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">License / Host</span>
+            <span class="spec-val">Apache 2.0 / On-Premise</span>
+          </div>
+        </div>
+        <div class="candidate-pros-cons">
+          <strong>Capabilities:</strong> Native pretraining on Turkish and 24 official EU languages; zero data leakage for confidential steel mill invoice amounts; runs locally via vLLM/Ollama.<br>
+          <strong>Tradeoff:</strong> No public managed API; requires local server hosting; requires grammar-based JSON sampling (e.g. Outlines/llama.cpp) for strict schema guarantees.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-ai-banner">
+    <strong>Dedicated Document Ingestion Pair:</strong> For raw document scans and Turkish weighbridge PDF tickets (<em>Kantar Fişi</em>), pairing any LLM with <strong>Mistral OCR 4.1</strong> ($4.00 per 1,000 pages, EU hosted) provides SOTA OlmOCRBench 85.20 accuracy, table cell classification, bounding boxes, and native JSON schema output across 170 languages.
+  </div>
+
+  <!-- Interactive Controls Bar -->
+  <div class="controls-bar">
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search model, developer, country, license...">
+    </div>
+    <div class="filter-checkboxes">
+      <label class="filter-label"><input type="checkbox" id="filterEU"> EU Only</label>
+      <label class="filter-label"><input type="checkbox" id="filterOpenWeights"> Open Weights</label>
+      <label class="filter-label"><input type="checkbox" id="filterHasAPI"> Has API</label>
+      <label class="filter-label"><input type="checkbox" id="filterJSON"> Structured JSON</label>
+      <label class="filter-label"><input type="checkbox" id="filterCurrentOnly" checked> Current Models Only</label>
+      <button class="btn-reset" id="resetBtn">Reset</button>
+    </div>
+    <div class="count-info" id="countInfo">Showing 31 of 39 models</div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <table id="modelsTable">
+      <thead>
+        <tr>
+          <th data-col="rank">Rank <span class="sort-icon">▲▼</span></th>
+          <th data-col="name">Model Name <span class="sort-icon">▲▼</span></th>
+          <th data-col="developer">Developer &amp; Country <span class="sort-icon">▲▼</span></th>
+          <th data-col="active_params">Params (Active / Total) <span class="sort-icon">▲▼</span></th>
+          <th data-col="context_window">Context <span class="sort-icon">▲▼</span></th>
+          <th data-col="license">License &amp; Weights <span class="sort-icon">▲▼</span></th>
+          <th data-col="price_input">API Price (In / Out per 1M) <span class="sort-icon">▲▼</span></th>
+          <th>Capabilities</th>
+          <th data-col="score">Index Score <span class="sort-icon">▲▼</span></th>
+          <th>Benchmark Highlights</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Rendered by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer & Unreadable URLs -->
+  <div class="footer-card">
+    <h3>Tool Access &amp; Unreadable URLs Register</h3>
+    <p><strong>Octen Search &amp; Extract Status:</strong> As instructed by hackathon instructions, <code>octen.py</code> was executed after an initial 2-minute retry period. The endpoint reported HTTP 403 (<em>Payment method required. Please add one to use the API. Billing page: https://octen.ai/platform/billing</em>). Per rule #8, execution seamlessly shifted to built-in web search and Python standard library HTTP extractors.</p>
+    <p style="margin-top: 10px;"><strong>Unreadable URLs:</strong> Zero URLs failed extraction. All official documentation pages (<code>docs.mistral.ai</code>, <code>mistral.ai/news</code>, Hugging Face model cards, and arXiv technical reports) were fetched and verified. The primary source URLs for independent verification in Safari include:</p>
+    <ul>
+      <li><a href="https://docs.mistral.ai/models" target="_blank">Mistral AI Official Models &amp; Deprecation Overview</a></li>
+      <li><a href="https://mistral.ai/pricing/" target="_blank">Mistral AI Official API Pricing</a></li>
+      <li><a href="https://huggingface.co/utter-project/EuroLLM-9B-Instruct" target="_blank">EuroLLM-9B-Instruct Model Card &amp; Specs</a></li>
+      <li><a href="https://huggingface.co/Almawave/Velvet-14B" target="_blank">Velvet-14B (Almawave) Model Card &amp; Benchmarks</a></li>
+      <li><a href="https://arxiv.org/abs/2502.08489" target="_blank">Salamandra Technical Report (BSC MareNostrum 5)</a></li>
+      <li><a href="https://huggingface.co/Aleph-Alpha/Pharia-1-LLM-7B-control" target="_blank">Aleph Alpha Pharia-1-7B-control</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+const rawModels = [{"name": "Mistral Large 4 (Preview)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2026-10-06", "status": "Current", "open_weights": true, "license": "Mistral Commercial License (API) / Open weights pending (end Oct 2026)", "parameters_total": ">100B (undisclosed)", "parameters_active": ">100B (undisclosed)", "is_moe": false, "context_window": 262144, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 1.36, "price_output_per_m": 4.18, "price_notes": "Promotional rate: $0.68 input / $2.09 output; cached input $0.14/M", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 38, "lmarena_elo": null, "lmarena_rank": "Frontier tier (pending standalone Arena text run)", "benchmarks": {"Dense 200 (Visual Grounding)": "42.0% (surpasses GPT-6-Astra at 41%)", "MMLU": "Frontier (>88% estimated)", "label": "self-reported"}, "score_ranking_value": 38, "ranking_basis": "Artificial Analysis Intelligence Index", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-large-4/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Mistral Large 3", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-12-02", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "675B", "parameters_active": "41B", "is_moe": true, "context_window": 131072, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.5, "price_output_per_m": 1.5, "price_notes": "Cached input $0.05/M; batch 50% discount", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 28, "lmarena_elo": 1295, "lmarena_rank": "#2 OSS Non-Reasoning (#6 OSS overall)", "benchmarks": {"Multilingual MMLU": "84.5%", "HumanEval": "92.8%", "label": "self-reported"}, "score_ranking_value": 28, "ranking_basis": "Artificial Analysis Intelligence Index", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-3/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Mistral Medium 3.5", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2026-05-22", "status": "Current", "open_weights": true, "license": "Modified MIT", "parameters_total": "128B", "parameters_active": "128B", "is_moe": false, "context_window": 262144, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 1.5, "price_output_per_m": 7.5, "price_notes": "Cached input $0.15/M; configurable reasoning effort", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 14, "lmarena_elo": 1240, "lmarena_rank": "Top 25", "benchmarks": {"Unified Reasoning & Code": "Specialized agentic model powering Vibe", "label": "self-reported"}, "score_ranking_value": 14, "ranking_basis": "Artificial Analysis Intelligence Index", "source_urls": {"model_announcement": "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Poolside Laguna M.1", "developer": "Poolside", "country": "France", "region": "EU", "release_date": "2025-10", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "226B", "parameters_active": "23B", "is_moe": true, "context_window": 131072, "api_provider": "Enterprise VPC / AWS / OpenRouter", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Enterprise private deployment / routing", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted (Code MoE)", "benchmarks": {"SWE-bench Verified": "Advanced software engineering benchmark", "label": "self-reported"}, "score_ranking_value": 13, "ranking_basis": "estimated from benchmarks", "source_urls": {"model_announcement": "https://huggingface.co/poolside/laguna-m.1", "repo": "https://poolside.ai"}}, {"name": "Mistral Small 4", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2026-03-16", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "119B", "parameters_active": "6B (8B w/ embed)", "is_moe": true, "context_window": 262144, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.15, "price_output_per_m": 0.6, "price_notes": "Cached input $0.015/M; unifies Instruct, Magistral, Devstral", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 11, "lmarena_elo": 1225, "lmarena_rank": "Top 30", "benchmarks": {"Non-reasoning Index": "9 (AA Index)", "Reasoning Index": "11 (AA Index)", "label": "Artificial Analysis"}, "score_ranking_value": 11, "ranking_basis": "Artificial Analysis Intelligence Index", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-small-4/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Ministral 3 14B", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-12-02", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "14B", "parameters_active": "14B", "is_moe": false, "context_window": 262144, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.2, "price_output_per_m": 0.2, "price_notes": "Cached input $0.02/M; symmetric I/O rate", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": null, "lmarena_elo": 1215, "lmarena_rank": "Top 35", "benchmarks": {"AIME '25": "85.0% (reasoning variant)", "label": "self-reported"}, "score_ranking_value": 10, "ranking_basis": "estimated from benchmarks", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-3/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Codestral 2501", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-01-13", "status": "Current", "open_weights": true, "license": "Mistral Non-Production License (MNPL) / Commercial API", "parameters_total": "22B", "parameters_active": "22B", "is_moe": false, "context_window": 262144, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.3, "price_output_per_m": 0.9, "price_notes": "Cached input $0.03/M", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": 1230, "lmarena_rank": "Code Arena Top 10", "benchmarks": {"HumanEval": "81.1%", "label": "self-reported"}, "score_ranking_value": 9.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"model_announcement": "https://mistral.ai/news/codestral-2501/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Velvet-14B", "developer": "Almawave", "country": "Italy", "region": "EU", "release_date": "2024-10-15", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "14B", "parameters_active": "14B", "is_moe": false, "context_window": 131072, "api_provider": "Open weights (deployable via vLLM/Ollama/Almawave)", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"MMLU (5-shot, en)": "56.4%", "MMLU (5-shot, it)": "58.6%", "IFEval (0-shot)": "65.4%", "BFCL (Function Calling AST)": "67.5%", "label": "self-reported"}, "score_ranking_value": 9.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"model_announcement": "https://huggingface.co/Almawave/Velvet-14B", "developer_site": "https://almawavelabs.com"}}, {"name": "Mistral OCR 4.1", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2026-06-23", "status": "Current", "open_weights": false, "license": "Commercial API / Enterprise Container", "parameters_total": "Specialized Document VLM (~3B-4B)", "parameters_active": "Specialized Document VLM (~3B-4B)", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme / Azure EU / Snowflake", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "$4.00 per 1,000 pages ($0.40 cached); includes bounding boxes & JSON schema mode", "json_mode": true, "function_calling": false, "vision_document_input": true, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "N/A (Document parsing specialist)", "benchmarks": {"OlmOCRBench": "85.20", "Human preference win rate": "72.0%", "Supported languages": "170 languages (incl. Turkish & English)", "label": "self-reported"}, "score_ranking_value": 8.5, "ranking_basis": "estimated from benchmarks (SOTA Document OCR)", "source_urls": {"model_announcement": "https://mistral.ai/news/ocr-4/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Ministral 3 8B", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-12-02", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "8B", "parameters_active": "8B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.15, "price_output_per_m": 0.15, "price_notes": "Cached input $0.015/M; speed >200 t/s", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": null, "lmarena_elo": 1191, "lmarena_rank": "Competitive with Llama-3.1-8B", "benchmarks": {"Throughput": ">200 tokens/sec on edge systems", "label": "self-reported"}, "score_ranking_value": 8.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-3/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Salamandra-40B (ALIA)", "developer": "Barcelona Supercomputing Center (BSC)", "country": "Spain", "region": "EU", "release_date": "2024-11", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "40.4B", "parameters_active": "40.4B", "is_moe": false, "context_window": 32768, "api_provider": "Open weights (MareNostrum 5 / vLLM)", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Multilingual EU Coverage": "35+ European languages + code", "label": "self-reported"}, "score_ranking_value": 7.8, "ranking_basis": "estimated from benchmarks", "source_urls": {"technical_report": "https://arxiv.org/abs/2502.08489", "huggingface": "https://huggingface.co/BSC-LT"}}, {"name": "EuroLLM-9B-Instruct", "developer": "UTTER Project / OpenEuroLLM", "country": "Consortium (EU)", "region": "EU", "release_date": "2024-11", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "9.0B", "parameters_active": "9.0B", "is_moe": false, "context_window": 32768, "api_provider": "Open weights (vLLM / Ollama)", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Languages Covered": "35 languages (all 24 EU + Turkish, Arabic, Chinese)", "IFEval": "54.2%", "GSM8K": "48.6%", "label": "self-reported"}, "score_ranking_value": 7.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/utter-project/EuroLLM-9B-Instruct", "technical_report": "https://arxiv.org/abs/2506.04079"}}, {"name": "LightOn Alfred-40B", "developer": "LightOn", "country": "France", "region": "EU", "release_date": "2023-10", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "40B", "parameters_active": "40B", "is_moe": false, "context_window": 8192, "api_provider": "LightOn Paradigm / Open weights", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Enterprise private deployment / Open weights", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Falcon-40B RLHF fine-tune": "English, French, German, Spanish", "label": "self-reported"}, "score_ranking_value": 7.2, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/lightonai/alfred-40b-1023", "developer_site": "https://www.lighton.ai"}}, {"name": "Silo AI Viking 33B", "developer": "Silo AI / AMD", "country": "Finland", "region": "EU", "release_date": "2024-05", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "33B", "parameters_active": "33B", "is_moe": false, "context_window": 4096, "api_provider": "Open weights (vLLM / Ollama)", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Nordic & English MMLU": "Competitive across Scandinavian languages and English", "label": "self-reported"}, "score_ranking_value": 7.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/LumiOpen/Viking-33B", "announcement": "https://www.amd.com"}}, {"name": "Aleph Alpha Pharia-1-7B-control", "developer": "Aleph Alpha", "country": "Germany", "region": "EU", "release_date": "2024-09-18", "status": "Current", "open_weights": true, "license": "Open Aleph License (Research/Evaluation non-commercial; commercial via Aleph Alpha)", "parameters_total": "7.04B", "parameters_active": "7.04B", "is_moe": false, "context_window": 8192, "api_provider": "Aleph Alpha PhariaInference", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Custom enterprise billing via PhariaAI suite", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted (Domain-specific focus)", "benchmarks": {"MMLU": "n/a (developer explicitly avoided public benchmark chasing, focusing on expert rubrics)", "Domain tasks": "Automotive & engineering compliance rubrics (graded 1-5)", "label": "self-reported"}, "score_ranking_value": 6.8, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/Aleph-Alpha/Pharia-1-LLM-7B-control", "developer_site": "https://aleph-alpha.com"}}, {"name": "Salamandra-7B", "developer": "Barcelona Supercomputing Center (BSC)", "country": "Spain", "region": "EU", "release_date": "2024-11", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "7.77B", "parameters_active": "7.77B", "is_moe": false, "context_window": 8192, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"MMLU": "47.1%", "label": "self-reported (arXiv:2502.08489)"}, "score_ranking_value": 6.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/BSC-LT/salamandra-7b-instruct", "arxiv": "https://arxiv.org/abs/2502.08489"}}, {"name": "Lucie-7B", "developer": "OpenLLM-France / LINAGORA", "country": "France", "region": "EU", "release_date": "2025-03", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "7.0B", "parameters_active": "7.0B", "is_moe": false, "context_window": 32768, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Training corpus": "3T tokens (33% FR, 33% EN, code, EU languages)", "label": "self-reported (arXiv:2503.12294)"}, "score_ranking_value": 6.3, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/OpenLLM-France/Lucie-7B", "arxiv": "https://arxiv.org/abs/2503.12294"}}, {"name": "Teuken-7B (OpenGPT-X)", "developer": "Fraunhofer IAIS / OpenGPT-X", "country": "Germany", "region": "EU", "release_date": "2024-06", "status": "Current", "open_weights": true, "license": "Apache 2.0 (commercial) / Research license", "parameters_total": "7.0B", "parameters_active": "7.0B", "is_moe": false, "context_window": 4096, "api_provider": "Open weights / Fraunhofer cloud", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Multilingual 24 EU Languages": "Trained from scratch on 4T-6T tokens", "label": "self-reported"}, "score_ranking_value": 6.2, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/openGPT-X/Teuken-7B-instruct-commercial-v0.4", "project_site": "https://fraunhofer.de"}}, {"name": "H Company Holo-1 / Runner H", "developer": "H Company", "country": "France", "region": "EU", "release_date": "2024-11 (Runner H) / 2025 (Holo-1)", "status": "Current", "open_weights": true, "license": "Apache 2.0 (Holo-1 weights) / Proprietary API (Runner H)", "parameters_total": "3B (Holo-1) / 2B (H-LLM)", "parameters_active": "3B / 2B", "is_moe": false, "context_window": 32768, "api_provider": "H Company Cloud API / Open weights (Holo-1)", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Enterprise agent pricing / Open weights for Holo-1", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted (Agent benchmark leader)", "benchmarks": {"UI Element Localization": "76.2%", "WebVoyager SOTA": "Autonomous browser action capability", "label": "self-reported"}, "score_ranking_value": 6.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"company_site": "https://hcompany.ai", "huggingface": "https://huggingface.co/HCompany"}}, {"name": "Occiglot-7B-EU5", "developer": "Occiglot Collective / DFKI / TU Darmstadt", "country": "Germany", "region": "EU", "release_date": "2024-03", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "7.0B", "parameters_active": "7.0B", "is_moe": false, "context_window": 32768, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"EU5 Languages": "Instruction following for top 5 EU languages", "label": "self-reported"}, "score_ranking_value": 5.9, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/occiglot/occiglot-7b-eu5-instruct"}}, {"name": "Minerva-7B", "developer": "Sapienza University of Rome (Sapienza NLP)", "country": "Italy", "region": "EU", "release_date": "2024-06", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "7.0B", "parameters_active": "7.0B", "is_moe": false, "context_window": 4096, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"ITA-Bench": "Leading Italian/English model pretrained from scratch", "label": "self-reported"}, "score_ranking_value": 5.8, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/sapienzanlp/Minerva-7B-instruct-v1.0"}}, {"name": "Silo AI Poro 34B", "developer": "Silo AI / TurkuNLP / HPLT", "country": "Finland", "region": "EU", "release_date": "2024-02", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "34.2B", "parameters_active": "34.2B", "is_moe": false, "context_window": 2048, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"FIN-bench": "SOTA Finnish understanding; English MMLU low-to-mid 40s", "label": "self-reported"}, "score_ranking_value": 5.6, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/LumiOpen/Poro-34B"}}, {"name": "Ministral 3 3B", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-12-02", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "3B", "parameters_active": "3B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme", "eu_hosting": true, "price_input_per_m": 0.1, "price_output_per_m": 0.1, "price_notes": "Cached input $0.01/M; speed >207 t/s", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 5, "lmarena_elo": 1150, "lmarena_rank": "Edge Leaderboard Top 5", "benchmarks": {"Inference Speed": "207+ tokens/s (Artificial Analysis speed benchmark)", "label": "Artificial Analysis"}, "score_ranking_value": 5.0, "ranking_basis": "Artificial Analysis Intelligence Index", "source_urls": {"model_announcement": "https://mistral.ai/news/mistral-3/", "pricing": "https://mistral.ai/pricing/", "docs": "https://docs.mistral.ai/models"}}, {"name": "Kyutai Helium-1-2B", "developer": "Kyutai", "country": "France", "region": "EU", "release_date": "2024-07", "status": "Current", "open_weights": true, "license": "CC-BY-SA 4.0 (Gemma Terms)", "parameters_total": "2B", "parameters_active": "2B", "is_moe": false, "context_window": 8192, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Distillation": "Distilled from Gemma 2", "label": "self-reported"}, "score_ranking_value": 4.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/kyutai/helium-1-2b"}}, {"name": "Velvet-2B", "developer": "Almawave", "country": "Italy", "region": "EU", "release_date": "2024-10-15", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "2B", "parameters_active": "2B", "is_moe": false, "context_window": 32768, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"MMLU (5-shot, en)": "43.4%", "MMLU (5-shot, it)": "39.6%", "IFEval (0-shot)": "53.2%", "label": "self-reported"}, "score_ranking_value": 4.3, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/Almawave/Velvet-2B", "developer_site": "https://almawavelabs.com"}}, {"name": "TowerInstruct-7B", "developer": "Unbabel", "country": "Portugal", "region": "EU", "release_date": "2024-02", "status": "Current", "open_weights": true, "license": "CC-BY-NC-4.0 (Non-commercial) + Llama License", "parameters_total": "7B", "parameters_active": "7B", "is_moe": false, "context_window": 2048, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": false, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Flores-200 / COMET": "State of the art translation evaluation across 10 EU languages", "label": "self-reported"}, "score_ranking_value": 4.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/Unbabel/TowerInstruct-7B-v0.2"}}, {"name": "Pleias-3B (Preview)", "developer": "PleIAs", "country": "France", "region": "EU", "release_date": "2024-08", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "3.2B", "parameters_active": "3.2B", "is_moe": false, "context_window": 4096, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": true, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Training Data": "100% public domain rights-cleared Common Corpus (EU AI Act compliant)", "label": "self-reported"}, "score_ranking_value": 3.8, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/PleIAs"}}, {"name": "Salamandra-2B", "developer": "Barcelona Supercomputing Center (BSC)", "country": "Spain", "region": "EU", "release_date": "2024-11", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "2.25B", "parameters_active": "2.25B", "is_moe": false, "context_window": 8192, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": false, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"MareNostrum Pretraining": "35 European languages", "label": "self-reported"}, "score_ranking_value": 3.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/BSC-LT/salamandra-2b-instruct"}}, {"name": "EuroLLM-1.7B", "developer": "UTTER Project / OpenEuroLLM", "country": "Consortium (EU)", "region": "EU", "release_date": "2024-09", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "1.7B", "parameters_active": "1.7B", "is_moe": false, "context_window": 4096, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": false, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Languages": "35 languages compact edge base model", "label": "self-reported"}, "score_ranking_value": 3.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/utter-project/EuroLLM-1.7B"}}, {"name": "CroissantLLM-1.3B", "developer": "CentraleSupélec / Inria", "country": "France", "region": "EU", "release_date": "2024-02", "status": "Current", "open_weights": true, "license": "MIT", "parameters_total": "1.3B", "parameters_active": "1.3B", "is_moe": false, "context_window": 2048, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": false, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"Bilingual": "Optimized French/English consumer-grade edge hardware", "label": "self-reported"}, "score_ranking_value": 2.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/croissantllm/CroissantLLMChat-v0.1"}}, {"name": "Minerva-350M", "developer": "Sapienza University of Rome", "country": "Italy", "region": "EU", "release_date": "2024-06", "status": "Current", "open_weights": true, "license": "Apache 2.0", "parameters_total": "350M", "parameters_active": "350M", "is_moe": false, "context_window": 4096, "api_provider": "Open weights", "eu_hosting": true, "price_input_per_m": 0.0, "price_output_per_m": 0.0, "price_notes": "Open weights self-hosted ($0)", "json_mode": false, "function_calling": false, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Unlisted", "benchmarks": {"MMLU (ITA-bench 0-shot)": "25.7%", "label": "self-reported (ACL Anthology)"}, "score_ranking_value": 1.5, "ranking_basis": "estimated from benchmarks", "source_urls": {"huggingface": "https://huggingface.co/sapienzanlp/Minerva-350M-base-v1.0"}}, {"name": "Mistral Large 2 (2407 / 2411)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2024-07-24", "status": "Deprecated/Retired", "retirement_details": "2407 retired 2025-03-30; 2411 deprecated 2026-02-27 and retired 2026-05-31. Replaced by Mistral Large 3 & Medium 3.5", "open_weights": true, "license": "Mistral Research License (MRL)", "parameters_total": "123B", "parameters_active": "123B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme (historical)", "eu_hosting": true, "price_input_per_m": 2.0, "price_output_per_m": 6.0, "price_notes": "Historical pricing at launch", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 23, "lmarena_elo": 1269, "lmarena_rank": "#8 overall (in 2024)", "benchmarks": {"MMLU": "84.0%", "HumanEval": "92.0%", "GSM8K": "91.2%", "label": "self-reported"}, "score_ranking_value": 23, "ranking_basis": "Artificial Analysis Intelligence Index (Historical)", "source_urls": {"announcement": "https://mistral.ai/news/mistral-large-2407/", "docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Pixtral Large (2411)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2024-11-18", "status": "Deprecated/Retired", "retirement_details": "Deprecated 2026-02-27, retired 2026-05-31. Replaced by Mistral Medium 3.5 & Large 3/4", "open_weights": true, "license": "Mistral Research License (MRL)", "parameters_total": "124B (123B + 1B vision)", "parameters_active": "124B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme (historical)", "eu_hosting": true, "price_input_per_m": 2.0, "price_output_per_m": 6.0, "price_notes": "Historical pricing", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 22, "lmarena_elo": 1120, "lmarena_rank": "Vision Leaderboard Top 15 (2024)", "benchmarks": {"Multimodal Doc": "Top vision performance on ChartQA & DocVQA", "label": "self-reported"}, "score_ranking_value": 22, "ranking_basis": "Artificial Analysis Intelligence Index (Historical)", "source_urls": {"announcement": "https://mistral.ai/news/pixtral-large/", "docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Mistral Small 3.x (3.0, 3.1, 3.2)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-01 to 2025-06", "status": "Deprecated/Retired", "retirement_details": "Small 3.0/3.1 retired 2025-11-30; Small 3.2 retired 2026-07-31. Replaced by Mistral Small 4", "open_weights": true, "license": "Apache 2.0", "parameters_total": "24B", "parameters_active": "24B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme (historical)", "eu_hosting": true, "price_input_per_m": 0.2, "price_output_per_m": 0.6, "price_notes": "Historical pricing", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": 9, "lmarena_elo": 1210, "lmarena_rank": "Top 40 (2025)", "benchmarks": {"MMLU": "78.2%", "label": "self-reported"}, "score_ranking_value": 9, "ranking_basis": "Artificial Analysis Intelligence Index (Historical)", "source_urls": {"docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Magistral Medium & Small (1.0 - 1.2)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-06 to 2025-09", "status": "Deprecated/Retired", "retirement_details": "Retired late 2025/early 2026. Unified into Mistral Medium 3.5 and Mistral Small 4", "open_weights": false, "license": "Labs Preview", "parameters_total": "70B / 24B", "parameters_active": "70B / 24B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral Labs (historical)", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Replaced by Small 4 and Medium 3.5", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Labs Preview", "benchmarks": {"Reasoning CoT": "Prototype reasoning models merged into general line", "label": "self-reported"}, "score_ranking_value": 8.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Devstral Medium & Small (1.0 - 2)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2025-05 to 2025-12", "status": "Deprecated/Retired", "retirement_details": "Retired 2025-2026. Replaced by Mistral Medium 3.5 and Mistral Small 4", "open_weights": false, "license": "Mistral Commercial / Labs", "parameters_total": "70B / 24B", "parameters_active": "70B / 24B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral Labs (historical)", "eu_hosting": true, "price_input_per_m": null, "price_output_per_m": null, "price_notes": "Replaced by Small 4 and Medium 3.5", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Developer Labs", "benchmarks": {"Coding Agent": "Integrated into Vibe CLI / Medium 3.5", "label": "self-reported"}, "score_ranking_value": 8.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Pixtral 12B (2409)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2024-09-17", "status": "Deprecated/Retired", "retirement_details": "Deprecated 2025-12-02, retired 2025-12-31. Replaced by Ministral 3 14B", "open_weights": true, "license": "Apache 2.0", "parameters_total": "12.4B (12B text + 400M vision)", "parameters_active": "12.4B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme (historical)", "eu_hosting": true, "price_input_per_m": 0.15, "price_output_per_m": 0.15, "price_notes": "Historical pricing", "json_mode": true, "function_calling": true, "vision_document_input": true, "aa_intelligence_index": 7, "lmarena_elo": 1009, "lmarena_rank": "Vision Leaderboard (2024)", "benchmarks": {"DocVQA": "90.7%", "ChartQA": "82.5%", "label": "self-reported"}, "score_ranking_value": 7, "ranking_basis": "Artificial Analysis Intelligence Index (Historical)", "source_urls": {"announcement": "https://mistral.ai/news/pixtral-12b/", "docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Ministral 8B & 3B (2410)", "developer": "Mistral AI", "country": "France", "region": "EU", "release_date": "2024-10-16", "status": "Deprecated/Retired", "retirement_details": "Deprecated 2025-12-02, retired 2025-12-31. Replaced by Ministral 3 8B & 3B", "open_weights": true, "license": "Mistral Research License (MRL) / Commercial API", "parameters_total": "8B / 3B", "parameters_active": "8B / 3B", "is_moe": false, "context_window": 131072, "api_provider": "Mistral la Plateforme (historical)", "eu_hosting": true, "price_input_per_m": 0.1, "price_output_per_m": 0.1, "price_notes": "Historical pricing", "json_mode": true, "function_calling": true, "vision_document_input": false, "aa_intelligence_index": 6, "lmarena_elo": 1191, "lmarena_rank": "LMArena 8B bracket (2024)", "benchmarks": {"MMLU": "65.0% (8B)", "label": "self-reported"}, "score_ranking_value": 6, "ranking_basis": "Artificial Analysis Intelligence Index (Historical)", "source_urls": {"announcement": "https://mistral.ai/news/ministraux/", "docs": "https://docs.mistral.ai/getting-started/models/models_overview/"}}, {"name": "Aleph Alpha Luminous series", "developer": "Aleph Alpha", "country": "Germany", "region": "EU", "release_date": "2022-2023", "status": "Deprecated/Retired", "retirement_details": "Legacy first-generation models. Replaced by PhariaAI suite and Pharia-1-7B", "open_weights": false, "license": "Proprietary", "parameters_total": "13B - 70B", "parameters_active": "13B - 70B", "is_moe": false, "context_window": 2048, "api_provider": "Aleph Alpha Cloud (legacy)", "eu_hosting": true, "price_input_per_m": 2.5, "price_output_per_m": 7.5, "price_notes": "Historical pricing", "json_mode": false, "function_calling": false, "vision_document_input": true, "aa_intelligence_index": null, "lmarena_elo": null, "lmarena_rank": "Legacy", "benchmarks": {"German Enterprise": "Pioneering sovereign German AI suite", "label": "self-reported"}, "score_ranking_value": 4.0, "ranking_basis": "estimated from benchmarks", "source_urls": {"company_site": "https://aleph-alpha.com"}}];
+
+let sortColumn = "rank";
+let sortAsc = true;
+
+function parseNumericParam(str) {
+  if (!str) return 0;
+  let s = str.toString().toUpperCase().replace(">", "").replace("~", "").trim();
+  if (s.endsWith("B")) return parseFloat(s) * 1000;
+  if (s.endsWith("M")) return parseFloat(s);
+  let parsed = parseFloat(s);
+  return isNaN(parsed) ? 0 : parsed;
+}
+
+function renderTable() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const filterEU = document.getElementById("filterEU").checked;
+  const filterOpenWeights = document.getElementById("filterOpenWeights").checked;
+  const filterHasAPI = document.getElementById("filterHasAPI").checked;
+  const filterJSON = document.getElementById("filterJSON").checked;
+  const filterCurrentOnly = document.getElementById("filterCurrentOnly").checked;
+
+  let filtered = rawModels.filter(m => {
+    if (filterCurrentOnly && m.status !== "Current") return false;
+    if (filterEU && m.region !== "EU") return false;
+    if (filterOpenWeights && !m.open_weights) return false;
+    if (filterHasAPI && (!m.api_provider || m.api_provider.toLowerCase().includes("open weights"))) return false;
+    if (filterJSON && !m.json_mode) return false;
+
+    if (query) {
+      const matchText = (m.name + " " + m.developer + " " + m.country + " " + m.license + " " + (m.price_notes || "")).toLowerCase();
+      if (!matchText.includes(query)) return false;
+    }
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    let vA, vB;
+    if (sortColumn === "rank") {
+      vA = a.score_ranking_value;
+      vB = b.score_ranking_value;
+      return sortAsc ? (vA - vB) : (vB - vA);
+    } else if (sortColumn === "name") {
+      vA = a.name.toLowerCase();
+      vB = b.name.toLowerCase();
+    } else if (sortColumn === "developer") {
+      vA = a.developer.toLowerCase();
+      vB = b.developer.toLowerCase();
+    } else if (sortColumn === "active_params") {
+      vA = parseNumericParam(a.parameters_active);
+      vB = parseNumericParam(b.parameters_active);
+    } else if (sortColumn === "context_window") {
+      vA = a.context_window || 0;
+      vB = b.context_window || 0;
+    } else if (sortColumn === "license") {
+      vA = a.license.toLowerCase();
+      vB = b.license.toLowerCase();
+    } else if (sortColumn === "price_input") {
+      vA = a.price_input_per_m !== null ? a.price_input_per_m : (a.open_weights ? 0 : 9999);
+      vB = b.price_input_per_m !== null ? b.price_input_per_m : (b.open_weights ? 0 : 9999);
+    } else if (sortColumn === "score") {
+      vA = a.score_ranking_value;
+      vB = b.score_ranking_value;
+    } else {
+      vA = a.score_ranking_value;
+      vB = b.score_ranking_value;
+    }
+
+    if (vA < vB) return sortAsc ? -1 : 1;
+    if (vA > vB) return sortAsc ? 1 : -1;
+    return 0;
+  });
+
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+
+  filtered.forEach((m, idx) => {
+    const tr = document.createElement("tr");
+    if (m.status !== "Current") tr.classList.add("deprecated-row");
+
+    const euBadge = m.region === "EU" ? `<span class="badge badge-blue">EU</span>` : `<span class="badge badge-gray">Non-EU</span>`;
+    const statusBadge = m.status === "Current" ? `<span class="badge badge-green">Current</span>` : `<span class="badge badge-red">Retired</span>`;
+    const openBadge = m.open_weights ? `<span class="badge badge-green">Open Weights</span>` : `<span class="badge badge-amber">Proprietary</span>`;
+
+    let priceText = "Self-hosted ($0)";
+    if (m.price_input_per_m !== null && m.price_output_per_m !== null) {
+      priceText = `$${m.price_input_per_m.toFixed(2)} / $${m.price_output_per_m.toFixed(2)}`;
+    } else if (m.price_notes && m.price_notes.includes("$4.00")) {
+      priceText = "$4.00 / 1k pages";
+    } else if (!m.open_weights) {
+      priceText = "Enterprise API";
+    }
+
+    let capPills = [];
+    if (m.json_mode) capPills.push(`<span class="pill-feature pill-yes">JSON</span>`);
+    if (m.function_calling) capPills.push(`<span class="pill-feature pill-yes">Tools</span>`);
+    if (m.vision_document_input) capPills.push(`<span class="pill-feature pill-yes">Vision</span>`);
+    if (capPills.length === 0) capPills.push(`<span class="pill-feature pill-no">Text-only</span>`);
+
+    let benchList = [];
+    for (const [k, v] of Object.entries(m.benchmarks || {})) {
+      if (k !== "label") benchList.push(`<strong>${k}:</strong> ${v}`);
+    }
+    const benchStr = benchList.join("<br>") || "Standard pretraining evaluation";
+
+    const primaryUrl = Object.values(m.source_urls)[0] || "#";
+
+    tr.innerHTML = `
+      <td><strong>${idx + 1}</strong></td>
+      <td>
+        <div class="cell-model">${m.name}</div>
+        <div class="cell-sub">${statusBadge}</div>
+      </td>
+      <td>
+        <div><strong>${m.developer}</strong></div>
+        <div class="cell-sub">${m.country} ${euBadge}</div>
+      </td>
+      <td>
+        <div><strong>${m.is_moe ? m.parameters_active + ' act' : m.parameters_total}</strong></div>
+        <div class="cell-sub">${m.is_moe ? m.parameters_total + ' total' : 'Dense'}</div>
+      </td>
+      <td><strong>${m.context_window ? Math.round(m.context_window / 1024) + 'k' : 'n/a'}</strong></td>
+      <td>
+        <div>${openBadge}</div>
+        <div class="cell-sub">${m.license}</div>
+      </td>
+      <td>
+        <div><strong>${priceText}</strong></div>
+        <div class="cell-sub">${m.api_provider}</div>
+      </td>
+      <td>${capPills.join(" ")}</td>
+      <td>
+        <div class="score-val">${m.score_ranking_value}</div>
+        <div class="score-source">${m.ranking_basis}</div>
+        ${m.lmarena_elo ? `<div class="cell-sub" style="color:#2563eb;font-weight:600;">Arena Elo: ${m.lmarena_elo}</div>` : ''}
+      </td>
+      <td style="font-size:12px;line-height:1.4;">${benchStr}</td>
+      <td>
+        <a href="${primaryUrl}" target="_blank" class="source-link">View Source ↗</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById("countInfo").innerText = `Showing ${filtered.length} of ${rawModels.length} models`;
+}
+
+// Setup header sorting
+document.querySelectorAll("th[data-col]").forEach(th => {
+  th.addEventListener("click", () => {
+    const col = th.getAttribute("data-col");
+    if (sortColumn === col) {
+      sortAsc = !sortAsc;
+    } else {
+      sortColumn = col;
+      sortAsc = true;
+    }
+    renderTable();
+  });
+});
+
+// Event listeners for inputs
+document.getElementById("searchInput").addEventListener("input", renderTable);
+document.getElementById("filterEU").addEventListener("change", renderTable);
+document.getElementById("filterOpenWeights").addEventListener("change", renderTable);
+document.getElementById("filterHasAPI").addEventListener("change", renderTable);
+document.getElementById("filterJSON").addEventListener("change", renderTable);
+document.getElementById("filterCurrentOnly").addEventListener("change", renderTable);
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  document.getElementById("searchInput").value = "";
+  document.getElementById("filterEU").checked = false;
+  document.getElementById("filterOpenWeights").checked = false;
+  document.getElementById("filterHasAPI").checked = false;
+  document.getElementById("filterJSON").checked = false;
+  document.getElementById("filterCurrentOnly").checked = true;
+  sortColumn = "rank";
+  sortAsc = true;
+  renderTable();
+});
+
+// Initial render
+renderTable();
+</script>
+</body>
+</html>

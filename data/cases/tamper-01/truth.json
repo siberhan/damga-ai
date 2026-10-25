@@ -1,0 +1,5 @@
+{
+  "expected_status": "green",
+  "expected_flags": [],
+  "cheat": "Post-seal tamper demo: docs_tampered/ contains modified PDF with altered digit to show hash mismatch"
+}

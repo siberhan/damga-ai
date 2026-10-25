@@ -1,0 +1,21 @@
+{
+  "passport_id": 1,
+  "status": "active",
+  "product": { "cn_code": "72142000", "name": "Rebar", "gtin": "00200000000014", "lot": "2026-72142000" },
+  "plant": { "name": "Aliağa Demo Steel Works (fictional)", "country": "TR" },
+  "reporting_period": "2026",
+  "verified_by": { "name": "Demo Verification GmbH (fictional)", "address": "0x..." },
+  "issued_at": "2026-10-25T12:00:00Z",
+  "process_route": ["EAF", "continuous_casting", "hot_rolling"],
+  "claims": [
+    { "label": "Direct emissions", "statement": "≤ 0.150 tCO₂ per tonne", "proof": "zk-groth16", "verified_on_chain": true },
+    { "label": "Scrap share of metal input", "statement": "≥ 90%", "proof": "zk-groth16", "verified_on_chain": true }
+  ],
+  "eu_default_value_t_per_t": 2.310,
+  "documents_unchanged": true,
+  "attempt_count": 3,
+  "model": { "name": "<AI_MODEL>", "version": "..." },
+  "ruleset_version": "1.0.0",
+  "chain": { "registry": "0x...", "tx_hash": "0x...", "etherscan": "https://sepolia.etherscan.io/tx/0x..." },
+  "vc_url": "/api/passports/1/vc"
+}

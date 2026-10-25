@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "form_vs_docs"
+  ],
+  "cheat": "Attempt 2: Cheater adjusted scrap to mask pig iron, but pig iron is still omitted (0 t) on form"
+}

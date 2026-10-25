@@ -1,0 +1,8 @@
+{
+  "expected_status": "missing",
+  "expected_flags": [
+    "form_vs_docs",
+    "missing_evidence"
+  ],
+  "cheat": "December gas bill is missing from evidence documents (11/12 months present)"
+}

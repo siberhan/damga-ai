@@ -1,0 +1,21 @@
+{
+  "@context": ["https://www.w3.org/ns/credentials/v2"],
+  "type": ["VerifiableCredential", "DamgaSteelPassport"],
+  "id": "https://<host>/01/00200000000014/10/2026-72142000",
+  "issuer": { "id": "did:pkh:eip155:11155111:0xVerifier...", "name": "Demo Verification GmbH (fictional)" },
+  "validFrom": "2026-10-25T12:00:00Z",
+  "credentialSubject": {
+    "product": { "cn_code": "72142000", "name": "Rebar", "gtin": "00200000000014", "lot": "2026-72142000" },
+    "plant": { "name": "Aliağa Demo Steel Works (fictional)", "country": "TR" },
+    "reporting_period": "2026",
+    "process_route": ["EAF", "continuous_casting", "hot_rolling"],
+    "claims": {
+      "direct_emissions_max_kg_per_t": 150,
+      "scrap_share_min_permille": 900,
+      "proof": "groth16",
+      "emissions_commitment": "1234...",
+      "scrap_commitment": "5678..."
+    },
+    "chain": { "network": "sepolia", "registry": "0x...", "passport_id": 1, "file_key": "0x...", "attempt_index": 2, "docs_root": "0x...", "result_hash": "0x...", "model_hash": "0x...", "ruleset_hash": "0x..." }
+  }
+}

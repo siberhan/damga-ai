@@ -1,0 +1,1000 @@
+{
+  "schema": "damga.ai_result.v1",
+  "case_id": "gen-honest-15",
+  "file_key": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+  "attempt_index": 0,
+  "docs_root": "0x42b7647eee7d1ca462c575afb5ec6a53c348169542e2e6f8c3c50fb1d9508a7d",
+  "declaration_hash": "0xf49aa563339e2775dad21ab92416660553f0272e03980aea528ce6a4cf5ce833",
+  "input_hash": "0xe16c8348fc1fe4817dad7302f5a1aef3bf68865b2c35875379cd816d57e5ae59",
+  "model": {
+    "provider": "openrouter",
+    "name": "xiaomi/mimo-v2.6-flash",
+    "guard_model": "typesafe/jev-1.14",
+    "version": "2026-10",
+    "model_hash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd"
+  },
+  "ruleset": {
+    "id": "steel_eaf",
+    "version": "1.0.0",
+    "ruleset_hash": "0x464f7b6c1703042a0de7f960ad56dbd061ba99378c35d9c2e1a28c1569e3c80a"
+  },
+  "extractions": [
+    {
+      "doc_id": "GAS-2026-01",
+      "doc_type": "gas_bill",
+      "period": "2026-01",
+      "doc_sha256": "0xe91016ac2e5e80c3853e4461c97930a913077cc2304152b34e0dc33a7df0e5cf",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-02",
+      "doc_type": "gas_bill",
+      "period": "2026-02",
+      "doc_sha256": "0x456adf99bd5e696db69c532559b2b4978ea604c3a2f193c4ab50a3bb0c9fbed2",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-03",
+      "doc_type": "gas_bill",
+      "period": "2026-03",
+      "doc_sha256": "0x288b3aedfb8835a6cf5cb10a5bddc010b4e4d71c89949d02ab7177661071d7ee",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-04",
+      "doc_type": "gas_bill",
+      "period": "2026-04",
+      "doc_sha256": "0x68c26fe221f44817e954e21dbf73837aaba75058f78d2aea9517a6d0864dd9dc",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-05",
+      "doc_type": "gas_bill",
+      "period": "2026-05",
+      "doc_sha256": "0x783741b31ca0de9a4062abe9eec186d7cc62305719d228bf0986ad53e9e2dfcc",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-06",
+      "doc_type": "gas_bill",
+      "period": "2026-06",
+      "doc_sha256": "0xa70c100d34a0c60d4860bee38ac2fedd4ab5747b7e08a4c0a1da2d6f0a886b59",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-07",
+      "doc_type": "gas_bill",
+      "period": "2026-07",
+      "doc_sha256": "0x2fcb3f3d993d0893e1f97e34fbc5f14ac10b622d35280a3d98e49c28668170b3",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-08",
+      "doc_type": "gas_bill",
+      "period": "2026-08",
+      "doc_sha256": "0xb428bfcbb59ed1725598b1457820ee54f0da8ff9e3bbe8fb7ad8360b2b39bae6",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-09",
+      "doc_type": "gas_bill",
+      "period": "2026-09",
+      "doc_sha256": "0x3a40800152393cb171b7a61214703cacd1f4a86a52523956813a5ed83439b199",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-10",
+      "doc_type": "gas_bill",
+      "period": "2026-10",
+      "doc_sha256": "0x7c796997ee8ef87225a789558e9a1bdc986cda159bbb7698a681e946c82be6f4",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-11",
+      "doc_type": "gas_bill",
+      "period": "2026-11",
+      "doc_sha256": "0x7b2539ff847f9cc2d0f0b7d5dabe812628ea63277bce186d6e90389af176f392",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "GAS-2026-12",
+      "doc_type": "gas_bill",
+      "period": "2026-12",
+      "doc_sha256": "0x22a730907f1b12b5c108aaefe7a35eca3fff842c36a4a2aeedf8535cac4390e1",
+      "fields": [
+        {
+          "key": "natural_gas_m3",
+          "value": 1125000.0,
+          "unit": "m3",
+          "quote": "Monthly metered natural gas consumption: 1,125,000.0 m3 (Total: 1,125,000.0 m3)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-01",
+      "doc_type": "electricity_bill",
+      "period": "2026-01",
+      "doc_sha256": "0x2a785d3dc0ac607907e83c3b2f1c96c5d116191f254da4f09e6cc21afbd67484",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-02",
+      "doc_type": "electricity_bill",
+      "period": "2026-02",
+      "doc_sha256": "0x3feb83df0905bf67aed3d1b88aaad5da3a506bfa1d97cc17b005a2232ffa3e0d",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-03",
+      "doc_type": "electricity_bill",
+      "period": "2026-03",
+      "doc_sha256": "0x888251e8b28d2ffac6cd93efdc75c966a6e5326ac2908a12012d22733e5b72f8",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-04",
+      "doc_type": "electricity_bill",
+      "period": "2026-04",
+      "doc_sha256": "0xeca6e7bc2062f345e5d5d8ac7deb82c976f4074c861265a60279aa344f66a85d",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-05",
+      "doc_type": "electricity_bill",
+      "period": "2026-05",
+      "doc_sha256": "0xdb504588425b115a5cfbf62d7ddf63f70328fa44d8083dae43a867cb7be20233",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-06",
+      "doc_type": "electricity_bill",
+      "period": "2026-06",
+      "doc_sha256": "0x8b644c47427537979695b387f92836d34573e3a0c8beeb04410fdc8384a98529",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-07",
+      "doc_type": "electricity_bill",
+      "period": "2026-07",
+      "doc_sha256": "0xde5d3fd343707341da4fa772eb817a5d1b7a8ffaa1543188bc5d2af1e6e8668d",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-08",
+      "doc_type": "electricity_bill",
+      "period": "2026-08",
+      "doc_sha256": "0x50d9ee226e9767b980b03761f42811013496f679205054c1ced9875308a2288a",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-09",
+      "doc_type": "electricity_bill",
+      "period": "2026-09",
+      "doc_sha256": "0xdda306e34c24796ab12e084acb0d872731b2690b5c8cb18cd890ddf14bcbc36b",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-10",
+      "doc_type": "electricity_bill",
+      "period": "2026-10",
+      "doc_sha256": "0xaecbdc6ba84dbc539284fd57113448967f65c0c647e8438ecd51e2c61f6e92e9",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-11",
+      "doc_type": "electricity_bill",
+      "period": "2026-11",
+      "doc_sha256": "0xd8f8617c413c3d60d8992a3c63a9ec2bdfd3f33c606341776e923587567a9b1a",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.08,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "ELEC-2026-12",
+      "doc_type": "electricity_bill",
+      "period": "2026-12",
+      "doc_sha256": "0x0382b0309aefd9b6aa22126bdf8945ce47e652e71f1d3e41764bee934edbaaa6",
+      "fields": [
+        {
+          "key": "electricity_mwh",
+          "value": 11812.5,
+          "unit": "MWh",
+          "quote": "Monthly total active electrical energy consumption: 11,812.5 MWh (Total: 11,812.5 MWh)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q1",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q1",
+      "doc_sha256": "0xe8dd412060d66b6ddc58ec670e4f05336e22ebb60c2718d9d70f942853e40719",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 91801.8,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q1 91,801.8 t 385.00 35,343,683.38",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q2",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q2",
+      "doc_sha256": "0xe91228bcbc0588f717f0355ec4de808829e5dd68d3759ecfe2385e2aaa8dce5c",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 91801.8,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q2 91,801.8 t 385.00 35,343,683.38",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.05,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q3",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q3",
+      "doc_sha256": "0x55f1c56966c1d50a93e8b568ba45c0e07f17dcfde4ee1489435f9f15fefea0ce",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 91801.8,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q3 91,801.8 t 385.00 35,343,683.38",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-SCRAP-Q4",
+      "doc_type": "purchase_invoice",
+      "period": "2026-Q4",
+      "doc_sha256": "0x24b6b5a65f3d8612000217ebb760934251fb2e1c3649b0cecfc45df1ef5cdb6b",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 91801.8,
+          "unit": "t",
+          "quote": "Recycled Heavy Melting Steel Scrap HMS 1/2 Batch Q4 91,801.8 t 385.00 35,343,683.38",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-ELECTRODES-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-02",
+      "doc_sha256": "0x3da7ea34289312e214d0d2a4cea2d8818e6c50ac11f0d08db920653a453a156a",
+      "fields": [
+        {
+          "key": "electrodes_t",
+          "value": 675.0,
+          "unit": "t",
+          "quote": "Ultra High Power (UHP) Graphite Electrodes dia 600mm 675.0 t 3,800.00 2,565,000.00",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-CARBON-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-03",
+      "doc_sha256": "0xa87bcedb75ada9d317f58c8fa75826e9c1acd7925a3fde94e5b64cf9c0d563b7",
+      "fields": [
+        {
+          "key": "carbon_charge_t",
+          "value": 4050.0,
+          "unit": "t",
+          "quote": "Anthracite Recarburiser Carbon Charge 4,050.0 t 290.00 1,174,500.00",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.03,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-LIME-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-03",
+      "doc_sha256": "0x5bccd59c7cd0ccf0a57cc28f96047d72c3b93e93ab23ba6a1b62f44ff26c85eb",
+      "fields": [
+        {
+          "key": "lime_t",
+          "value": 13500.0,
+          "unit": "t",
+          "quote": "High Calcium Quicklime for EAF Slag Formation 13,500.0 t 125.00 1,687,500.00",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "INV-FERROALLOYS-01",
+      "doc_type": "purchase_invoice",
+      "period": "2026-04",
+      "doc_sha256": "0x53387baa140b43e158bded164bce79dbbd8ecc569418127801f5458f6cfef97d",
+      "fields": [
+        {
+          "key": "ferroalloys_t",
+          "value": 4725.0,
+          "unit": "t",
+          "quote": "Silico-Manganese / Ferro-Manganese Standard Grade 4,725.0 t 1,250.00 5,906,250.00",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "WB-2026-Q1",
+      "doc_type": "weighbridge",
+      "period": "2026-Q1",
+      "doc_sha256": "0xe5f5877a52a0b257d8f085818dc341543255784c13272f6c5c11d9fa8098256b",
+      "fields": [
+        {
+          "key": "scrap_t",
+          "value": 91801.8,
+          "unit": "t",
+          "quote": "Quarterly weighbridge summary certified net intake: 91,801.8 t (Net Weight: 91,801.8 t)",
+          "confidence": 0.97,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "LAB-2026",
+      "doc_type": "lab_analysis",
+      "period": "2026",
+      "doc_sha256": "0xe138b0eb273c8a01c491a94f0c3afc9717a6afdcf219167de78237ad991eed57",
+      "fields": [
+        {
+          "key": "c_content_scrap",
+          "value": 0.005,
+          "unit": "tC/t",
+          "quote": "Verified scrap feedstock carbon mass fraction: 0.0050 tC/t",
+          "confidence": 0.98,
+          "quote_check": "pass"
+        },
+        {
+          "key": "c_content_product",
+          "value": 0.002,
+          "unit": "tC/t",
+          "quote": "Verified steel product carbon mass fraction: 0.0020 tC/t",
+          "confidence": 0.98,
+          "quote_check": "pass"
+        },
+        {
+          "key": "c_content_slag",
+          "value": 0.001,
+          "unit": "tC/t",
+          "quote": "Verified EAF slag carbon mass fraction: 0.0010 tC/t",
+          "confidence": 0.98,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "PROD-2026",
+      "doc_type": "production_record",
+      "period": "2026",
+      "doc_sha256": "0x9ac8845d4ebd69c0c93125171fecffc5cedee1dff9d302c87a26ccf76d05c55f",
+      "fields": [
+        {
+          "key": "crude_steel_t",
+          "value": 337500.0,
+          "unit": "t",
+          "quote": "Official annual liquid crude steel tapped output: 337,500.0 t (Total: 337,500.0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "billet_t",
+          "value": 330750.0,
+          "unit": "t",
+          "quote": "Official annual continuous casting billet output: 330,750.0 t (Total: 330,750.0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "product_t",
+          "value": 324000.0,
+          "unit": "t",
+          "quote": "Official annual hot-rolled final product output: 324,000.0 t (Total: 324,000.0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        },
+        {
+          "key": "slag_t",
+          "value": 40500.0,
+          "unit": "t",
+          "quote": "Official annual EAF metallurgical slag tapped: 40,500.0 t (Total: 40,500.0 t)",
+          "confidence": 0.99,
+          "quote_check": "pass"
+        }
+      ],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.04,
+          "lines_checked": 0
+        }
+      }
+    },
+    {
+      "doc_id": "PFD-2026",
+      "doc_type": "process_flow",
+      "period": "2026",
+      "doc_sha256": "0xc563810d4f02344ad5ef14946506a0644273393301d9bf26c7137a2f48a5bd75",
+      "fields": [],
+      "injection_screen": {
+        "removed": [],
+        "guard": {
+          "model": "typesafe/jev-1.14",
+          "doc_p": 0.06,
+          "lines_checked": 0
+        }
+      }
+    }
+  ],
+  "totals": {
+    "from_docs": {
+      "natural_gas_m3": 13500000.0,
+      "electricity_mwh": 141750.0,
+      "scrap_t": 367207.2,
+      "electrodes_t": 675.0,
+      "carbon_charge_t": 4050.0,
+      "lime_t": 13500.0,
+      "ferroalloys_t": 4725.0,
+      "c_content_scrap": 0.005,
+      "c_content_product": 0.002,
+      "c_content_slag": 0.001,
+      "crude_steel_t": 337500.0,
+      "billet_t": 330750.0,
+      "product_t": 324000.0,
+      "slag_t": 40500.0
+    },
+    "from_form": {
+      "scrap_t": 367207.1,
+      "pig_iron_t": 0.0,
+      "dri_t": 0.0,
+      "electrodes_t": 675.0,
+      "carbon_charge_t": 4050.0,
+      "lime_t": 13500.0,
+      "ferroalloys_t": 4725.0,
+      "crude_steel_t": 337500.0,
+      "billet_t": 330750.0,
+      "product_t": 324000.0,
+      "slag_t": 40500.0,
+      "natural_gas_m3": 13500000.0,
+      "electricity_mwh": 141750.0
+    }
+  },
+  "emissions": {
+    "direct_kg_per_t": 142,
+    "breakdown": [
+      {
+        "source": "natural_gas",
+        "t_co2": 26355.8
+      },
+      {
+        "source": "carbon_inputs_minus_outputs",
+        "t_co2": 19775.4
+      },
+      {
+        "source": "precursors",
+        "t_co2": 0.0
+      }
+    ],
+    "scrap_share_permille": 1000,
+    "input_mix_permille": {
+      "scrap": 1000,
+      "pig_iron": 0,
+      "dri": 0
+    }
+  },
+  "flags": [],
+  "counts": {
+    "red": 0,
+    "yellow": 0,
+    "missing": 0
+  },
+  "status": "green",
+  "confidence_bps": 9867,
+  "created_at": "2026-10-25T11:37:06Z",
+  "result_hash": "0xefa8e8dd9d6161756ed8459dcfd3447776f4b7c4cb5164567e906046bf3b20e9",
+  "attestation": {
+    "fileKey": "0x44b82102e53ce9e8cd4dc7d3d3e7949b787f45ad5ede8e971c33a291eadf5138",
+    "inputHash": "0xe16c8348fc1fe4817dad7302f5a1aef3bf68865b2c35875379cd816d57e5ae59",
+    "modelHash": "0xd4ce646fce2d6818ce59a97d8e3d47324b03d368b85778e2303c941b579417cd",
+    "rulesetHash": "0x464f7b6c1703042a0de7f960ad56dbd061ba99378c35d9c2e1a28c1569e3c80a",
+    "resultHash": "0xefa8e8dd9d6161756ed8459dcfd3447776f4b7c4cb5164567e906046bf3b20e9",
+    "status": 0,
+    "redCount": 0,
+    "yellowCount": 0,
+    "missingCount": 0,
+    "confidenceBps": 9867
+  },
+  "signature": {
+    "signer": "0xe83db275dC9d6F956065B6747aD174E0780EcB8C",
+    "sig": "0x9e6b5d3fedc255c211ac976b80f0362379a4d717d4ef510405e4e95b3519fc4001c4504a60270b099401aedda02bcc0aa480294353a73872ec2d3760962723941c"
+  }
+}

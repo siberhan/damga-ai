@@ -1,0 +1,9 @@
+{
+  "chainId": 11155111,
+  "DamgaRegistry": "0x5b6d1E0AEf85b8fddb3D7D637f9981442fe493eb",
+  "EmissionsLeLimitVerifier": "0xb587FD5aeA8ad3A37eFC6a0550F49D3f3D7f4ea9",
+  "ScrapShareGeVerifier": "0x574C5D6e7c5C4Ee673382ED1D7b7a7eBE2610E2f",
+  "deployTx": "0x948ce4e9642630b32547f8e9899e58079c95468e3b26a6973a2034dff8019689",
+  "deployer": "0xFEdC4A43A03CD72E9F364a74b8e85C97F1DdebA3",
+  "deployedAt": "2026-10-25"
+}

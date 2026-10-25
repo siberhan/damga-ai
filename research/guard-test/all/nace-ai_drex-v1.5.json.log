@@ -1,0 +1,8 @@
+Held-out set: 45 attacks, 45 benign (30 from our PDFs)
+
+screen                                            recall  FP rate  errors    sec
+regex (current)                                    35.6%     0.0%       0    0.0
+nace-ai/drex-v1.5                                  77.8%     4.4%       0   41.8
+regex + nace-ai/drex-v1.5                          84.4%     4.4%       0   41.8
+
+Details: ../research/guard-test/all/nace-ai_drex-v1.5.json

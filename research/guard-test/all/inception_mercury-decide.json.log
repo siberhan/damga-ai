@@ -1,0 +1,8 @@
+Held-out set: 45 attacks, 45 benign (30 from our PDFs)
+
+screen                                            recall  FP rate  errors    sec
+regex (current)                                    35.6%     0.0%       0    0.0
+inception/mercury-decide                           95.6%    11.1%       1   42.7
+regex + inception/mercury-decide                   95.6%    11.1%       1   42.7
+
+Details: ../research/guard-test/all/inception_mercury-decide.json

@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "form_vs_docs"
+  ],
+  "cheat": "800 t pig iron invoice uploaded, but form declares 0 t pig iron"
+}

@@ -1,0 +1,40 @@
+# Session recording transcripts (private, do not commit)
+transcripts/
+
+.DS_Store
+
+# Jury research reports (private, do not commit)
+jury-research/
+
+# Secrets
+.env
+*.env
+!.env.example
+
+# Build and dependencies
+node_modules/
+.venv/
+__pycache__/
+dist/
+contracts/out/
+contracts/cache/
+contracts/broadcast/*/31337/
+backend/state/
+
+# Coordinator notebook (private)
+.coord/
+
+# Private user files (do not commit)
+assets/
+sunum.html
+backend/state.old-agent/
+
+# Downloaded source PDFs (FMP BREF is 103 MB, over the GitHub file limit)
+research/downloads/
+
+# Raw landing sources and video work files (large)
+landing/clips/
+landing/frames/
+landing/stills/
+video/
+landing/site/media/

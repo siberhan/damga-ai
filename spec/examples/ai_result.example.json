@@ -1,0 +1,51 @@
+{
+  "schema": "damga.ai_result.v1",
+  "case_id": "cheat-pigiron-invoice-01",
+  "file_key": "0x5f1c...",
+  "attempt_index": 0,
+  "docs_root": "0x7a0d...",
+  "declaration_hash": "0x1e9b...",
+  "input_hash": "0x44c2...",
+  "model": { "provider": "mistral", "name": "<AI_MODEL>", "version": "<api model version>", "model_hash": "0x..." },
+  "ruleset": { "id": "steel_eaf", "version": "1.0.0", "ruleset_hash": "0x..." },
+  "extractions": [ { "doc_id": "INV-PIG-012", "doc_type": "purchase_invoice", "doc_sha256": "0x9c2e...", "fields": [ { "key": "pig_iron_t", "value": 800.0, "unit": "t", "quote": "Pig iron (basic grade) .......... 800.000 t", "confidence": 0.97, "quote_check": "pass" } ], "injection_screen": { "removed": [] } } ],
+  "totals": {
+    "from_docs": { "scrap_t": 271950.0, "pig_iron_t": 800.0, "dri_t": 0.0, "natural_gas_m3": 11002300.0, "electricity_mwh": 104980.0, "electrodes_t": 500.0, "lime_t": 10010.0, "carbon_charge_t": 3000.0, "product_t": 240000.0, "crude_steel_t": 250000.0 },
+    "from_form": { "scrap_t": 272000.0, "pig_iron_t": 0.0 }
+  },
+  "emissions": {
+    "direct_kg_per_t": 92,
+    "breakdown": [
+      { "source": "natural_gas", "t_co2": 21500.0 },
+      { "source": "carbon_inputs_minus_outputs", "t_co2": 300.0 },
+      { "source": "precursors", "t_co2": 0.0 }
+    ],
+    "scrap_share_permille": 997,
+    "input_mix_permille": { "scrap": 997, "pig_iron": 3, "dri": 0 }
+  },
+  "flags": [
+    {
+      "id": "F1",
+      "level": "red",
+      "rule": "form_vs_docs",
+      "source": "code",
+      "field": "pig_iron_t",
+      "message": "The form says 0 t of pig iron, but invoice INV-PIG-012 shows 800 t.",
+      "values": { "form": 0.0, "docs": 800.0, "tolerance_pct": 2.0 },
+      "evidence": [ { "doc_id": "INV-PIG-012", "quote": "Pig iron (basic grade) .......... 800.000 t" } ],
+      "ai_explanation": "Pig iron adds embedded emissions under CBAM, so leaving it out makes the declared value too low.",
+      "state": "open",
+      "resolution": null
+    }
+  ],
+  "counts": { "red": 1, "yellow": 0, "missing": 0 },
+  "status": "red",
+  "confidence_bps": 9400,
+  "created_at": "2026-10-25T10:00:00Z",
+  "result_hash": "0x...",
+  "attestation": {
+    "fileKey": "0x5f1c...", "inputHash": "0x44c2...", "modelHash": "0x...", "rulesetHash": "0x...", "resultHash": "0x...",
+    "status": 2, "redCount": 1, "yellowCount": 0, "missingCount": 0, "confidenceBps": 9400
+  },
+  "signature": { "signer": "0xAI...", "sig": "0x..." }
+}

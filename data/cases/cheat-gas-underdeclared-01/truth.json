@@ -1,0 +1,7 @@
+{
+  "expected_status": "red",
+  "expected_flags": [
+    "form_vs_docs"
+  ],
+  "cheat": "Form declares 8,000,000 m3 natural gas, 20% lower than the 10,000,000 m3 total in 12 monthly gas bills"
+}
